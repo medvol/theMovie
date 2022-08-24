@@ -9,3 +9,7 @@
         transform: none;
     }
 }
+
+.anim {
+    animation: bottom 0.8s var(--delay) both;
+}

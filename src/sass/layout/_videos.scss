@@ -1,0 +1,97 @@
+.videos {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+
+.video {
+    position: relative;
+    background-color: var(--video-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.video-wrapper {
+    position: relative;
+    height: 200px;
+}
+
+.video-name {
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.4em;
+    padding: 12px 20px 0;
+    overflow: hidden;
+    background-color: var(--video-bg);
+    z-index: 9;
+    position: relative;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.video-view {
+    font-size: 12px;
+    padding: 12px 20px 20px;
+    background-color: var(--video-bg);
+    position: relative;
+}
+
+
+.video-selection {
+    position: absolute;
+    background: rgba(21, 13, 13, 0.44);
+    color: rgb(255 255 255 / 85%);
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+    top: 10px;
+    z-index: 1;
+    right: 8px;
+}
+
+.video:hover img {
+
+    transform: scale(1.6);
+    transform-origin: center;
+}
+
+.video:hover .video-selection {
+    display: none;
+}
+
+.video:hover .video-rating {
+    bottom: -65px;
+    transform: scale(0.6);
+    right: -3px;
+    z-index: 10;
+}
+
+.video-rating {
+    position: absolute;
+    right: 10px;
+    transition: 0.4s;
+    bottom: -25px;
+}
+
+.video-rating svg {
+    background-color: #0aa0f7;
+    color: #fff;
+    border-color: var(--video-bg);
+}
+
+@media screen and (min-width: 768px) {
+    .videos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .videos {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
