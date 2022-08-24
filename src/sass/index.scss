@@ -1,4 +1,14 @@
+@import './utils/variables';
 @import './base/common';
 @import './base/container';
+
+@import './components/logo';
+@import './layout/sidebar';
+@import './components/animation';
+
+@import  './layout/header';
+@import './layout/main-section';
+@import './layout/videos';
+
 @import './utils/mixins';
-@import './example';
+

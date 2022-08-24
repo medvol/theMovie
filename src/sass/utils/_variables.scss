@@ -1,0 +1,17 @@
+:root {
+    --body-font: "Inter", sans-serif;
+    --theme-bg: #1f1d2b;
+    --body-color: #808191;
+    --button-bg: #353340;
+    --border-color: rgb(128 129 145 / 24%);
+    --video-bg: #252936;
+    --delay: 0s;
+}
+body {
+    font-family: var(--body-font);
+    color: var(--body-color);    
+    padding: 1em 2em;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}

@@ -9,13 +9,23 @@
   </head>
   <body>
     <main>
-      <!-- ❗️❗️❗️ Add partials like so for every page -->
-      <!-- <include src="./partials/example.html"></include> -->
-      <include src="./partials/header.html"></include>
-      <include src="./partials/test.html"></include>
-      <script src="./unsplash.js" type="module"></script>
-      <script src="./test.js" type="module"></script>
-      <script src="./index.js" type="module"></script>
+
+      <div class="container">
+        <include src="./partials/aside.html"></include>
+      
+        <div class="section">
+          <include src="./partials/header.html"></include>
+          <div class="main-container">
+            <h1 class="main-header anim" style="--delay: 0s">Discover</h1>
+            <include src="./partials/discover-card.html"></include>
+
+            <h2 class="most-watched anim" style="--delay: .3s">Most Watched</h2>
+            <include src="./partials/video-card.html"></include>
+      
+          </div>
+        </div>
+      </div>
+    
     </main>
   </body>
 </html>
