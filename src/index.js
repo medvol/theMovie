@@ -1,5 +1,5 @@
 import './sass/index.scss';
-
+import './js/api-movie-service';
 
 const sidebar = document.querySelector('.sidebar');
 
