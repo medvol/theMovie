@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export class MovieApiService {
   constructor() {
     this.API_KEY = '5b00cd10e05c354cfbdbc23aa24fc7b8';
@@ -32,6 +34,7 @@ export class MovieApiService {
       const responce = await axios.get(
         `${this.URL}search/movie?api_key=${this.API_KEY}&query=${this.searchQuary}&language=en-US&page=1&include_adult=false&page=${this.page}`
       );
+      this.incrementPage();
       return responce.data.results;
     } catch (error) {
       console.log(error);
@@ -44,6 +47,7 @@ export class MovieApiService {
       const responce = await axios.get(
         `${this.URL}trending/all/${this.trendDay}?api_key=${this.API_KEY}&page=${this.page}`
       );
+      this.incrementPage();
       return responce.data.results;
     } catch (error) {
       console.log(error);
@@ -56,6 +60,7 @@ export class MovieApiService {
       const responce = await axios.get(
         `${this.URL}trending/all/${this.trendWeek}?api_key=${this.API_KEY}&page=${this.page}`
       );
+      this.incrementPage();
       return responce.data.results;
     } catch (error) {
       console.log(error);
@@ -80,6 +85,7 @@ export class MovieApiService {
       const responce = await axios.get(
         `${this.URL}discover/movie?with_genres=${genre}&page=${this.page}&with_original_language=en&api_key=${this.API_KEY}`
       );
+      this.incrementPage();
       return responce.data.results;
     } catch (error) {
       console.log(error);
