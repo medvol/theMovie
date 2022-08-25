@@ -30,7 +30,7 @@ body.show-modal .modal {
 
 .modal {
     background-color:var(--body-color);
-    padding: 10px;
+    padding: 20px;
     border-radius: 4px;
     max-width: 806px;
     width: 100%;
@@ -42,20 +42,21 @@ body.show-modal .modal {
 
 .modal-close-btn {
     position: absolute;
-    top: 2%;
+    top: 2px;
     right: 2%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 20px;
+    height: 20px;
     padding: 0;
     margin: 0;
     border: none;
-    border-radius: 50%;
+    // border-radius: 50%;
+    background-color: var(--body-color);
     outline: none;
     background-image: url('/src/images/close.svg');
     background-position: center;
-    background-size: 60%;
+    background-size: 100%;
     background-repeat: no-repeat;
 }

@@ -1,5 +1,5 @@
 import './sass/index.scss'
-import { onOpenModal, onCloseModal, closeModalByEsc, onBackdropClick } from './js/modal-our-team';
+import { onOpenModal, onCloseModal, onBackdropClick } from './js/modal-our-team';
 
 
 const sidebar = document.querySelector('.sidebar');
