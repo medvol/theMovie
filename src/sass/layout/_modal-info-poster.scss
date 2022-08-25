@@ -1,0 +1,15 @@
+.modal_poster{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.modal_poster__img{
+    border-radius: 20px;
+}
