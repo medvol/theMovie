@@ -1,3 +1,4 @@
+import axios from 'axios';
 export class MovieApiService {
   constructor() {
     this.API_KEY = '5b00cd10e05c354cfbdbc23aa24fc7b8';
@@ -87,7 +88,7 @@ export class MovieApiService {
   };
 
   // Запрос информации по жанрам
-  fetchGenresDescription = async genre => {
+  fetchGenresDescription = async () => {
     try {
       const responce = await axios.get(
         `${this.URL}genre/movie/list?api_key=${this.API_KEY}`
