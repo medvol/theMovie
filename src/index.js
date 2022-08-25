@@ -1,5 +1,6 @@
 import './sass/index.scss';
 import './js/api-movie-service';
+// import './js/pagination';
 
 const sidebar = document.querySelector('.sidebar');
 
