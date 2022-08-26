@@ -2,7 +2,7 @@ export
 function createMarkupMovies(movies, element) {
   const markup = movies.reduce((acc, movie) => {
     const { title, release_date, poster_path, vote_average } = movie;
-    const date = release_date.slice(0, 4);
+    const date = release_date ? release_date.slice(0, 4) :'-';
     const imgUrl = `https://image.tmdb.org/t/p/original${poster_path}`
 
     return acc + `<div class="video anim" style="--delay: .4s">
