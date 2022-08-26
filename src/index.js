@@ -26,7 +26,8 @@ const refs = {
   trending: document.querySelector('[data-name="trending"]'),
   openModal: document.querySelector('#js-team-modal'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
-  backdrop: document.querySelector('.js-backdrop')
+  backdrop: document.querySelector('.js-backdrop'),
+  pageSubTitle: document.querySelector('.most-watched')
 };
 
 if(refs.pageTitle.textContent !=='New video') refs.pageTitle.textContent = "New video"
@@ -58,7 +59,6 @@ const categoryMovie = new MovieApiService();
 
 async function loadSidebarCategory() {
   const categoryMovieList = await categoryMovie.fetchGenresDescription();
-  // console.log(categoryMovieList);
   createCategoryList(categoryMovieList, refs.categoryList);
 }
 
@@ -67,8 +67,7 @@ addEventListener('DOMContentLoaded', loadList);
 const newsWeekApiService = new MovieApiService();
 
 async function loadList() {
-  const categoryWeekList = await newsWeekApiService.fetchTrendWeekMovie();
-  console.log(categoryWeekList);
+  const categoryWeekList = await newsWeekApiService.fetchTrendWeekMovie();  
   createMarkupMovies(categoryWeekList, refs.videos);
 }
 
@@ -80,7 +79,8 @@ async function onClickCategory(event) {
   const ganres = await categoryMovie.fetchMoviesForGenres(id);   
   refs.films.innerHTML = '';
   refs.videos.innerHTML = '';
-  refs.pageTitle.textContent = element.firstElementChild.textContent
+  refs.pageTitle.textContent = element.firstElementChild.textContent;
+  refs.pageSubTitle.classList.add('visually-hidden');
   createMarkupMovies(ganres, refs.videos)
 
 }
@@ -93,6 +93,7 @@ async function onClickTrending(event) {
 
   const trending = await categoryMovie.fetchTrendWeekMovie()
   refs.films.innerHTML = '';
+  refs.pageSubTitle.classList.add('visually-hidden')
   refs.videos.innerHTML = '';
   refs.pageTitle.textContent = element.firstElementChild.textContent
   createMarkupMovies(trending, refs.videos)
