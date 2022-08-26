@@ -1,12 +1,18 @@
+
+import './sass/index.scss'
+import { onOpenModal, onCloseModal, onBackdropClick } from './js/modal-our-team';
+
 import './sass/index.scss';
 // import './js/api-movie-service';
 import { MovieApiService } from './js/api-movie-service';
 import { createCategoryList } from './js/sidebar-category';
 import { createMarkupMovies } from './js/create-markup-movies';
 
+
 // import './js/api-movie-service';
 // import './js/modal-close-btn';
 // import './js/modal-info-open';
+
 
 // import './js/pagination';
 
@@ -20,6 +26,7 @@ let mainPage = true;
 
 if (!mainPage) {
   refs.mainContainer.classList.remove('videos');
+
 }
 
 window.addEventListener('resize', function () {
@@ -30,9 +37,24 @@ window.addEventListener('resize', function () {
   }
 });
 
+
 addEventListener('DOMContentLoaded', loadSidebarCategory, {
   once: true,
 });
+
+
+
+const refs = {
+  openModal: document.querySelector('#js-team-modal'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  backdrop: document.querySelector('.js-backdrop')
+}
+refs.openModal.addEventListener('click', onOpenModal)
+refs.closeModalBtn.addEventListener('click', onCloseModal)
+refs.backdrop.addEventListener('click', onBackdropClick)
+
+addEventListener('DOMContentLoaded', loadSidebarCategory, { once: true });
+
 
 const categoryMovie = new MovieApiService();
 
