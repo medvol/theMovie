@@ -19,6 +19,9 @@ const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
   mainContainer: document.querySelector('.main-container'),
   videos: document.querySelector('.videos'),
+  openModal: document.querySelector('#js-team-modal'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  backdrop: document.querySelector('.js-backdrop')
 
 }
 
@@ -39,11 +42,6 @@ window.addEventListener('resize', function () {
 
 
 
-const refs = {
-  openModal: document.querySelector('#js-team-modal'),
-  closeModalBtn: document.querySelector('[data-modal-close]'),
-  backdrop: document.querySelector('.js-backdrop')
-}
 refs.openModal.addEventListener('click', onOpenModal)
 refs.closeModalBtn.addEventListener('click', onCloseModal)
 refs.backdrop.addEventListener('click', onBackdropClick)
