@@ -93,7 +93,7 @@ export class MovieApiService {
   };
 
   // Запрос информации по жанрам
-  fetchGenresDescription = async genre => {
+  fetchGenresDescription = async () => {
     try {
       const responce = await axios.get(
         `${this.URL}genre/movie/list?api_key=${this.API_KEY}`
