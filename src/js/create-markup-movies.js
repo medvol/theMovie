@@ -10,9 +10,7 @@ export function createMarkupMovies(movies, element) {
       vote_count,
     } = movie;
     const date = release_date ? release_date.slice(0, 4) : '-';
-
     const average = vote_average ? vote_average.toFixed(1) : '-';
-
     const imgUrl = `https://image.tmdb.org/t/p/original${poster_path}`;
 
     return (

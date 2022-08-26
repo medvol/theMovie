@@ -20,24 +20,23 @@ const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
   mainContainer: document.querySelector('.main-container'),
   videos: document.querySelector('.videos'),
+  sidebar: document.querySelector('.sidebar'),
+  films: document.querySelector('.main-films'),
+  pageTitle: document.querySelector('.main-header'),
+  trending: document.querySelector('[data-name="trending"]'),
   openModal: document.querySelector('#js-team-modal'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop')
 };
 
+if(refs.pageTitle.textContent !=='New video') refs.pageTitle.textContent = "New video"
 
-let mainPage = true;
-
-if (!mainPage) {
-  refs.mainContainer.classList.remove('videos');
-
-}
 
 window.addEventListener('resize', function () {
   if (window.innerWidth > 1279) {
-    sidebar.classList.remove('collapse');
+    refs.sidebar.classList.remove('collapse');
   } else {
-    sidebar.classList.add('collapse');
+    refs.sidebar.classList.add('collapse');
   }
 });
 
@@ -78,12 +77,24 @@ refs.categoryList.addEventListener('click', onClickCategory);
 async function onClickCategory(event) {
   const element = event.target.closest('li[data-id]');
   const id = element.dataset.id;
-  const ganres = await categoryMovie.fetchMoviesForGenres(id);
-  // mainPage = false;
-  // refs.mainContainer.classList.add('videos')
-  // refs.mainContainer.innerHTML = '';
+  const ganres = await categoryMovie.fetchMoviesForGenres(id);   
+  refs.films.innerHTML = '';
   refs.videos.innerHTML = '';
-  createMarkupMovies(ganres, refs.videos);
+  refs.pageTitle.textContent = element.firstElementChild.textContent
+  createMarkupMovies(ganres, refs.videos)
 
-  console.log(ganres);
+}
+
+refs.trending.addEventListener('click', onClickTrending)
+
+async function onClickTrending(event) {
+  const element = event.target.closest("li[data-name]");
+  console.log(element)
+
+  const trending = await categoryMovie.fetchTrendWeekMovie()
+  refs.films.innerHTML = '';
+  refs.videos.innerHTML = '';
+  refs.pageTitle.textContent = element.firstElementChild.textContent
+  createMarkupMovies(trending, refs.videos)
+
 }
