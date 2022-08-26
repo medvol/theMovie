@@ -95,7 +95,6 @@ async function onClickTrending(event) {
   createMarkupMovies(trending, refs.videos);
 }
 
-// =====
 function appendMarkupDiscoverCards(MarcupDiscoverCards) {
   refs.films.insertAdjacentHTML('beforeend', MarcupDiscoverCards);
 }

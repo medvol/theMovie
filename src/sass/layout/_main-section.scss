@@ -1,284 +1,277 @@
 .main-header {
-    font-size: 30px;
-    color: #fff;
-    font-weight: 700;
-    padding-bottom: 20px;
-    position: sticky;
-    top: 0;
-    left: 0;
-    background: linear-gradient(to bottom,
-            #1f1d2b 0%,
-            #1f1d2b 78%,
-            rgb(31 29 43 / 0%) 100%);
-    z-index: 11;
+  font-size: 30px;
+  color: #fff;
+  font-weight: 700;
+  padding-bottom: 20px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    to bottom,
+    #1f1d2b 0%,
+    #1f1d2b 78%,
+    rgb(31 29 43 / 0%) 100%
+  );
+  z-index: 11;
 }
 
 .most-watched {
-    font-size: 24px;
-    font-weight: 500;
-    color: #fff;
-    margin: 30px 0 20px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  margin: 30px 0 20px;
 }
 
-
 .main-films {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .main-film__rating {
-    display: flex;
-    align-items: center;
-    padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  position: absolute;
+  top: 200px;
+  left: 20px;
 }
 
 .main-film__rating .tips {
-    flex-direction: column-reverse;
-    align-items: flex-start;
+  flex-direction: column-reverse;
+  align-items: flex-start;
 }
 
-
 .main-film__title {
-    font-size: 25px;
-    max-width: 12ch;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #fff;
-    margin-bottom: 30px;
+  position: absolute;
+    top: 30px;
+  left: 20px;
+  font-size: 25px;
+  max-width: 12ch;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 30px;
 }
 
 .main-film {
-    height: 280px;
-    // background-image: url("https://assets.codepen.io/3364143/skate-removebg-preview.png");
-    background-image: url("../images/film-596009_1920.jpg");
-    background-size: 80%;
-    background-position-x: 150px;
-    // background-color: #31abbd;
-    display: flex;
-    flex-direction: column;
-    /* width: 65%; */
-    padding: 30px;
-    border-radius: 20px;
-    align-self: stretch;
-    overflow: hidden;
-    position: relative;
-    transition: background 0.3s;
-    background-repeat: no-repeat;
+  height: 280px;
+  // background-image: url("https://assets.codepen.io/3364143/skate-removebg-preview.png");
+  background-image: url('../images/film-596009_1920.jpg');
+  background-size: 80%;
+  background-position-x: 150px;
+  // background-color: #31abbd;
+  display: flex;
+  flex-direction: column;
+  /* width: 65%; */
+  // padding: 30px;
+  border-radius: 20px;
+  align-self: stretch;
+  overflow: hidden;
+  position: relative;
+  transition: background 0.3s;
+  background-repeat: no-repeat;
 }
 
-.main-film+.main-film {
-    height: 280px;
-    margin-left: 20px;
-    /* width: 35%; */
-    // background-image: url(https://c0.anyrgb.com/images/1020/945/venice-beach-2018-outdoors-sport-men-jumping-desert-sunset-extreme-sports-one-person-action.jpg);
-    background-image: url("../images/film-596009_1920.jpg");
-    background-color: unset;
-    background-position: center;
-    background-size: cover;
-    filter: saturate(1.4);
+.main-film + .main-film {
+  height: 280px;
+  margin-left: 20px;
+  /* width: 35%; */
+  // background-image: url(https://c0.anyrgb.com/images/1020/945/venice-beach-2018-outdoors-sport-men-jumping-desert-sunset-extreme-sports-one-person-action.jpg);
+  background-image: url('../images/film-596009_1920.jpg');
+  background-color: unset;
+  background-position: center;
+  background-size: cover;
+  filter: saturate(1.4);
 }
 
-
-.video-poster__wrapper{
-    // height: 280px;
-    overflow: hidden;
-    object-fit: cover;
+.video-poster__wrapper {
+//   overflow: hidden;
+  object-fit: cover;
 }
 
-.video-poster__wrapper>img{
-    // height: 100%;
-    object-fit: cover;
-    overflow: hidden;
-    object-position: top;
+.video-poster__wrapper > img {
+  object-fit: cover;
+  overflow: hidden;
+  object-position: top;
 }
 
 @media screen and (min-width: 768px) {
+  .main-film,
+  .main-film + .main-film {
+    width: 50%;
+    // padding: 30px;
+  }
 
-    .main-film,
-    .main-film+.main-film {
-        width: 50%;
-        padding: 30px;
-    }
-
-    .main-film {
-        background-size: cover;
-        background-position-x: center;
-        background-blend-mode: overlay;
-    }
+  .main-film {
+    background-size: cover;
+    background-position-x: center;
+    background-blend-mode: overlay;
+  }
 }
 
-
-
 @media screen and(min-width: 1280px) {
-    .main-film {
-    
-            width: 65%;
-    
-        }
-    .main-film + .main-film {
-
-        width: 35%;
-
-    }
+  .main-film {
+    width: 65%;
+  }
+  .main-film + .main-film {
+    width: 35%;
+  }
 }
 
 .rating__wrapper svg {
-    border-color: #ffe6b2;
-    color: #e7bb7d;
+  border-color: #ffe6b2;
+  color: #e7bb7d;
 }
 
 .film-detail {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .main-film__selection {
-    background: rgba(21, 13, 13, 0.44);
-    color: #fff;
-    padding: 3px 8px;
-    font-size: 12px;
-    border-radius: 6px;
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
+  background: rgba(21, 13, 13, 0.44);
+  color: #fff;
+  padding: 3px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 }
 
 .rating-value {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 14px;
-    width: 52px;
-    height: 52px;
-    border: 2px solid #0daabc;
-    padding: 4px;
-    border-radius: 50%;
-    color: #fff;
-    font-weight: 600;
-    background-color: #081c22;
-   
-    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #0daabc;
+  padding: 4px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 600;
+  background-color: #081c22;
 }
 
 .rating__wrapper {
-    position: relative;
-    flex-shrink: 0;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .rating__wrapper svg {
-    width: 16px;
-    padding: 2px;
-    background-color: #fff;
-    color: #0daabc;
-    border-radius: 50%;
-    border: 2px solid #0daabc;
-    position: absolute;
-    bottom: 5px;
-    right: 0;
+  width: 16px;
+  padding: 2px;
+  background-color: #fff;
+  color: #0daabc;
+  border-radius: 50%;
+  border: 2px solid #0daabc;
+  position: absolute;
+  bottom: 5px;
+  right: 0;
 }
 
 .film-name {
-    font-size: 15px;
-    color: #fff;
-    font-weight: 500;
-    margin-bottom: 8px;
+  font-size: 15px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
 .film-info {
-    font-size: 13px;
-    font-weight: 400;
-    color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  color: #fff;
 }
 
 .film-detail {
-    margin-left: 16px;
+  margin-left: 16px;
 }
 
 .seperate {
-    width: 3px;
-    height: 3px;
-    display: inline-block;
-    vertical-align: middle;
-    border-radius: 50%;
-    background-color: #fff;
-    margin: 0 6px;
+  width: 3px;
+  height: 3px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  background-color: #fff;
+  margin: 0 6px;
 }
 
 .seperate.video-seperate {
-    background-color: var(--body-color);
+  background-color: var(--body-color);
 }
 
 @media screen and (max-width: 767px) {
-    .main-films {
-        flex-wrap: wrap;
-    }
+  .main-films {
+    flex-wrap: wrap;
+  }
 
-    .main-film,
-    .main-film+.main-film {
-        width: 100%;
-    }
+  .main-film,
+  .main-film + .main-film {
+    width: 100%;
+  }
 
-    .videos {
-        grid-template-columns: 1fr;
-    }
+  .videos {
+    grid-template-columns: 1fr;
+  }
 
-    .main-film+.main-film {
-        margin-left: 0;
-        margin-top: 20px;
-        background-size: cover;
-    }
+  .main-film + .main-film {
+    margin-left: 0;
+    margin-top: 20px;
+    background-size: cover;
+  }
 }
 
 @media screen and (max-width: 475px) {
-    .main-film__title {
-        font-size: 20px;
-    }
+  .main-film__title {
+    font-size: 20px;
+  }
 
-    .film-name {
-        font-size: 14px;
-    }
+  .film-name {
+    font-size: 14px;
+  }
 
-    .main-film__rating {
-        flex-direction: column-reverse;
-        align-items: flex-start;
-    }
+  .main-film__rating {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
 
-    .film-detail {
-        margin-left: 0;
-    }
+  .film-detail {
+    margin-left: 0;
+  }
 
-    .main-film .rating-value {
-        margin-top: 14px;
-    }
+  .main-film .rating-value {
+    margin-top: 14px;
+  }
 
-    .main-container {
-        padding: 0 20px 20px;
-    }
+  .main-container {
+    padding: 0 20px 20px;
+  }
 
-    .header {
-        padding: 20px;
-    }
+  .header {
+    padding: 20px;
+  }
 
-    .sidebar.collapse {
-        width: 40px;
-    }
+  .sidebar.collapse {
+    width: 40px;
+  }
 
-    .sidebar {
-        align-items: center;
-    }
+  .sidebar {
+    align-items: center;
+  }
 
-     .container {
-        height: 100vh;       
-        max-height: 100%;
-    }
+  .container {
+    height: 100vh;
+    max-height: 100%;
+  }
 }
 
-
 ::-webkit-scrollbar {
-    width: 6px;
-    border-radius: 10px;
+  width: 6px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(21 20 26 / 63%);
-    border-radius: 10px;
+  background-color: rgb(21 20 26 / 63%);
+  border-radius: 10px;
 }
