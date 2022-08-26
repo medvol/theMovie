@@ -1,5 +1,7 @@
 import './sass/index.scss';
 import './js/api-movie-service';
+import './js/modal-close-btn';
+import './js/modal-info-open';
 // import './js/pagination';
 
 const sidebar = document.querySelector('.sidebar');
