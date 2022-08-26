@@ -1,11 +1,21 @@
-export 
-function createMarkupMovies(movies, element) {
+export function createMarkupMovies(movies, element) {
   const markup = movies.reduce((acc, movie) => {
-    const { title, release_date, poster_path, vote_average } = movie;
-    const date = release_date ? release_date.slice(0, 4) :'-';
-    const imgUrl = `https://image.tmdb.org/t/p/original${poster_path}`
+    const {
+      id,
+      title,
+      release_date,
+      poster_path,
+      name,
+      vote_average,
+      vote_count,
+    } = movie;
+    const date = release_date ? release_date.slice(0, 4) : '-';
+    const average = vote_average ? vote_average.toFixed(1) : '-';
+    const imgUrl = `https://image.tmdb.org/t/p/original${poster_path}`;
 
-    return acc + `<div class="video anim" style="--delay: .4s">
+    return (
+      acc +
+      `<div class="video anim" id="${id}"style="--delay: .4s">
         <p class="video-selection">...</p>
         <div class="video-wrapper">
             <img class="video-poster" src="${imgUrl}" alt="${title}" />
@@ -15,16 +25,16 @@ function createMarkupMovies(movies, element) {
                     stroke-linejoin="round" class="feather feather-check">
                     <path d="M20 6L9 17l-5-5" />
                 </svg>
-                <p class="rating-value">${vote_average}</p>
+                <p class="rating-value">${average}</p>
 
             </div>
         </div>
 
-        <p class="video-name">${title}</p>
-        <p class="video-view">54K views<span class="seperate video-seperate"></span>${date}</p>
+        <p class="video-name">${title ? title : name}</p>
+        <p class="video-view">${vote_count} views<span class="seperate video-seperate"></span>${date}</p>
     </div>`
-  }, '')
+    );
+  }, '');
 
-  element.insertAdjacentHTML("beforeend", markup);
-  
+  element.insertAdjacentHTML('beforeend', markup);
 }
