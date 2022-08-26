@@ -48,10 +48,12 @@
 }
 
 .main-film {
-    background-image: url("https://assets.codepen.io/3364143/skate-removebg-preview.png");
+    height: 280px;
+    // background-image: url("https://assets.codepen.io/3364143/skate-removebg-preview.png");
+    background-image: url("../images/film-596009_1920.jpg");
     background-size: 80%;
     background-position-x: 150px;
-    background-color: #31abbd;
+    // background-color: #31abbd;
     display: flex;
     flex-direction: column;
     /* width: 65%; */
@@ -65,15 +67,30 @@
 }
 
 .main-film+.main-film {
+    height: 280px;
     margin-left: 20px;
     /* width: 35%; */
-    background-image: url(https://c0.anyrgb.com/images/1020/945/venice-beach-2018-outdoors-sport-men-jumping-desert-sunset-extreme-sports-one-person-action.jpg);
+    // background-image: url(https://c0.anyrgb.com/images/1020/945/venice-beach-2018-outdoors-sport-men-jumping-desert-sunset-extreme-sports-one-person-action.jpg);
+    background-image: url("../images/film-596009_1920.jpg");
     background-color: unset;
-    background-position-x: 0;
-    background-size: 139%;
+    background-position: center;
+    background-size: cover;
     filter: saturate(1.4);
 }
 
+
+.video-poster__wrapper{
+    // height: 280px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.video-poster__wrapper>img{
+    // height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    object-position: top;
+}
 
 @media screen and (min-width: 768px) {
 
