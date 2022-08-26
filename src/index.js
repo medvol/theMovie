@@ -4,6 +4,9 @@ import { MovieApiService } from './js/api-movie-service';
 import { createCategoryList } from './js/sidebar-category';
 import { createMarkupMovies } from './js/create-markup-movies';
 
+import './js/api-movie-service';
+import './js/modal-close-btn';
+import './js/modal-info-open';
 
 // import './js/pagination';
 
