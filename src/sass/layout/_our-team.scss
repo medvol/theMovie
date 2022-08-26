@@ -96,22 +96,20 @@
     bottom: 0;
 }
 
-.our-team .social div {
+.our-team .social {
     display: inline-block;
 }
 
-.our-team .social div a {
+.our-team .social a {
     display: block;
     padding: 10px;
     font-size: 10px;
     color: white;
     transition: all 0.3s ease 0s;
     text-decoration: none;
-    background-image: url(/src/images/github-logo.svg);
-    background-repeat: no-repeat;
 }
 
 .our-team .social a:hover {
     color: #1369ce;
-    background-color: #f7f5ec;
+    // background-color: #f7f5ec;
 }

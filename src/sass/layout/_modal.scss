@@ -52,7 +52,7 @@ body.show-modal .modal {
     padding: 0;
     margin: 0;
     border: none;
-    // border-radius: 50%;
+    cursor: pointer;
     background-color: var(--body-color);
     outline: none;
     background-image: url('/src/images/close.svg');
