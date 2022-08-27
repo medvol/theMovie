@@ -100,22 +100,5 @@ var splide = new Splide('.splide', {
 
 splide.mount();
 
-
-
-// async function onModalShowInfoCard(e) {
-//   if (e.target.closest('[id]')) {
-//     refs.overlay.classList.remove('is-hidden');
-//   }
-//   const element = e.target.closest('[id]');
-//   categoryMovie.movieId = element.id;
-
-//   const movieForId = await categoryMovie.fetchMovieForId();
-
-//   refs.modalCardMovie.innerHTML = '';
-//   createMarkupMovieInfo(movieForId, refs.modalCardMovie);
-// }
-
-
-
 refs.sidebar.addEventListener('click', OnClickSidebar)
 
