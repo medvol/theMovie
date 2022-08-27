@@ -22,6 +22,19 @@ import { MovieApiService } from './js/api-movie-service';
 import debounce from 'lodash.debounce';
 
 
+
+
+import { createMarkupMovieInfo } from './js/create-markup-modal-info';
+
+
+// import './js/api-movie-service';
+// import './js/modal-close-btn';
+// import './js/modal-info-open';
+
+import './js/pagination';
+
+
+
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
   mainContainer: document.querySelector('.main-container'),
@@ -33,6 +46,12 @@ const refs = {
   openModal: document.querySelector('#js-team-modal'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
+
+
+
+
+
+
   pageSubTitle: document.querySelector('.most-watched'),
   searchBar: document.querySelector('.search-bar'),
   overlay: document.querySelector('.overlay'),
@@ -75,10 +94,49 @@ addEventListener('DOMContentLoaded', loadDiscoverCards);
 
 const DEBOUNCE_DELAY = 750;
 
+
 refs.searchBar.addEventListener('input', debounce(handlerInput, DEBOUNCE_DELAY));
 
 refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
+
+
+var splide = new Splide('.splide', {
+  perPage: 3,
+  gap: '2rem',
+  breakpoints: {
+    640: {
+      perPage: 2,
+      gap: '.7rem',
+      height: '6rem',
+    },
+    480: {
+      perPage: 1,
+      gap: '.7rem',
+      height: '12rem',
+    },
+  },
+});
+
+splide.mount();
+
+
+
+
+
+
+// async function onModalShowInfoCard(e) {
+//   if (e.target.closest('[id]')) {
+//     refs.overlay.classList.remove('is-hidden');
+//   }
+//   const element = e.target.closest('[id]');
+//   categoryMovie.movieId = element.id;
+
+//   const movieForId = await categoryMovie.fetchMovieForId();
+
+//   refs.modalCardMovie.innerHTML = '';
+//   createMarkupMovieInfo(movieForId, refs.modalCardMovie);
+// }
 
 
 var splide = new Splide('.splide', {
