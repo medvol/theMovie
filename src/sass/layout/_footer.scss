@@ -1,45 +1,48 @@
-.footer-text{
-font-size: 12px;
+.footer-text {
+  font-size: 12px;
 }
+
 footer {
-display: flex;
-justify-content: center;
-text-align: center;
-flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+
+  font-size: 13px;
 }
 
 .footer-svg {
-    animation-name: anime;
-    animation-duration: 300ms;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: ease-in;
+  animation-name: anime;
+  animation-duration: 300ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
 }
 
 footer a {
-    color: #ff6b0a;
+  color: #ff6b0a;
 }
 
 @keyframes anime {
-    from {
-        transform: scale(1);
-    }
+  from {
+    transform: scale(1);
+  }
 
-    to {
-        transform: scale(1.1);
-    }
+  to {
+    transform: scale(1.1);
+  }
 }
 a.footer-link {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-@media screen and (min-width:768px) {
-    .footer-text {
-            font-size: 14px;
-        }
-    
-        footer {
-            text-align: center;
-            flex-wrap: no-wrap;
-        }
+@media screen and (min-width: 768px) {
+  .footer-text {
+    font-size: 14px;
+  }
+
+  footer {
+    text-align: center;
+    flex-wrap: no-wrap;
+  }
 }
