@@ -1,4 +1,22 @@
-export function createMarkupMovies(movies, element) {
+import { MovieApiService } from './api-movie-service';
+
+const categoryMovie = new MovieApiService();
+
+
+
+function parseGanres(film, ganres) { 
+  
+  return ganres.filter(ganre => {
+    if (film.includes(ganre.id)) {
+      return ganre.name
+    }
+  }).map(element => element.name).slice(0, 2).join(', ');   
+  
+}
+
+export async function createMarkupMovies(movies, element) {
+const ganres = await categoryMovie.fetchGenresDescription();
+
   const markup = movies.reduce((acc, movie) => {
     const {
       id,
@@ -9,9 +27,13 @@ export function createMarkupMovies(movies, element) {
       vote_average,
       vote_count,
     } = movie;
-    const date = release_date ? release_date.slice(0, 4) : '-';
-    const average = vote_average ? vote_average.toFixed(1) : '-';
+    const date = release_date ? release_date.slice(0, 4) : '&#128512';
+    const average = vote_average ? vote_average.toFixed(1) : '&#128512';
     const imgUrl = `https://image.tmdb.org/t/p/original${poster_path}`;
+
+    const ganresToString = parseGanres(movie.genre_ids, ganres)
+
+    console.log(ganresToString)
 
     return (
       acc +
@@ -30,6 +52,7 @@ export function createMarkupMovies(movies, element) {
             </div>
         </div>
         <div class="video-description">
+          <p class="video-ganre">${ganresToString}</p>
           <p class="video-name">${title ? title : name}</p>
           <p class="video-view">${vote_count} views<span class="seperate video-seperate"></span>${date}</p>
         </div>
