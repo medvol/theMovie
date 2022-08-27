@@ -10,7 +10,7 @@ function OnClickSidebar() {
         if (el === event.target.closest('li')) {
             isActive.classList.remove('is-active')
             el.classList.add('is-active');
-            isActive = element
+            isActive = el
         }
     })
 
