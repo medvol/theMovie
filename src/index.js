@@ -11,6 +11,7 @@ import { MovieApiService } from './js/api-movie-service';
 import { createCategoryList } from './js/sidebar-category';
 import { createMarkupMovies } from './js/create-markup-movies';
 import { createMarkupDiscoverCards } from './js/create-markup-discover';
+import debounce from 'lodash.debounce';
 
 // import './js/api-movie-service';
 // import './js/modal-close-btn';
@@ -30,8 +31,8 @@ const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
 
-  pageSubTitle: document.querySelector('.most-watched')
-
+  pageSubTitle: document.querySelector('.most-watched'),
+  searchBar: document.querySelector('.search-bar'),
 };
 
 if (refs.pageTitle.textContent !== 'New video')
@@ -67,7 +68,7 @@ addEventListener('DOMContentLoaded', loadList);
 const newsWeekApiService = new MovieApiService();
 
 async function loadList() {
-  const categoryWeekList = await newsWeekApiService.fetchTrendWeekMovie();  
+  const categoryWeekList = await newsWeekApiService.fetchTrendWeekMovie();
   createMarkupMovies(categoryWeekList, refs.videos);
 }
 
@@ -82,11 +83,9 @@ async function onClickCategory(event) {
   refs.pageTitle.textContent = element.firstElementChild.textContent;
 
   refs.pageSubTitle.classList.add('visually-hidden');
-  createMarkupMovies(ganres, refs.videos)
-
-
   createMarkupMovies(ganres, refs.videos);
 
+  createMarkupMovies(ganres, refs.videos);
 }
 
 refs.trending.addEventListener('click', onClickTrending);
@@ -97,7 +96,7 @@ async function onClickTrending(event) {
 
   const trending = await categoryMovie.fetchTrendWeekMovie();
   refs.films.innerHTML = '';
-  refs.pageSubTitle.classList.add('visually-hidden')
+  refs.pageSubTitle.classList.add('visually-hidden');
   refs.videos.innerHTML = '';
   refs.pageTitle.textContent = element.firstElementChild.textContent;
   createMarkupMovies(trending, refs.videos);
@@ -121,3 +120,40 @@ async function loadDiscoverCards() {
 }
 
 addEventListener('DOMContentLoaded', loadDiscoverCards);
+
+// =========================
+const DEBOUNCE_DELAY = 500;
+const saerchMovie = new MovieApiService();
+
+async function handlerInput(e) {
+  e.preventDefault();
+
+  saerchMovie.search = e.target.value.trim();
+  console.log(saerchMovie.search);
+  
+  if (saerchMovie.search === '') {
+    refs.films.innerHTML = '';
+    refs.pageSubTitle.classList.add('visually-hidden');
+    refs.videos.innerHTML = '';
+    refs.pageTitle.textContent = `Enter a search value`;
+  }
+
+  const result = await saerchMovie.fetchSearchMovie();
+
+  if (result.length === 0) {
+    refs.films.innerHTML = '';
+    refs.pageSubTitle.classList.add('visually-hidden');
+    refs.videos.innerHTML = '';
+    refs.pageTitle.textContent = `Oops! We didn't find anything. Please try again.`;
+  } else{
+    console.log('result: ', result);
+    refs.films.innerHTML = '';
+    refs.pageSubTitle.classList.add('visually-hidden');
+    refs.videos.innerHTML = '';
+    refs.pageTitle.textContent = `Are You search: ${saerchMovie.search}?`;
+    createMarkupMovies(result, refs.videos);
+  }
+  
+}
+
+refs.searchBar.addEventListener('input', debounce(handlerInput, DEBOUNCE_DELAY));
