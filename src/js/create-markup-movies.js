@@ -1,8 +1,26 @@
 import { MovieApiService } from './api-movie-service';
+
 import parseGanres from './parse-ganres';
 
 const categoryMovie = new MovieApiService();
 
+=======
+
+const categoryMovie = new MovieApiService();
+
+
+
+function parseGanres(film, ganres) { 
+  
+  return ganres.filter(ganre => {
+    if (film.includes(ganre.id)) {
+      return ganre.name
+    }
+  }).map(element => element.name).slice(0, 2).join(', ');   
+  
+}
+
+>>>>>>> Stashed changes
 export async function createMarkupMovies(movies, element) {
 const ganres = await categoryMovie.fetchGenresDescription();
 
@@ -22,6 +40,11 @@ const ganres = await categoryMovie.fetchGenresDescription();
 
     const ganresToString = parseGanres(movie.genre_ids, ganres)
 
+<<<<<<< Updated upstream
+=======
+    console.log(ganresToString)
+
+>>>>>>> Stashed changes
     return (
       acc +
       `<li class="video anim" id="${id}"style="--delay: .4s">
