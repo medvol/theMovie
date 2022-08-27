@@ -38,7 +38,7 @@ export function createMarkupMovieInfo(
                         <li class="modal_info__item">Popularity <span class="modal_info_render__item">${popularity}</span></li>
                         <li class="modal_info__item">Original Title <span class="modal_info_render__item">${original_title}</span></li>
                         <li class="modal_info__item">Genre <span class="modal_info_render__item">${genresList}</span></li>
-                        <li class="modal_info__item">Duration <span class="modal_info_render__item">${runtime}</span></li>
+                        <li class="modal_info__item">Duration <span class="modal_info_render__item">${runtime}m</span></li>
                     </ul>
                 </div>
             </div>
@@ -49,12 +49,10 @@ export function createMarkupMovieInfo(
             </div>
 
             <div class="wrapper_btn anim" style="--delay: .4s">
-                <button class="modal_btn red btn_add" type="button">
-                    REMOVE TO WATCHED
+                <button class="modal_btn btn_add" type="button">
                 </button>
               
                 <button class="modal_btn btn_queue" type="button">
-                    ADD TO QUEUE
                 </button>
             </div>
             

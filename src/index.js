@@ -5,7 +5,11 @@ import {
   onBackdropClick,
 } from './js/modal-our-team';
 
-import { onBackdropClick, onPushEsc } from './js/modal-close-btn';
+import {
+  onBackdropClick,
+  onPushEsc,
+  onModalCloseBtn,
+} from './js/modal-close-btn';
 
 import './sass/index.scss';
 // import './js/api-movie-service';
@@ -13,11 +17,7 @@ import { MovieApiService } from './js/api-movie-service';
 import { createCategoryList } from './js/sidebar-category';
 import { createMarkupMovies } from './js/create-markup-movies';
 import { createMarkupDiscoverCards } from './js/create-markup-discover';
-import { createMarkupMovieInfo } from './js/create-markup-modal-info';
-
-// import './js/api-movie-service';
-// import './js/modal-close-btn';
-// import './js/modal-info-open';
+import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
 // import './js/pagination';
 
@@ -128,17 +128,5 @@ async function loadDiscoverCards() {
 
 addEventListener('DOMContentLoaded', loadDiscoverCards);
 
-refs.mainContainer.addEventListener('click', onModalShowInfoCard);
-
-async function onModalShowInfoCard(e) {
-  if (e.target.closest('[id]')) {
-    refs.overlay.classList.remove('is-hidden');
-  }
-  const element = e.target.closest('[id]');
-  categoryMovie.movieId = element.id;
-
-  const movieForId = await categoryMovie.fetchMovieForId();
-
-  refs.modalCardMovie.innerHTML = '';
-  createMarkupMovieInfo(movieForId, refs.modalCardMovie);
-}
+refs.videos.addEventListener('click', onModalShowInfoCard);
+refs.films.addEventListener('click', onModalShowInfoCard);
