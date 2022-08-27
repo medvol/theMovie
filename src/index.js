@@ -131,11 +131,10 @@ addEventListener('DOMContentLoaded', loadDiscoverCards);
 refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
 async function onModalShowInfoCard(e) {
-  if (e.target.closest('.video') || e.target.closest('.main-films')) {
+  if (e.target.closest('[id]')) {
     refs.overlay.classList.remove('is-hidden');
   }
-
-  const element = e.target.closest('li[id]');
+  const element = e.target.closest('[id]');
   categoryMovie.movieId = element.id;
 
   const movieForId = await categoryMovie.fetchMovieForId();

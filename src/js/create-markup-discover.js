@@ -1,12 +1,12 @@
 export function createMarkupDiscoverCards(discoverMovies) {
   return discoverMovies
     .map(discoverMovie => {
-      const { title, vote_average, release_date, vote_count, poster_path } =
+      const { title, vote_average, release_date, vote_count, poster_path, id } =
         discoverMovie;
       const date = release_date ? release_date.slice(0, 4) : '-';
       const average = vote_average ? vote_average.toFixed(1) : '-';
       return `
-    <div class="main-film anim" style="--delay: .1s">
+    <div class="main-film  anim" id="${id}" style="--delay: .1s">
         <h2 class="main-film__title">${title}</h2>
         <div class="video-poster__wrapper">
           <img class="video-poster" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${title}" />
