@@ -5,12 +5,15 @@ import {
   onBackdropClick,
 } from './js/modal-our-team';
 
+import { onBackdropClick, onPushEsc } from './js/modal-close-btn';
+
 import './sass/index.scss';
 // import './js/api-movie-service';
 import { MovieApiService } from './js/api-movie-service';
 import { createCategoryList } from './js/sidebar-category';
 import { createMarkupMovies } from './js/create-markup-movies';
 import { createMarkupDiscoverCards } from './js/create-markup-discover';
+import { createMarkupMovieInfo } from './js/create-markup-modal-info';
 
 // import './js/api-movie-service';
 // import './js/modal-close-btn';
@@ -30,8 +33,9 @@ const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
 
-  pageSubTitle: document.querySelector('.most-watched')
-
+  overlay: document.querySelector('.overlay'),
+  modalCardMovie: document.querySelector('.modal_movie_card'),
+  pageSubTitle: document.querySelector('.most-watched'),
 };
 
 if (refs.pageTitle.textContent !== 'New video')
@@ -53,6 +57,10 @@ refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
+// refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
+refs.overlay.addEventListener('click', onBackdropClick);
+document.addEventListener('keydown', onPushEsc);
+
 addEventListener('DOMContentLoaded', loadSidebarCategory, { once: true });
 
 const categoryMovie = new MovieApiService();
@@ -67,7 +75,7 @@ addEventListener('DOMContentLoaded', loadList);
 const newsWeekApiService = new MovieApiService();
 
 async function loadList() {
-  const categoryWeekList = await newsWeekApiService.fetchTrendWeekMovie();  
+  const categoryWeekList = await newsWeekApiService.fetchTrendWeekMovie();
   createMarkupMovies(categoryWeekList, refs.videos);
 }
 
@@ -82,11 +90,9 @@ async function onClickCategory(event) {
   refs.pageTitle.textContent = element.firstElementChild.textContent;
 
   refs.pageSubTitle.classList.add('visually-hidden');
-  createMarkupMovies(ganres, refs.videos)
-
-
   createMarkupMovies(ganres, refs.videos);
 
+  createMarkupMovies(ganres, refs.videos);
 }
 
 refs.trending.addEventListener('click', onClickTrending);
@@ -97,7 +103,7 @@ async function onClickTrending(event) {
 
   const trending = await categoryMovie.fetchTrendWeekMovie();
   refs.films.innerHTML = '';
-  refs.pageSubTitle.classList.add('visually-hidden')
+  refs.pageSubTitle.classList.add('visually-hidden');
   refs.videos.innerHTML = '';
   refs.pageTitle.textContent = element.firstElementChild.textContent;
   createMarkupMovies(trending, refs.videos);
@@ -121,3 +127,19 @@ async function loadDiscoverCards() {
 }
 
 addEventListener('DOMContentLoaded', loadDiscoverCards);
+
+refs.mainContainer.addEventListener('click', onModalShowInfoCard);
+
+async function onModalShowInfoCard(e) {
+  if (e.target.closest('.video') || e.target.closest('.main-films')) {
+    refs.overlay.classList.remove('is-hidden');
+  }
+
+  const element = e.target.closest('li[id]');
+  categoryMovie.movieId = element.id;
+
+  const movieForId = await categoryMovie.fetchMovieForId();
+
+  refs.modalCardMovie.innerHTML = '';
+  createMarkupMovieInfo(movieForId, refs.modalCardMovie);
+}
