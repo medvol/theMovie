@@ -12,6 +12,7 @@
 
 @media screen and (min-width:768px){
     .modal_info{
+        height: 480px;
         width: 45%;
     }
 
@@ -29,7 +30,7 @@
     margin-bottom: 30px;
 
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.15;
 
     // color: white;
@@ -38,6 +39,7 @@
 
 .modal_info__list{
     margin-right: 20px;
+    font-size: 10px;
     }
     
 .modal_info__list, .modal_info_render__list{
@@ -53,6 +55,12 @@
     margin-bottom: 10px;
 }
 
+.modal_info_render__item{
+margin-left: 10px;
+color: white;
+}
+
+
 .info_data{
     display: flex;
 }
@@ -63,11 +71,12 @@
 
 .about__title{
     margin-bottom: 10px;
+    font-size: 14px;
     font-weight: 400;
 }
 
 .about__description{
     margin-bottom: 10px;
-    font-size: 12px;
+    font-size: 10px;
     color: #808191;
 }
