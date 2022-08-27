@@ -1,12 +1,17 @@
-const modalCloseBtn = document.querySelector('.close-btn');
-const backdrop = document.querySelector('.backdrop');
+// const modalCloseBtn = document.querySelector('.close-btn');
+// const backdrop = document.querySelector('.backdrop');
 
-modalCloseBtn.addEventListener('click', onModalCloseBtn);
-backdrop.addEventListener('click', onBackdropClick);
-document.addEventListener('keydown', onPushEsc);
+// modalCloseBtn.addEventListener('click', onModalCloseBtn);
+// backdrop.addEventListener('click', onBackdropClick);
+// document.addEventListener('keydown', onPushEsc);
+
+const overlay = document.querySelector('.overlay');
+// const modalCardMovie = document.querySelector('.modal_movie_card');
 
 function onModalCloseBtn() {
-  backdrop.classList.add('is-hidden');
+  // modalCardMovie.innerHTML = '';
+
+  overlay.classList.add('is-hidden');
 }
 
 function onBackdropClick(event) {
@@ -20,3 +25,5 @@ function onPushEsc(event) {
     onModalCloseBtn();
   }
 }
+
+export { onBackdropClick, onPushEsc };

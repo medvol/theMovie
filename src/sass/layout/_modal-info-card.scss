@@ -1,4 +1,4 @@
-.backdrop {
+.overlay {
     z-index: 12;
     position: fixed;
     top: 0;
@@ -12,13 +12,13 @@
         visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  .backdrop.is-hidden {
+  .overlay.is-hidden {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
   }
 
-  .modal {
+  .modal_movie_card {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -48,15 +48,15 @@
 }
 
 @media screen and (min-width:768px){
-    .modal{
-        width: 700px;
+    .modal_movie_card{
+        width: 600px;
         flex-direction: row;
     }
 }
 
 @media screen and (min-width:1200px){
-    .modal{
-        width: 800px;
+    .modal_movie_card{
+        width: 700px;
     }
 }
 
