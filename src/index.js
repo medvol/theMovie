@@ -50,7 +50,7 @@ import { createMarkupMovieInfo } from './js/create-markup-modal-info';
 // import './js/modal-close-btn';
 // import './js/modal-info-open';
 
-// import './js/pagination';
+import './js/pagination';
 
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
@@ -63,7 +63,6 @@ const refs = {
   openModal: document.querySelector('#js-team-modal'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
-
 
   pageSubTitle: document.querySelector('.most-watched'),
   searchBar: document.querySelector('.search-bar'),
