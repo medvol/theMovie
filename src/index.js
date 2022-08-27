@@ -13,27 +13,17 @@ import onClickCategory from './js/on-click-category-list';
 import onClickTrending from './js/on-click-trending';
 import loadDiscoverCards from './js/load-discover-cards';
 import handlerInput from './js/handler-search';
-import onModalShowInfoCard from './js/on-modal-show-info-card';
+// import onModalShowInfoCard from './js/on-modal-show-info-card';
 
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
 import { MovieApiService } from './js/api-movie-service';
+import { onModalShowInfoCard } from './js/on-modal-show-infocard';
+
 import debounce from 'lodash.debounce';
 
-
-
-
-import { createMarkupMovieInfo } from './js/create-markup-modal-info';
-
-
-// import './js/api-movie-service';
-// import './js/modal-close-btn';
-// import './js/modal-info-open';
-
 import './js/pagination';
-
-
 
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
@@ -47,17 +37,11 @@ const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
 
-
-
-
-
-
   pageSubTitle: document.querySelector('.most-watched'),
   searchBar: document.querySelector('.search-bar'),
   overlay: document.querySelector('.overlay'),
   modalCardMovie: document.querySelector('.modal_movie_card'),
   pageSubTitle: document.querySelector('.most-watched'),
-
 };
 
 if (refs.pageTitle.textContent !== 'New video')
@@ -83,7 +67,6 @@ addEventListener('DOMContentLoaded', loadSidebarCategory, { once: true });
 
 const categoryMovie = new MovieApiService();
 
-
 addEventListener('DOMContentLoaded', loadMostWatchedList);
 
 refs.categoryList.addEventListener('click', onClickCategory);
@@ -92,14 +75,14 @@ refs.trending.addEventListener('click', onClickTrending);
 
 addEventListener('DOMContentLoaded', loadDiscoverCards);
 
+refs.videos.addEventListener('click', onModalShowInfoCard);
+refs.films.addEventListener('click', onModalShowInfoCard);
 const DEBOUNCE_DELAY = 750;
 
-
-refs.searchBar.addEventListener('input', debounce(handlerInput, DEBOUNCE_DELAY));
-
-refs.mainContainer.addEventListener('click', onModalShowInfoCard);
-
-
+refs.searchBar.addEventListener(
+  'input',
+  debounce(handlerInput, DEBOUNCE_DELAY)
+);
 
 var splide = new Splide('.splide', {
   perPage: 3,
@@ -120,25 +103,6 @@ var splide = new Splide('.splide', {
 
 splide.mount();
 
-
-
-
-
-
-// async function onModalShowInfoCard(e) {
-//   if (e.target.closest('[id]')) {
-//     refs.overlay.classList.remove('is-hidden');
-//   }
-//   const element = e.target.closest('[id]');
-//   categoryMovie.movieId = element.id;
-
-//   const movieForId = await categoryMovie.fetchMovieForId();
-
-//   refs.modalCardMovie.innerHTML = '';
-//   createMarkupMovieInfo(movieForId, refs.modalCardMovie);
-// }
-
-
 var splide = new Splide('.splide', {
   perPage: 3,
   gap: '2rem',
@@ -158,5 +122,4 @@ var splide = new Splide('.splide', {
 
 splide.mount();
 
-refs.sidebar.addEventListener('click', OnClickSidebar)
-
+refs.sidebar.addEventListener('click', OnClickSidebar);
