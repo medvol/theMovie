@@ -1,18 +1,7 @@
 import { MovieApiService } from './api-movie-service';
+import parseGanres from './parse-ganres';
 
 const categoryMovie = new MovieApiService();
-
-
-
-function parseGanres(film, ganres) { 
-  
-  return ganres.filter(ganre => {
-    if (film.includes(ganre.id)) {
-      return ganre.name
-    }
-  }).map(element => element.name).slice(0, 2).join(', ');   
-  
-}
 
 export async function createMarkupMovies(movies, element) {
 const ganres = await categoryMovie.fetchGenresDescription();
@@ -33,15 +22,13 @@ const ganres = await categoryMovie.fetchGenresDescription();
 
     const ganresToString = parseGanres(movie.genre_ids, ganres)
 
-    console.log(ganresToString)
-
     return (
       acc +
       `<li class="video anim" id="${id}"style="--delay: .4s">
       <div class="video">
         <span class="video-selection">...</span>
         <div class="video-wrapper">
-            <img class="video-poster" src="${imgUrl}" alt="${title}" />
+            <img class="video-poster" src="${imgUrl}" loading="lazy" alt="${title}" />
 
             <div class="rating__wrapper video-rating">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
