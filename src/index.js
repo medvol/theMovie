@@ -6,6 +6,33 @@ import {
 } from './js/modal-our-team';
 
 import { onBackdropClick, onPushEsc } from './js/modal-close-btn';
+import { OnClickSidebar } from './js/on-click-active';
+
+
+import Splide from '@splidejs/splide';
+import '@splidejs/splide/dist/css/splide.min.css';
+
+
+var splide = new Splide('.splide', {
+  perPage: 3,
+  gap: '2rem',
+  breakpoints: {
+    640: {
+      perPage: 2,
+      gap: '.7rem',
+      height: '6rem',
+    },
+    480: {
+      perPage: 1,
+      gap: '.7rem',
+      height: '12rem',
+    },
+  },
+});
+
+splide.mount();
+
+
 
 import './sass/index.scss';
 // import './js/api-movie-service';
@@ -143,3 +170,8 @@ async function onModalShowInfoCard(e) {
   refs.modalCardMovie.innerHTML = '';
   createMarkupMovieInfo(movieForId, refs.modalCardMovie);
 }
+
+
+refs.sidebar.addEventListener('click', OnClickSidebar)
+
+
