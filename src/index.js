@@ -5,21 +5,25 @@ import {
   onBackdropClick,
 } from './js/modal-our-team';
 
-import {
-  onBackdropClick,
-  onPushEsc,
-  onModalCloseBtn,
-} from './js/modal-close-btn';
+import { onBackdropClick, onPushEsc } from './js/modal-close-btn';
+import { OnClickSidebar } from './js/on-click-active';
+import loadSidebarCategory from './js/load-sigebar-category';
+import loadMostWatchedList from './js/load-most-watched-list';
+import onClickCategory from './js/on-click-category-list';
+import onClickTrending from './js/on-click-trending';
+import loadDiscoverCards from './js/load-discover-cards';
+import handlerInput from './js/handler-search';
+// import onModalShowInfoCard from './js/on-modal-show-info-card';
 
-import './sass/index.scss';
-// import './js/api-movie-service';
+import Splide from '@splidejs/splide';
+import '@splidejs/splide/dist/css/splide.min.css';
+
 import { MovieApiService } from './js/api-movie-service';
-import { createCategoryList } from './js/sidebar-category';
-import { createMarkupMovies } from './js/create-markup-movies';
-import { createMarkupDiscoverCards } from './js/create-markup-discover';
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
-// import './js/pagination';
+import debounce from 'lodash.debounce';
+
+import './js/pagination';
 
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
@@ -33,6 +37,8 @@ const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
 
+  pageSubTitle: document.querySelector('.most-watched'),
+  searchBar: document.querySelector('.search-bar'),
   overlay: document.querySelector('.overlay'),
   modalCardMovie: document.querySelector('.modal_movie_card'),
   pageSubTitle: document.querySelector('.most-watched'),
@@ -49,10 +55,6 @@ window.addEventListener('resize', function () {
   }
 });
 
-addEventListener('DOMContentLoaded', loadSidebarCategory, {
-  once: true,
-});
-
 refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
@@ -65,68 +67,59 @@ addEventListener('DOMContentLoaded', loadSidebarCategory, { once: true });
 
 const categoryMovie = new MovieApiService();
 
-async function loadSidebarCategory() {
-  const categoryMovieList = await categoryMovie.fetchGenresDescription();
-  createCategoryList(categoryMovieList, refs.categoryList);
-}
-
-addEventListener('DOMContentLoaded', loadList);
-
-const newsWeekApiService = new MovieApiService();
-
-async function loadList() {
-  const categoryWeekList = await newsWeekApiService.fetchTrendWeekMovie();
-  createMarkupMovies(categoryWeekList, refs.videos);
-}
+addEventListener('DOMContentLoaded', loadMostWatchedList);
 
 refs.categoryList.addEventListener('click', onClickCategory);
 
-async function onClickCategory(event) {
-  const element = event.target.closest('li[data-id]');
-  const id = element.dataset.id;
-  const ganres = await categoryMovie.fetchMoviesForGenres(id);
-  refs.films.innerHTML = '';
-  refs.videos.innerHTML = '';
-  refs.pageTitle.textContent = element.firstElementChild.textContent;
-
-  refs.pageSubTitle.classList.add('visually-hidden');
-  createMarkupMovies(ganres, refs.videos);
-
-  createMarkupMovies(ganres, refs.videos);
-}
-
 refs.trending.addEventListener('click', onClickTrending);
-
-async function onClickTrending(event) {
-  const element = event.target.closest('li[data-name]');
-  console.log(element);
-
-  const trending = await categoryMovie.fetchTrendWeekMovie();
-  refs.films.innerHTML = '';
-  refs.pageSubTitle.classList.add('visually-hidden');
-  refs.videos.innerHTML = '';
-  refs.pageTitle.textContent = element.firstElementChild.textContent;
-  createMarkupMovies(trending, refs.videos);
-}
-
-function appendMarkupDiscoverCards(MarcupDiscoverCards) {
-  refs.films.insertAdjacentHTML('beforeend', MarcupDiscoverCards);
-}
-
-const discoverMovie = new MovieApiService();
-
-async function loadDiscoverCards() {
-  const result = await discoverMovie.fetchTrendDayMovie();
-  const cutResult = result.slice(0, 2);
-  console.log('cutResult: ', cutResult);
-
-  refs.films.innerHTML = '';
-
-  const resultDiscover = createMarkupDiscoverCards(cutResult);
-  appendMarkupDiscoverCards(resultDiscover);
-}
 
 addEventListener('DOMContentLoaded', loadDiscoverCards);
 
 refs.videos.addEventListener('click', onModalShowInfoCard);
 refs.films.addEventListener('click', onModalShowInfoCard);
+const DEBOUNCE_DELAY = 750;
+
+refs.searchBar.addEventListener(
+  'input',
+  debounce(handlerInput, DEBOUNCE_DELAY)
+);
+
+var splide = new Splide('.splide', {
+  perPage: 3,
+  gap: '2rem',
+  breakpoints: {
+    640: {
+      perPage: 2,
+      gap: '.7rem',
+      height: '6rem',
+    },
+    480: {
+      perPage: 1,
+      gap: '.7rem',
+      height: '12rem',
+    },
+  },
+});
+
+splide.mount();
+
+var splide = new Splide('.splide', {
+  perPage: 3,
+  gap: '2rem',
+  breakpoints: {
+    640: {
+      perPage: 2,
+      gap: '.7rem',
+      height: '6rem',
+    },
+    480: {
+      perPage: 1,
+      gap: '.7rem',
+      height: '12rem',
+    },
+  },
+});
+
+splide.mount();
+
+refs.sidebar.addEventListener('click', OnClickSidebar);
