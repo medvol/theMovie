@@ -6,6 +6,33 @@ import {
 } from './js/modal-our-team';
 
 import { onBackdropClick, onPushEsc } from './js/modal-close-btn';
+import { OnClickSidebar } from './js/on-click-active';
+
+
+import Splide from '@splidejs/splide';
+import '@splidejs/splide/dist/css/splide.min.css';
+
+
+var splide = new Splide('.splide', {
+  perPage: 3,
+  gap: '2rem',
+  breakpoints: {
+    640: {
+      perPage: 2,
+      gap: '.7rem',
+      height: '6rem',
+    },
+    480: {
+      perPage: 1,
+      gap: '.7rem',
+      height: '12rem',
+    },
+  },
+});
+
+splide.mount();
+
+
 
 import './sass/index.scss';
 // import './js/api-movie-service';
@@ -25,7 +52,7 @@ import { createMarkupMovieInfo } from './js/create-markup-modal-info';
 // import './js/modal-close-btn';
 // import './js/modal-info-open';
 
-// import './js/pagination';
+import './js/pagination';
 
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
@@ -38,7 +65,6 @@ const refs = {
   openModal: document.querySelector('#js-team-modal'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
-
 
   pageSubTitle: document.querySelector('.most-watched'),
   searchBar: document.querySelector('.search-bar'),
@@ -110,7 +136,7 @@ refs.trending.addEventListener('click', onClickTrending);
 
 async function onClickTrending(event) {
   const element = event.target.closest('li[data-name]');
-  console.log(element);
+
 
   const trending = await categoryMovie.fetchTrendWeekMovie();
   refs.films.innerHTML = '';
@@ -149,7 +175,7 @@ async function handlerInput(e) {
 
   saerchMovie.search = e.target.value.trim();
   console.log(saerchMovie.search);
-  
+
   if (saerchMovie.search === '') {
     refs.films.innerHTML = '';
     refs.pageSubTitle.classList.add('visually-hidden');
@@ -164,7 +190,7 @@ async function handlerInput(e) {
     refs.pageSubTitle.classList.add('visually-hidden');
     refs.videos.innerHTML = '';
     refs.pageTitle.textContent = `Oops! We didn't find anything. Please try again.`;
-  } else{
+  } else {
     console.log('result: ', result);
     refs.films.innerHTML = '';
     refs.pageSubTitle.classList.add('visually-hidden');
@@ -172,7 +198,7 @@ async function handlerInput(e) {
     refs.pageTitle.textContent = `Are You search: ${saerchMovie.search}?`;
     createMarkupMovies(result, refs.videos);
   }
-  
+
 }
 
 refs.searchBar.addEventListener('input', debounce(handlerInput, DEBOUNCE_DELAY));
@@ -191,6 +217,14 @@ async function onModalShowInfoCard(e) {
   refs.modalCardMovie.innerHTML = '';
   createMarkupMovieInfo(movieForId, refs.modalCardMovie);
 }
+
   /////////////AUTH_USER
 authUser();
   //////////////////////
+
+
+
+
+refs.sidebar.addEventListener('click', OnClickSidebar)
+
+

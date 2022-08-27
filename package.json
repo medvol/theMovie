@@ -18,6 +18,8 @@
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "dependencies": {
+    "@splidejs/splide": "^4.0.7",
+    "@splidejs/splide-extension-auto-scroll": "^0.4.2",
     "axios": "^0.27.2",
     "firebase": "^9.9.3",
     "lodash.debounce": "^4.0.8",
