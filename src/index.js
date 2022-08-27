@@ -108,7 +108,7 @@ refs.trending.addEventListener('click', onClickTrending);
 
 async function onClickTrending(event) {
   const element = event.target.closest('li[data-name]');
-  console.log(element);
+  
 
   const trending = await categoryMovie.fetchTrendWeekMovie();
   refs.films.innerHTML = '';
