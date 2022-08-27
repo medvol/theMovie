@@ -11,14 +11,10 @@
     <main>
       <div class="container">
         <include src="./partials/aside.html"></include>
+
         <section class="section">
           <include src="./partials/header.html"></include>
           <div class="main-container">
-
-
-            <h2 class="most-watched anim" style="--delay: 0.3s">
-              Most Watched
-            </h2>
 
             <h1 class="main-header anim" style="--delay: 0s">Discover</h1>
             <div class="main-films"></div>
@@ -27,14 +23,17 @@
 
             <ul class="videos"></ul>
 
-            <include src="./partials/footer.html"></include>
-            <include src="./partials/modal-our-team.html"></include>
+            <div class="pagination"></div>
+
+            <include src="./partials/footer.html"></include>         
+           
 
           </div>
         </section>
       </div>
 
       <include src="./partials/modal-info.html"></include>
+      <include src="./partials/modal-our-team.html"></include>
     </main>
     <script src="./index.js" type="module"></script>
   </body>
