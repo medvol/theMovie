@@ -22,6 +22,17 @@ import { MovieApiService } from './js/api-movie-service';
 import debounce from 'lodash.debounce';
 
 
+
+import { createMarkupMovieInfo } from './js/create-markup-modal-info';
+
+
+// import './js/api-movie-service';
+// import './js/modal-close-btn';
+// import './js/modal-info-open';
+
+import './js/pagination';
+
+
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
   mainContainer: document.querySelector('.main-container'),
@@ -33,6 +44,10 @@ const refs = {
   openModal: document.querySelector('#js-team-modal'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
+
+
+
+
   pageSubTitle: document.querySelector('.most-watched'),
   searchBar: document.querySelector('.search-bar'),
   overlay: document.querySelector('.overlay'),
