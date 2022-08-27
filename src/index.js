@@ -13,7 +13,11 @@ import { MovieApiService } from './js/api-movie-service';
 import { createCategoryList } from './js/sidebar-category';
 import { createMarkupMovies } from './js/create-markup-movies';
 import { createMarkupDiscoverCards } from './js/create-markup-discover';
+
+import debounce from 'lodash.debounce';
+
 import { createMarkupMovieInfo } from './js/create-markup-modal-info';
+
 
 // import './js/api-movie-service';
 // import './js/modal-close-btn';
@@ -33,9 +37,14 @@ const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
 
+
+  pageSubTitle: document.querySelector('.most-watched'),
+  searchBar: document.querySelector('.search-bar'),
+
   overlay: document.querySelector('.overlay'),
   modalCardMovie: document.querySelector('.modal_movie_card'),
   pageSubTitle: document.querySelector('.most-watched'),
+
 };
 
 if (refs.pageTitle.textContent !== 'New video')
@@ -128,6 +137,44 @@ async function loadDiscoverCards() {
 
 addEventListener('DOMContentLoaded', loadDiscoverCards);
 
+
+// =========================
+const DEBOUNCE_DELAY = 500;
+const saerchMovie = new MovieApiService();
+
+async function handlerInput(e) {
+  e.preventDefault();
+
+  saerchMovie.search = e.target.value.trim();
+  console.log(saerchMovie.search);
+  
+  if (saerchMovie.search === '') {
+    refs.films.innerHTML = '';
+    refs.pageSubTitle.classList.add('visually-hidden');
+    refs.videos.innerHTML = '';
+    refs.pageTitle.textContent = `Enter a search value`;
+  }
+
+  const result = await saerchMovie.fetchSearchMovie();
+
+  if (result.length === 0) {
+    refs.films.innerHTML = '';
+    refs.pageSubTitle.classList.add('visually-hidden');
+    refs.videos.innerHTML = '';
+    refs.pageTitle.textContent = `Oops! We didn't find anything. Please try again.`;
+  } else{
+    console.log('result: ', result);
+    refs.films.innerHTML = '';
+    refs.pageSubTitle.classList.add('visually-hidden');
+    refs.videos.innerHTML = '';
+    refs.pageTitle.textContent = `Are You search: ${saerchMovie.search}?`;
+    createMarkupMovies(result, refs.videos);
+  }
+  
+}
+
+refs.searchBar.addEventListener('input', debounce(handlerInput, DEBOUNCE_DELAY));
+
 refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
 async function onModalShowInfoCard(e) {
@@ -142,3 +189,4 @@ async function onModalShowInfoCard(e) {
   refs.modalCardMovie.innerHTML = '';
   createMarkupMovieInfo(movieForId, refs.modalCardMovie);
 }
+
