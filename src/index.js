@@ -14,6 +14,8 @@ import { createCategoryList } from './js/sidebar-category';
 import { createMarkupMovies } from './js/create-markup-movies';
 import { createMarkupDiscoverCards } from './js/create-markup-discover';
 
+import { authUser } from './js/submit-form';
+
 import debounce from 'lodash.debounce';
 
 import { createMarkupMovieInfo } from './js/create-markup-modal-info';
@@ -189,4 +191,6 @@ async function onModalShowInfoCard(e) {
   refs.modalCardMovie.innerHTML = '';
   createMarkupMovieInfo(movieForId, refs.modalCardMovie);
 }
-
+  /////////////AUTH_USER
+authUser();
+  //////////////////////
