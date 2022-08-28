@@ -1,4 +1,7 @@
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import './sass/index.scss';
+
 import {
   onOpenModal,
   onCloseModal,
@@ -19,6 +22,8 @@ import onClickTrending from './js/on-click-trending';
 import loadDiscoverCards from './js/load-discover-cards';
 import handlerInput from './js/handler-search';
 
+import { authUser } from './js/submit-form';
+
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
@@ -26,8 +31,7 @@ import { MovieApiService } from './js/api-movie-service';
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
 import debounce from 'lodash.debounce';
-
-import './js/pagination';
+import 'tui-pagination/dist/tui-pagination.min.css';
 
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
@@ -36,7 +40,10 @@ const refs = {
   sidebar: document.querySelector('.sidebar'),
   films: document.querySelector('.main-films'),
   pageTitle: document.querySelector('.main-header'),
+  logo: document.querySelector('.logo-expand'),
+  discover: document.querySelector('[data-name="discover"]'),
   trending: document.querySelector('[data-name="trending"]'),
+  playlist: document.querySelector('[data-name="playlist"]'),
   openModal: document.querySelector('#js-team-modal'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
@@ -65,6 +72,7 @@ refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
+refs.logo.addEventListener('click', loadMostWatchedList);
 
 refs.overlay.addEventListener('click', onBackdropClick);
 document.addEventListener('keydown', onPushEsc);
@@ -91,24 +99,7 @@ refs.searchBar.addEventListener(
   debounce(handlerInput, DEBOUNCE_DELAY)
 );
 
-var splide = new Splide('.splide', {
-  perPage: 3,
-  gap: '2rem',
-  breakpoints: {
-    640: {
-      perPage: 2,
-      gap: '.7rem',
-      height: '6rem',
-    },
-    480: {
-      perPage: 1,
-      gap: '.7rem',
-      height: '12rem',
-    },
-  },
-});
-
-splide.mount();
+refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
 var splide = new Splide('.splide', {
   perPage: 3,
@@ -130,3 +121,15 @@ var splide = new Splide('.splide', {
 splide.mount();
 
 refs.sidebar.addEventListener('click', OnClickSidebar);
+
+/////////////////////////////////
+authUser();
+/////////////////////////////////
+
+refs.discover.addEventListener('click', function () {
+  location.reload();
+});
+
+refs.logo.addEventListener('click', function () {
+  location.reload();
+});

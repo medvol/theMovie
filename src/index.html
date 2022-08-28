@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page title</title>
     <link rel="stylesheet" href="./sass/index.scss" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.css"
+    />
     <script type="module" src="./index.js"></script>
   </head>
   <body>
@@ -15,19 +20,18 @@
         <section class="section">
           <include src="./partials/header.html"></include>
           <div class="main-container">
-
             <h1 class="main-header anim" style="--delay: 0s">Discover</h1>
             <div class="main-films"></div>
-            
-            <h2 class="most-watched anim" style="--delay: 0.3s">Most Watched</h2>
+
+            <h2 class="most-watched anim" style="--delay: 0.3s">
+              Most Watched
+            </h2>
 
             <ul class="videos"></ul>
 
-            <div class="pagination"></div>
+            <div id="pagination" class="tui-pagination"></div>
 
-            <include src="./partials/footer.html"></include>         
-           
-
+            <include src="./partials/footer.html"></include>
           </div>
         </section>
       </div>
@@ -35,6 +39,7 @@
       <include src="./partials/modal-info.html"></include>
       <include src="./partials/modal-our-team.html"></include>
     </main>
-    <script src="./index.js" type="module"></script>
+    <script src="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.js"></script>
+    <!-- <script src="./index.js" type="module"></script> -->
   </body>
 </html>

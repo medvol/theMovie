@@ -1,0 +1,9 @@
+.lazyload {
+    opacity: 0;
+}
+
+.lazyloading {
+    opacity: 1;
+    transition: opacity 300ms;
+    background: #f7f7f7 url(https:media.giphy.com/media/3o7bu3XilJ5BOiSGic/giphy.gif) no-repeat center;
+}

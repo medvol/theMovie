@@ -5,11 +5,20 @@ export function createMarkupDiscoverCards(discoverMovies) {
         discoverMovie;
       const date = release_date ? release_date.slice(0, 4) : '&#128512';
       const average = vote_average ? vote_average.toFixed(1) : '&#128512';
+      const imgUrl = `https://image.tmdb.org/t/p`;
+
       return `
     <div class="main-film  anim" id="${id}" style="--delay: .1s">
         <h2 class="main-film__title">${title}</h2>
         <div class="video-poster__wrapper">
-          <img class="video-poster" src="https://image.tmdb.org/t/p/original${poster_path}" loading="lazy" alt="${title}" />
+          <img class="video-poster lazyload" src="${imgUrl}/w342${poster_path}"
+           srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            data-srcset="${imgUrl}/w500${poster_path} 500w,            
+            
+            ${imgUrl}/w780${poster_path} 780w,
+            ${imgUrl}/original${poster_path} 900w,"
+            data-sizes="auto"   
+           alt="${title}" />
         </div>
         
         <div class="main-film__rating">
