@@ -10,6 +10,15 @@
     overflow-x: hidden;
 }
 
+.side-menu__item.is-active {
+    transition: transform 250ms ease-in;
+}
+
+.side-menu__item.is-active {
+    transform: scale(1.1);
+    transform-origin: center;
+}
+
 .side-menu__item:hover .sidebar-link,
 .side-menu__item.is-active .sidebar-link {
     color: #fff;

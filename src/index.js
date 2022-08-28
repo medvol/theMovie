@@ -1,10 +1,9 @@
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import './sass/index.scss';
-import {
-  onOpenModal,
-  onCloseModal,
-  onBackdropClick,
-} from './js/modal-our-team';
 
+
+import {onOpenModal, onCloseModal, onBackdropClick} from './js/modal-our-team';
 import { onBackdropClick, onPushEsc } from './js/modal-close-btn';
 import { OnClickSidebar } from './js/on-click-active';
 import loadSidebarCategory from './js/load-sigebar-category';
@@ -20,18 +19,9 @@ import '@splidejs/splide/dist/css/splide.min.css';
 
 import { MovieApiService } from './js/api-movie-service';
 import debounce from 'lodash.debounce';
+import 'tui-pagination/dist/tui-pagination.min.css'
 
 
-
-
-import { createMarkupMovieInfo } from './js/create-markup-modal-info';
-
-
-// import './js/api-movie-service';
-// import './js/modal-close-btn';
-// import './js/modal-info-open';
-
-import './js/pagination';
 
 
 
@@ -98,46 +88,6 @@ const DEBOUNCE_DELAY = 750;
 refs.searchBar.addEventListener('input', debounce(handlerInput, DEBOUNCE_DELAY));
 
 refs.mainContainer.addEventListener('click', onModalShowInfoCard);
-
-
-
-var splide = new Splide('.splide', {
-  perPage: 3,
-  gap: '2rem',
-  breakpoints: {
-    640: {
-      perPage: 2,
-      gap: '.7rem',
-      height: '6rem',
-    },
-    480: {
-      perPage: 1,
-      gap: '.7rem',
-      height: '12rem',
-    },
-  },
-});
-
-splide.mount();
-
-
-
-
-
-
-// async function onModalShowInfoCard(e) {
-//   if (e.target.closest('[id]')) {
-//     refs.overlay.classList.remove('is-hidden');
-//   }
-//   const element = e.target.closest('[id]');
-//   categoryMovie.movieId = element.id;
-
-//   const movieForId = await categoryMovie.fetchMovieForId();
-
-//   refs.modalCardMovie.innerHTML = '';
-//   createMarkupMovieInfo(movieForId, refs.modalCardMovie);
-// }
-
 
 var splide = new Splide('.splide', {
   perPage: 3,
