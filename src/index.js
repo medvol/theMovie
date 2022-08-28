@@ -12,6 +12,7 @@ import onClickCategory from './js/on-click-category-list';
 import onClickTrending from './js/on-click-trending';
 import loadDiscoverCards from './js/load-discover-cards';
 import handlerInput from './js/handler-search';
+import { authUser } from './js/submit-form';
 // import onModalShowInfoCard from './js/on-modal-show-info-card';
 
 import Splide from '@splidejs/splide';
@@ -107,6 +108,12 @@ var splide = new Splide('.splide', {
 splide.mount();
 
 refs.sidebar.addEventListener('click', OnClickSidebar);
+
+
+/////////////////////////////////
+authUser();
+/////////////////////////////////
+
 refs.discover.addEventListener('click', function () {
   location.reload();
 });
