@@ -97,7 +97,7 @@ const DEBOUNCE_DELAY = 750;
 
 refs.searchBar.addEventListener('input', debounce(handlerInput, DEBOUNCE_DELAY));
 
-refs.mainContainer.addEventListener('click', onModalShowInfoCard);
+// refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
 
 
@@ -288,7 +288,7 @@ async function handlerInput(e) {
 
 refs.searchBar.addEventListener('input', debounce(handlerInput, DEBOUNCE_DELAY));
 
-refs.mainContainer.addEventListener('click', onModalShowInfoCard);
+// refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
 async function onModalShowInfoCard(e) {
   if (e.target.closest('[id]')) {

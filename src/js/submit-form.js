@@ -1,6 +1,7 @@
 import { async } from "@firebase/util";
 import { registration, logIn, ifUser, outUser } from "./api-firebase-submit";
 import { formMarcupCreator } from './singin_form-creator';
+import loadDiscoverCards from './load-discover-cards';
 // import { createMarkupMovies } from '../js/create-markup-movies';
 
 
@@ -11,7 +12,12 @@ const refs = {
 //   openModal: document.querySelector('#js-team-modal'),
 //   closeModalBtn: document.querySelector('[data-modal-close]'),
 //   backdrop: document.querySelector('.js-backdrop'),
-    singInBtn: document.querySelector(`.singin_btn`),
+  singInBtn: document.querySelector(`.singin_btn`),
+  newVideo: document.querySelector(`.main-header`),
+  films: document.querySelector(`.main-films`),
+  mostWached: document.querySelector(`.most-watched`),
+  videos: document.querySelector('.videos'),
+    
     
 };
 
@@ -28,26 +34,29 @@ export function authUser() {
 };
 
 function ifUserOff() {
-    refs.singInBtn.textContent = `SingIn`;
+  // refs.singInBtn.removeEventListener(onClickSingOut);
+
+  refs.singInBtn.textContent = `SingIn`;
   refs.singInBtn.style.backgroundColor = `#ea5f5f`;
   refs.singInBtn.addEventListener('click', onClickSingIn);
+  loadDiscoverCards();
+  console.log(`off`)
 };
 
 function ifUserOn() {
+  // refs.singInBtn.removeEventListener(onClickSingIn);
+  
  refs.singInBtn.textContent = `SingOut`;
   refs.singInBtn.style.backgroundColor = `#353340`;
   refs.singInBtn.addEventListener('click', onClickSingOut);
+  
+  console.log(`on`)
+  return loadDiscoverCards();
 }
 
-function onClickSingOut() {
-    console.log(`lnvlasfnv`)
-    outUser();
-    authUser(); 
-};
-    
 function onClickSingIn() {
- 
- const formMarcup =  formMarcupCreator(refs.mainContainer);
+  marcupClear();
+  formMarcupCreator(refs.mainContainer);
 
     const forms =  {
         formLogin: document.querySelector(`.form-login`),
@@ -66,9 +75,9 @@ async function  onSubmitLogin(e) {
   const password = data.get(`password`);
   console.log(email, password);
   
-    const log = await logIn(email, password)
-    authUser();
- 
+  const log = await logIn(email, password);
+  setTimeout(authUser, 1000); 
+  loadDiscoverCards();
 };
 
 async function onSubmitSingup(e) {
@@ -81,6 +90,19 @@ async function onSubmitSingup(e) {
   if(password !== passwordRepeat) {return Notiflix.Notify.failure(`password problem`) }
   console.log(email, password)
   
-   await registration(email, password)
-    authUser();
+  const log = await registration(email, password);
+  authUser();
 };
+
+async function onClickSingOut() {
+    console.log(`lnvlasfnv`)
+  outUser();
+  const out = await authUser();
+};
+    
+function marcupClear() {
+  refs.newVideo.innerHTML = ``;
+  refs.films.innerHTML = ``;
+  refs.mostWached.innerHTML = ``;
+  refs.videos.innerHTML = ``;
+}

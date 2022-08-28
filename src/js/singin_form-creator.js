@@ -1,5 +1,5 @@
 export function formMarcupCreator(section) {
-  section.innerHTML = `<div class="forms">
+  section.insertAdjacentHTML('afterbegin', `<div class="forms">
         <div class="form-wrapper is-active">
           <button type="button" class="switcher switcher-login">
             Log in
@@ -44,7 +44,7 @@ export function formMarcupCreator(section) {
             <button type="submit" class="btn-signup">Continue</button>
           </form>
         </div>
-      </div>`;
+      </div>`);
   
 const switchers = [...document.querySelectorAll('.switcher')]
   switchers.forEach(item => {

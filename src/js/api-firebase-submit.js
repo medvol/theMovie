@@ -27,7 +27,8 @@ export function registration(email, password) {
         .then((userCredential) => {
 
             const user = userCredential.user;
-            localStorage.setItem(`USER`, JSON.stringify(user));
+          localStorage.setItem(`USER`, JSON.stringify(user));
+          return user;
         }).catch(function (error) {
             if (error.code === `auth/weak-password`) { return Notiflix.Notify.failure(`password is too short`) }
             else if (error.code === `auth/email-already-in-use`) { return Notiflix.Notify.failure(`you are already registered`) }
@@ -42,8 +43,9 @@ export function logIn(email, password) {
         .then((userCredential) => {
    
             const user = userCredential.user;
-            localStorage.setItem(`USER`, JSON.stringify(user));
-            console.log(user)
+          localStorage.setItem(`USER`, JSON.stringify(user));
+          console.log(user);
+          return user;
  
         }).catch(function (error) {
       if (error.code === `auth/user-not-found`) {return Notiflix.Notify.failure(`you need to singup`)}
@@ -54,9 +56,10 @@ export function logIn(email, password) {
 };
 
 export function outUser() {
-    signOut(auth).then(() => {
-     localStorage.removeItem(`USER`)   
-        console.log(`out`)
+  signOut(auth).then((res) => {
+    localStorage.removeItem(`USER`);
+    console.log(res);
+    return res;
 }).catch((error) => {
 
 });
