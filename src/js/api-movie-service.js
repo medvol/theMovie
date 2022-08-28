@@ -70,10 +70,10 @@ export class MovieApiService {
   // Запрос по Id (информация о фильме)
   fetchMovieForId = async () => {
     try {
-      const responce = await axios.get(
+      const response = await axios.get(
         `${this.URL}movie/${this.movieId}?api_key=${this.API_KEY}&language=en-US`
       );
-      return responce.data;
+      return response.data;
     } catch (error) {
       console.log(error);
     }

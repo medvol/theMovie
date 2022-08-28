@@ -37,7 +37,6 @@ const setButtonQueueSettings = bool => {
 
 const addToWatch = () => {
   watchedId.push(idMovie);
-  console.log('watchedId-push', watchedId);
   localStorage.setItem(LOCALSTORAGE_KEY_W, JSON.stringify(watchedId));
   setButtonWatchedSettings(true);
 };

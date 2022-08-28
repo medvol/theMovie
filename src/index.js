@@ -2,10 +2,15 @@ import './sass/index.scss';
 import {
   onOpenModal,
   onCloseModal,
-  onBackdropClick,
+  // onBackdropClick,
 } from './js/modal-our-team';
 
-import { onBackdropClick, onPushEsc } from './js/modal-close-btn';
+import {
+  onBackdropClick,
+  onPushEsc,
+  onModalCloseBtn,
+} from './js/modal-close-btn';
+
 import { OnClickSidebar } from './js/on-click-active';
 import loadSidebarCategory from './js/load-sigebar-category';
 import loadMostWatchedList from './js/load-most-watched-list';
@@ -13,7 +18,6 @@ import onClickCategory from './js/on-click-category-list';
 import onClickTrending from './js/on-click-trending';
 import loadDiscoverCards from './js/load-discover-cards';
 import handlerInput from './js/handler-search';
-// import onModalShowInfoCard from './js/on-modal-show-info-card';
 
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
@@ -42,6 +46,7 @@ const refs = {
   overlay: document.querySelector('.overlay'),
   modalCardMovie: document.querySelector('.modal_movie_card'),
   pageSubTitle: document.querySelector('.most-watched'),
+  modalCloseBtn: document.querySelector('.close-btn-card'),
 };
 
 if (refs.pageTitle.textContent !== 'New video')
@@ -55,11 +60,12 @@ window.addEventListener('resize', function () {
   }
 });
 
+refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
+
 refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
-// refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.overlay.addEventListener('click', onBackdropClick);
 document.addEventListener('keydown', onPushEsc);
 
@@ -77,6 +83,7 @@ addEventListener('DOMContentLoaded', loadDiscoverCards);
 
 refs.videos.addEventListener('click', onModalShowInfoCard);
 refs.films.addEventListener('click', onModalShowInfoCard);
+
 const DEBOUNCE_DELAY = 750;
 
 refs.searchBar.addEventListener(

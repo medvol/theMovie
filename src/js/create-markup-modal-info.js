@@ -1,4 +1,4 @@
-import sprite from '../images/symbol-defs.svg';
+// import sprite from '../images/symbol-defs.svg';
 
 export function createMarkupMovieInfo(
   {
@@ -18,11 +18,7 @@ export function createMarkupMovieInfo(
 
   const genresList = genres.map(genre => genre.name).join(' / ');
 
-  const markup = `<button class="close-btn" data-modal-close>
-            <svg class="close-icon" width="11" height="11">
-                <use href="${sprite}#icon-close"></use>
-            </svg>
-        </button>
+  const markup = `
 
         <div class="modal_poster">
                 <img class="modal_poster__img" src="${imgUrl}" alt="${title}"/>

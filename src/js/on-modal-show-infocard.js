@@ -7,6 +7,7 @@ import { setButtonQueueSettings } from './set-btn-settings';
 
 const overlay = document.querySelector('.overlay');
 const modalCardMovie = document.querySelector('.modal_movie_card');
+const modalTemplate = document.querySelector('.modal_template');
 
 export let queueId = [];
 export let idMovie = 0;
@@ -18,6 +19,11 @@ export const LOCALSTORAGE_KEY_Q = 'queued-movies';
 const categoryMovie = new MovieApiService();
 
 export async function onModalShowInfoCard(e) {
+  if (e.target.nodeName === 'SPAN') {
+    return;
+  }
+  modalTemplate.classList.add('hide');
+
   overlay.classList.remove('is-hidden');
 
   const element = e.target.closest('[id]');
@@ -25,7 +31,9 @@ export async function onModalShowInfoCard(e) {
   idMovie = element.id;
 
   const movieForId = await categoryMovie.fetchMovieForId();
-
+  if (!movieForId) {
+    modalTemplate.classList.remove('hide');
+  }
   createMarkupMovieInfo(movieForId, modalCardMovie);
 
   watchedId = getFromLocalStorage(LOCALSTORAGE_KEY_W);
