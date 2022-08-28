@@ -2,9 +2,18 @@ import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import './sass/index.scss';
 
+import {
+  onOpenModal,
+  onCloseModal,
+  // onBackdropClick,
+} from './js/modal-our-team';
 
-import {onOpenModal, onCloseModal, onBackdropClick} from './js/modal-our-team';
-import { onBackdropClick, onPushEsc } from './js/modal-close-btn';
+import {
+  onBackdropClick,
+  onPushEsc,
+  onModalCloseBtn,
+} from './js/modal-close-btn';
+
 import { OnClickSidebar } from './js/on-click-active';
 import loadSidebarCategory from './js/load-sigebar-category';
 import loadMostWatchedList from './js/load-most-watched-list';
@@ -12,8 +21,8 @@ import onClickCategory from './js/on-click-category-list';
 import onClickTrending from './js/on-click-trending';
 import loadDiscoverCards from './js/load-discover-cards';
 import handlerInput from './js/handler-search';
+
 import { authUser } from './js/submit-form';
-// import onModalShowInfoCard from './js/on-modal-show-info-card';
 
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
@@ -22,8 +31,7 @@ import { MovieApiService } from './js/api-movie-service';
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
 import debounce from 'lodash.debounce';
-import 'tui-pagination/dist/tui-pagination.min.css'
-
+import 'tui-pagination/dist/tui-pagination.min.css';
 
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
@@ -45,6 +53,7 @@ const refs = {
   overlay: document.querySelector('.overlay'),
   modalCardMovie: document.querySelector('.modal_movie_card'),
   pageSubTitle: document.querySelector('.most-watched'),
+  modalCloseBtn: document.querySelector('.close-btn-card'),
 };
 
 if (refs.pageTitle.textContent !== 'New video')
@@ -58,12 +67,13 @@ window.addEventListener('resize', function () {
   }
 });
 
+refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
+
 refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.logo.addEventListener('click', loadMostWatchedList);
 
-// refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.overlay.addEventListener('click', onBackdropClick);
 document.addEventListener('keydown', onPushEsc);
 
@@ -81,12 +91,15 @@ addEventListener('DOMContentLoaded', loadDiscoverCards);
 
 refs.videos.addEventListener('click', onModalShowInfoCard);
 refs.films.addEventListener('click', onModalShowInfoCard);
+
 const DEBOUNCE_DELAY = 750;
 
-refs.searchBar.addEventListener('input', debounce(handlerInput, DEBOUNCE_DELAY));
+refs.searchBar.addEventListener(
+  'input',
+  debounce(handlerInput, DEBOUNCE_DELAY)
+);
 
 refs.mainContainer.addEventListener('click', onModalShowInfoCard);
-
 
 var splide = new Splide('.splide', {
   perPage: 3,
@@ -108,7 +121,6 @@ var splide = new Splide('.splide', {
 splide.mount();
 
 refs.sidebar.addEventListener('click', OnClickSidebar);
-
 
 /////////////////////////////////
 authUser();

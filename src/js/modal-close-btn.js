@@ -1,9 +1,4 @@
-// const modalCloseBtn = document.querySelector('.close-btn');
-// const backdrop = document.querySelector('.backdrop');
-
-// modalCloseBtn.addEventListener('click', onModalCloseBtn);
-// backdrop.addEventListener('click', onBackdropClick);
-// document.addEventListener('keydown', onPushEsc);
+import { onCloseModal } from './modal-our-team';
 
 const overlay = document.querySelector('.overlay');
 const modalCardMovie = document.querySelector('.modal_movie_card');
@@ -16,6 +11,7 @@ function onModalCloseBtn() {
 function onBackdropClick(event) {
   if (event.target === event.currentTarget) {
     onModalCloseBtn();
+    onCloseModal();
   }
 }
 
@@ -25,4 +21,4 @@ function onPushEsc(event) {
   }
 }
 
-export { onBackdropClick, onPushEsc };
+export { onBackdropClick, onPushEsc, onModalCloseBtn };
