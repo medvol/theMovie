@@ -32,7 +32,10 @@ const refs = {
   sidebar: document.querySelector('.sidebar'),
   films: document.querySelector('.main-films'),
   pageTitle: document.querySelector('.main-header'),
+  logo: document.querySelector('.logo-expand'),
+  discover: document.querySelector('[data-name="discover"]'),
   trending: document.querySelector('[data-name="trending"]'),
+  playlist: document.querySelector('[data-name="playlist"]'),
   openModal: document.querySelector('#js-team-modal'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
@@ -58,6 +61,7 @@ window.addEventListener('resize', function () {
 refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
+refs.logo.addEventListener('click', loadMostWatchedList);
 
 // refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.overlay.addEventListener('click', onBackdropClick);
@@ -123,3 +127,10 @@ var splide = new Splide('.splide', {
 splide.mount();
 
 refs.sidebar.addEventListener('click', OnClickSidebar);
+refs.discover.addEventListener('click', function () {
+  location.reload();
+});
+
+refs.logo.addEventListener('click', function () {
+  location.reload();
+});
