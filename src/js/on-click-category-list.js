@@ -11,6 +11,10 @@ const categoryMovie = new MovieApiService();
 
 export default async function onClickCategory(event) {
   const element = event.target.closest('li[data-id]');
+  // document.querySelector('.footer').style.visibility = 'hidden'; // show
+  // hide
+  document.querySelector('.footer').classList.add('visually-hidden');
+
   const id = element.dataset.id;
   videos.innerHTML = '';
   films.innerHTML = '';
@@ -23,6 +27,8 @@ export default async function onClickCategory(event) {
 
     createMarkupMovies(ganres, videos);
     SlickLoader.disable();
+    document.querySelector('.footer').classList.remove('visually-hidden');
+    // document.querySelector('.footer').style.visibility = 'visible';
   } catch (error) {
     console.log(error);
   }
