@@ -12,17 +12,16 @@ import onClickCategory from './js/on-click-category-list';
 import onClickTrending from './js/on-click-trending';
 import loadDiscoverCards from './js/load-discover-cards';
 import handlerInput from './js/handler-search';
-import onModalShowInfoCard from './js/on-modal-show-info-card';
+// import onModalShowInfoCard from './js/on-modal-show-info-card';
 
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
 import { MovieApiService } from './js/api-movie-service';
+import { onModalShowInfoCard } from './js/on-modal-show-infocard';
+
 import debounce from 'lodash.debounce';
 import 'tui-pagination/dist/tui-pagination.min.css'
-
-
-
 
 
 const refs = {
@@ -32,22 +31,19 @@ const refs = {
   sidebar: document.querySelector('.sidebar'),
   films: document.querySelector('.main-films'),
   pageTitle: document.querySelector('.main-header'),
+  logo: document.querySelector('.logo-expand'),
+  discover: document.querySelector('[data-name="discover"]'),
   trending: document.querySelector('[data-name="trending"]'),
+  playlist: document.querySelector('[data-name="playlist"]'),
   openModal: document.querySelector('#js-team-modal'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
-
-
-
-
-
 
   pageSubTitle: document.querySelector('.most-watched'),
   searchBar: document.querySelector('.search-bar'),
   overlay: document.querySelector('.overlay'),
   modalCardMovie: document.querySelector('.modal_movie_card'),
   pageSubTitle: document.querySelector('.most-watched'),
-
 };
 
 if (refs.pageTitle.textContent !== 'New video')
@@ -64,6 +60,7 @@ window.addEventListener('resize', function () {
 refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
+refs.logo.addEventListener('click', loadMostWatchedList);
 
 // refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.overlay.addEventListener('click', onBackdropClick);
@@ -73,7 +70,6 @@ addEventListener('DOMContentLoaded', loadSidebarCategory, { once: true });
 
 const categoryMovie = new MovieApiService();
 
-
 addEventListener('DOMContentLoaded', loadMostWatchedList);
 
 refs.categoryList.addEventListener('click', onClickCategory);
@@ -82,12 +78,14 @@ refs.trending.addEventListener('click', onClickTrending);
 
 addEventListener('DOMContentLoaded', loadDiscoverCards);
 
+refs.videos.addEventListener('click', onModalShowInfoCard);
+refs.films.addEventListener('click', onModalShowInfoCard);
 const DEBOUNCE_DELAY = 750;
-
 
 refs.searchBar.addEventListener('input', debounce(handlerInput, DEBOUNCE_DELAY));
 
 refs.mainContainer.addEventListener('click', onModalShowInfoCard);
+
 
 var splide = new Splide('.splide', {
   perPage: 3,
@@ -108,5 +106,11 @@ var splide = new Splide('.splide', {
 
 splide.mount();
 
-refs.sidebar.addEventListener('click', OnClickSidebar)
+refs.sidebar.addEventListener('click', OnClickSidebar);
+refs.discover.addEventListener('click', function () {
+  location.reload();
+});
 
+refs.logo.addEventListener('click', function () {
+  location.reload();
+});
