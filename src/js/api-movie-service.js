@@ -29,13 +29,13 @@ export class MovieApiService {
   }
 
   // Запрос по названию
-  fetchSearchMovie = async () => {
+  fetchSearchMovie = async (category, page) => {
     try {
       const responce = await axios.get(
-        `${this.URL}search/movie?api_key=${this.API_KEY}&query=${this.searchQuary}&language=en-US&page=1&include_adult=false&page=${this.page}`
+        `${this.URL}search/movie?api_key=${this.API_KEY}&query=${category}&language=en-US&page=1&include_adult=false&page=${page}`
       );
-      this.incrementPage();
-      return responce.data.results;
+     
+      return responce.data;
     } catch (error) {
       console.log(error);
     }
@@ -55,13 +55,13 @@ export class MovieApiService {
   };
 
   // Запрос тренд за неделю
-  fetchTrendWeekMovie = async () => {
+  fetchTrendWeekMovie = async (page) => {
     try {
       const responce = await axios.get(
-        `${this.URL}trending/all/${this.trendWeek}?api_key=${this.API_KEY}&page=${this.page}`
+        `${this.URL}trending/all/${this.trendWeek}?api_key=${this.API_KEY}&page=${page}`
       );
-      this.incrementPage();
-      return responce.data.results;
+      // this.incrementPage();
+      return responce.data;
     } catch (error) {
       console.log(error);
     }
@@ -80,13 +80,13 @@ export class MovieApiService {
   };
 
   // Запрос по жанрам
-  fetchMoviesForGenres = async genre => {
+  fetchMoviesForGenres = async (genre, page) => {
     try {
       const responce = await axios.get(
-        `${this.URL}discover/movie?with_genres=${genre}&page=${this.page}&with_original_language=en&api_key=${this.API_KEY}`
+        `${this.URL}discover/movie?with_genres=${genre}&page=${page}&with_original_language=en&api_key=${this.API_KEY}`
       );
-      this.incrementPage();
-      return responce.data.results;
+      // this.incrementPage();
+      return responce.data;
     } catch (error) {
       console.log(error);
     }
