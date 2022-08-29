@@ -30,6 +30,8 @@ import '@splidejs/splide/dist/css/splide.min.css';
 import { MovieApiService } from './js/api-movie-service';
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
+import { onClickForSelector } from './js/create-select-menu';
+
 import debounce from 'lodash.debounce';
 import 'tui-pagination/dist/tui-pagination.min.css';
 
@@ -54,6 +56,8 @@ const refs = {
   modalCardMovie: document.querySelector('.modal_movie_card'),
   pageSubTitle: document.querySelector('.most-watched'),
   modalCloseBtn: document.querySelector('.close-btn-card'),
+
+  // titleElem: () => document.querySelector('.select-title'),
 };
 
 if (refs.pageTitle.textContent !== 'New video')
@@ -92,14 +96,14 @@ addEventListener('DOMContentLoaded', loadDiscoverCards);
 refs.videos.addEventListener('click', onModalShowInfoCard);
 refs.films.addEventListener('click', onModalShowInfoCard);
 
+// titleElem.addEventListener('click', onClickForSelector);
+
 const DEBOUNCE_DELAY = 750;
 
 refs.searchBar.addEventListener(
   'input',
   debounce(handlerInput, DEBOUNCE_DELAY)
 );
-
-refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
 var splide = new Splide('.splide', {
   perPage: 3,
