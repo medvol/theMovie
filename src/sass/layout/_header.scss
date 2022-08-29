@@ -1,7 +1,7 @@
 .main-container {
     display: flex;
     flex-direction: column;
-    padding: 0 30px 30px;
+    padding: 0 30px 15px;
     flex-grow: 1;
     overflow: auto;
 }
@@ -70,12 +70,9 @@
 @media screen and (max-width: 767px) {
     .user-settings svg {
         display: none;
-
     }
-
     .user-name {
         display: none;
-
     }
 
 }

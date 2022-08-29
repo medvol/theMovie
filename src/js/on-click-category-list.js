@@ -1,6 +1,7 @@
 import { MovieApiService } from './api-movie-service';
 import { createMarkupMovies } from './create-markup-movies';
 import { slickLoader } from './loader';
+import initPagination from './pagination';
 
 const films = document.querySelector('.main-films');
 const pageTitle = document.querySelector('.main-header');
@@ -12,18 +13,43 @@ const categoryMovie = new MovieApiService();
 export default async function onClickCategory(event) {
   const element = event.target.closest('li[data-id]');
   const id = element.dataset.id;
+  let startPage = 1
+  
   videos.innerHTML = '';
   films.innerHTML = '';
   pageTitle.textContent = element.firstElementChild.textContent;
   pageSubTitle.classList.add('visually-hidden');
 
   slickLoader();
-  try {
-    const ganres = await categoryMovie.fetchMoviesForGenres(id);
+  
+  const trending = await categoryMovie.fetchMoviesForGenres(id, startPage);
+  SlickLoader.disable();
+  const { page, results, total_results: totalItems } = trending;
 
-    createMarkupMovies(ganres, videos);
+  const pagination = initPagination({    
+    page,
+    itemsPerPage: results.length,
+    totalItems,
+    
+  })
+    createMarkupMovies(trending.results, videos);
+    
+ 
+   
+   
+  pagination.on('afterMove', async ({ page }) => {
+    slickLoader();
+    const trending = await categoryMovie.fetchMoviesForGenres(id, page);
     SlickLoader.disable();
-  } catch (error) {
-    console.log(error);
-  }
+    films.innerHTML = '';
+    pageSubTitle.classList.add('visually-hidden');
+    videos.innerHTML = '';
+    pageTitle.textContent = element.firstElementChild.textContent;
+    createMarkupMovies(trending.results, videos);
+       
+
+  });
+    
+   
+ 
 }
