@@ -1,19 +1,22 @@
+const onBackdrop = document.querySelector('[data-modal]')
+const footerBtnText = document.querySelector('.footer-btn-text')
+
 function onOpenModal() {
   window.addEventListener('keydown', closeModalByEsc);
-  document.body.classList.add('show-modal');
+  onBackdrop.classList.remove('is-hiddene');
+  footerBtnText.classList.toggle('footer-btn-text-click')
 }
+
 
 function onCloseModal() {
-  document.body.classList.remove('show-modal');
+  footerBtnText.classList.toggle('footer-btn-text-click')
+  onBackdrop.classList.add('is-hiddene');
 }
 
-function onBackdropClick(e) {
-  if (e.currentTarget === e.target) onCloseModal();
-}
 
 function closeModalByEsc(e) {
   if (e.code === 'Escape') {
     onCloseModal();
   }
 }
-export { onOpenModal, onCloseModal, closeModalByEsc, onBackdropClick };
+export { onOpenModal, onCloseModal, closeModalByEsc };

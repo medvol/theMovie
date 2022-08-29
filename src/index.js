@@ -5,7 +5,6 @@ import './sass/index.scss';
 import {
   onOpenModal,
   onCloseModal,
-  // onBackdropClick,
 } from './js/modal-our-team';
 
 import {
@@ -44,9 +43,9 @@ const refs = {
   discover: document.querySelector('[data-name="discover"]'),
   trending: document.querySelector('[data-name="trending"]'),
   playlist: document.querySelector('[data-name="playlist"]'),
-  openModal: document.querySelector('#js-team-modal'),
-  closeModalBtn: document.querySelector('[data-modal-close]'),
-  backdrop: document.querySelector('.js-backdrop'),
+  openModal: document.querySelector('[data-action="open-modal"]'),
+  closeModalBtn: document.querySelector('[data-action="data-modal-close"]'),
+  backdrop: document.querySelector('[data-modal]'),
 
   pageSubTitle: document.querySelector('.most-watched'),
   searchBar: document.querySelector('.search-bar'),
@@ -69,7 +68,6 @@ window.addEventListener('resize', function () {
 });
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
-
 refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
@@ -102,18 +100,20 @@ refs.searchBar.addEventListener(
 // refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
 
+
+
 var splide = new Splide('.splide', {
   perPage: 3,
-  gap: '2rem',
+  gap: '1rem',
   breakpoints: {
     640: {
       perPage: 2,
-      gap: '.7rem',
+      gap: '.2rem',
       height: '6rem',
     },
     480: {
       perPage: 1,
-      gap: '.7rem',
+      gap: '.1rem',
       height: '12rem',
     },
   },
