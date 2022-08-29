@@ -1,10 +1,12 @@
+const onBackdrop = document.querySelector('.js-backdrop')
+
 function onOpenModal() {
   window.addEventListener('keydown', closeModalByEsc);
-  document.body.classList.add('show-modal');
+  onBackdrop.classList.remove('is-hiddene');
 }
 
 function onCloseModal() {
-  document.body.classList.remove('show-modal');
+  onBackdrop.classList.add('is-hiddene');
 }
 
 function onBackdropClick(e) {

@@ -101,7 +101,7 @@ refs.searchBar.addEventListener(
 
 refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
-var splide = new Splide('.splide', {
+let splide = new Splide('.splide', {
   perPage: 3,
   gap: '2rem',
   breakpoints: {
