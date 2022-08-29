@@ -31,7 +31,7 @@ import { MovieApiService } from './js/api-movie-service';
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
 import debounce from 'lodash.debounce';
-import 'tui-pagination/dist/tui-pagination.min.css';
+
 
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
@@ -55,6 +55,7 @@ const refs = {
   pageSubTitle: document.querySelector('.most-watched'),
   modalCloseBtn: document.querySelector('.close-btn-card'),
 };
+
 
 if (refs.pageTitle.textContent !== 'New video')
   refs.pageTitle.textContent = 'New video';
@@ -80,8 +81,6 @@ document.addEventListener('keydown', onPushEsc);
 
 addEventListener('DOMContentLoaded', loadSidebarCategory, { once: true });
 
-const categoryMovie = new MovieApiService();
-
 addEventListener('DOMContentLoaded', loadMostWatchedList);
 
 refs.categoryList.addEventListener('click', onClickCategory);
@@ -100,7 +99,8 @@ refs.searchBar.addEventListener(
   debounce(handlerInput, DEBOUNCE_DELAY)
 );
 
-refs.mainContainer.addEventListener('click', onModalShowInfoCard);
+// refs.mainContainer.addEventListener('click', onModalShowInfoCard);
+
 
 var splide = new Splide('.splide', {
   perPage: 3,
@@ -125,6 +125,7 @@ refs.sidebar.addEventListener('click', OnClickSidebar);
 
 authUser();
 
+
 refs.discover.addEventListener('click', function () {
   location.reload();
 });
@@ -132,3 +133,4 @@ refs.discover.addEventListener('click', function () {
 refs.logo.addEventListener('click', function () {
   location.reload();
 });
+

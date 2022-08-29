@@ -1,37 +1,53 @@
 import { MovieApiService } from './api-movie-service';
 import { createMarkupMovies } from './create-markup-movies';
+import initPagination from './pagination';
 import { slickLoader } from './loader';
+
 
 const films = document.querySelector('.main-films');
 const pageTitle = document.querySelector('.main-header');
 const videos = document.querySelector('.videos');
 const pageSubTitle = document.querySelector('.most-watched');
 
+ document.querySelector('.footer').classList.add('visually-hidden');
+
 const categoryMovie = new MovieApiService();
 
 export default async function onClickTrending(event) {
   const element = event.target.closest('li[data-name]');
+  let startPage = 1
+   slickLoader();
+  const trending = await categoryMovie.fetchTrendWeekMovie(startPage);
+  SlickLoader.disable()
+  const { page, results, total_results: totalItems } = trending;
 
-  document.querySelector('.footer').classList.add('visually-hidden');
+  const pagination = initPagination({    
+      page,
+      itemsPerPage: results.length,
+      totalItems,
+    
+  })
 
-  films.innerHTML = '';
-  pageSubTitle.classList.add('visually-hidden');
-  videos.innerHTML = '';
-  pageTitle.textContent = element.firstElementChild.textContent;
+    films.innerHTML = '';
+    pageSubTitle.classList.add('visually-hidden');
+    videos.innerHTML = '';
+    pageTitle.textContent = element.firstElementChild.textContent;
+    createMarkupMovies(trending.results, videos);
 
-  slickLoader();
+ 
+  document.querySelector('.footer').classList.remove('visually-hidden');
 
-  try {
-    const trending = await categoryMovie.fetchTrendWeekMovie();
+  pagination.on('afterMove', async ({ page }) => {
+     slickLoader();
+    const trending = await categoryMovie.fetchTrendWeekMovie(page);
+    SlickLoader.disable()
+ 
+    films.innerHTML = '';
+    pageSubTitle.classList.add('visually-hidden');
+    videos.innerHTML = '';
+    pageTitle.textContent = element.firstElementChild.textContent;
+    createMarkupMovies(trending.results, videos);
 
-    createMarkupMovies(trending, videos);
-    SlickLoader.disable();
-    document.querySelector('.footer').classList.remove('visually-hidden');
-
-    createMarkupMovies(trending, videos);
-
-    SlickLoader.disable();
-  } catch (error) {
-    console.log(error);
-  }
+  });
+  
 }
