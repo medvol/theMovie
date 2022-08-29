@@ -34,7 +34,7 @@ export default async function handlerInput(e) {
     pageTitle.classList.add('main-header__search-info');
     pageTitle.classList.add('main-header__search-accent');
     pageTitle.textContent = `Oops! We didn't find: "${saerchMovie.search}". Please try again.`;
-    // inputSearch.value = '';
+   
   } else {
     const result = await saerchMovie.fetchSearchMovie(category, startPage);
     const { page, results, total_results: totalItems } = result;

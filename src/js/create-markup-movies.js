@@ -46,7 +46,7 @@ export async function createMarkupMovies(movies, element) {
     </ul>
 </div>
         <div class="video-wrapper">
-            <img class="video-poster lazyload" src="${imgUrl}/w342${poster_path}"
+            <img class="video-poster lazyload" src="${imgUrl}/w500${poster_path}"
             srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
             data-srcset="${imgUrl}/w500${poster_path} 500w,            
             ${imgUrl}/w342${poster_path} 342w,
