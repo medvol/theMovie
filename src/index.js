@@ -27,11 +27,11 @@ import './js/create-markup-playlist';
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
-import { MovieApiService } from './js/api-movie-service';
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
 import debounce from 'lodash.debounce';
-
+import './js/helpers/resize-window';
+import './js/helpers/resize-sidebar';
 
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
@@ -60,13 +60,6 @@ const refs = {
 if (refs.pageTitle.textContent !== 'New video')
   refs.pageTitle.textContent = 'New video';
 
-window.addEventListener('resize', function () {
-  if (window.innerWidth > 1279) {
-    refs.sidebar.classList.remove('collapse');
-  } else {
-    refs.sidebar.classList.add('collapse');
-  }
-});
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 
