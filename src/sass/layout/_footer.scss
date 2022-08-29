@@ -1,13 +1,20 @@
 .footer-text {
   font-size: 12px;
 
+
+  font-size: 11px;
+
 }
 
 footer {
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
   flex-wrap: wrap;
+
+
+
 }
 
 .footer-svg {
@@ -54,12 +61,17 @@ a.footer-link {
 
 @media screen and (min-width: 768px) {
   .footer-text {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   footer {
+
     display: block;
     text-align: center;
+
+    
+    flex-wrap: no-wrap;
+
   }
     .footer-btn-text {
       font-size: 14px;

@@ -20,9 +20,9 @@ import onClickCategory from './js/on-click-category-list';
 import onClickTrending from './js/on-click-trending';
 import loadDiscoverCards from './js/load-discover-cards';
 import handlerInput from './js/handler-search';
-
+import loadPlayList from './js/load-playlist';
 import { authUser } from './js/submit-form';
-
+import './js/create-markup-playlist';
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
@@ -30,7 +30,7 @@ import { MovieApiService } from './js/api-movie-service';
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
 import debounce from 'lodash.debounce';
-import 'tui-pagination/dist/tui-pagination.min.css';
+
 
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
@@ -55,6 +55,7 @@ const refs = {
   modalCloseBtn: document.querySelector('.close-btn-card'),
 };
 
+
 if (refs.pageTitle.textContent !== 'New video')
   refs.pageTitle.textContent = 'New video';
 
@@ -71,13 +72,12 @@ refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.logo.addEventListener('click', loadMostWatchedList);
+refs.playlist.addEventListener('click', loadPlayList);
 
 refs.overlay.addEventListener('click', onBackdropClick);
 document.addEventListener('keydown', onPushEsc);
 
 addEventListener('DOMContentLoaded', loadSidebarCategory, { once: true });
-
-const categoryMovie = new MovieApiService();
 
 addEventListener('DOMContentLoaded', loadMostWatchedList);
 
@@ -97,7 +97,8 @@ refs.searchBar.addEventListener(
   debounce(handlerInput, DEBOUNCE_DELAY)
 );
 
-refs.mainContainer.addEventListener('click', onModalShowInfoCard);
+// refs.mainContainer.addEventListener('click', onModalShowInfoCard);
+
 
 
 
@@ -122,9 +123,8 @@ splide.mount();
 
 refs.sidebar.addEventListener('click', OnClickSidebar);
 
-/////////////////////////////////
 authUser();
-/////////////////////////////////
+
 
 refs.discover.addEventListener('click', function () {
   location.reload();
@@ -133,3 +133,4 @@ refs.discover.addEventListener('click', function () {
 refs.logo.addEventListener('click', function () {
   location.reload();
 });
+
