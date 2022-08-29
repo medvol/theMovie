@@ -13,6 +13,8 @@ export let queueId = [];
 export let idMovie = 0;
 export let watchedId = [];
 
+export let choosenMovie = {};
+
 export const LOCALSTORAGE_KEY_W = 'watched-movies';
 export const LOCALSTORAGE_KEY_Q = 'queued-movies';
 
@@ -34,6 +36,8 @@ export async function onModalShowInfoCard(e) {
   if (!movieForId) {
     modalTemplate.classList.remove('hide');
   }
+  choosenMovie = movieForId;
+
   createMarkupMovieInfo(movieForId, modalCardMovie);
 
   watchedId = getFromLocalStorage(LOCALSTORAGE_KEY_W);
@@ -41,6 +45,8 @@ export async function onModalShowInfoCard(e) {
 
   const isMovieInLocalStorageWatched = findInLocalStorage(idMovie, watchedId);
   const isMovieInLocalStorageQueue = findInLocalStorage(idMovie, queueId);
+
+  console.log('isMovieInLocalStorageWatched', isMovieInLocalStorageWatched);
 
   setButtonWatchedSettings(isMovieInLocalStorageWatched);
   setButtonQueueSettings(isMovieInLocalStorageQueue);

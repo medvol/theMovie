@@ -1,6 +1,7 @@
 import {
   watchedId,
   queueId,
+  choosenMovie,
   LOCALSTORAGE_KEY_W,
   LOCALSTORAGE_KEY_Q,
   idMovie,
@@ -36,31 +37,63 @@ const setButtonQueueSettings = bool => {
 };
 
 const addToWatch = () => {
-  watchedId.push(idMovie);
+  watchedId.push(choosenMovie);
   localStorage.setItem(LOCALSTORAGE_KEY_W, JSON.stringify(watchedId));
   setButtonWatchedSettings(true);
 };
 
 const addToQueue = () => {
-  queueId.push(idMovie);
+  queueId.push(choosenMovie);
   localStorage.setItem(LOCALSTORAGE_KEY_Q, JSON.stringify(queueId));
   setButtonQueueSettings(true);
 };
 
 const removeFromWatch = () => {
-  const elementIndexInArray = watchedId.indexOf(idMovie);
-  watchedId.splice(elementIndexInArray, 1);
-
+  for (const elem of watchedId) {
+    if (elem.id === +idMovie) {
+      const elementIndexInArray = watchedId.indexOf(elem);
+      watchedId.splice(elementIndexInArray, 1);
+    }
+  }
   localStorage.setItem(LOCALSTORAGE_KEY_W, JSON.stringify(watchedId));
   setButtonWatchedSettings(false);
 };
 
 const removeFromQueue = () => {
-  const elementIndexInArray = queueId.indexOf(idMovie);
-  queueId.splice(elementIndexInArray, 1);
-
+  for (const elem of queueId) {
+    if (elem.id === +idMovie) {
+      const elementIndexInArray = queueId.indexOf(elem);
+      queueId.splice(elementIndexInArray, 1);
+    }
+  }
   localStorage.setItem(LOCALSTORAGE_KEY_Q, JSON.stringify(queueId));
   setButtonQueueSettings(false);
 };
+
+// const addToWatch = () => {
+//   watchedId.push(idMovie);
+//   localStorage.setItem(LOCALSTORAGE_KEY_W, JSON.stringify(watchedId));
+//   setButtonWatchedSettings(true);
+// };
+
+// const addToQueue = () => {
+//   queueId.push(idMovie);
+//   localStorage.setItem(LOCALSTORAGE_KEY_Q, JSON.stringify(queueId));
+//   setButtonQueueSettings(true);
+// };
+
+// const removeFromWatch = () => {
+//   const elementIndexInArray = watchedId.indexOf(idMovie);
+//   watchedId.splice(elementIndexInArray, 1);
+//   localStorage.setItem(LOCALSTORAGE_KEY_W, JSON.stringify(watchedId));
+//   setButtonWatchedSettings(false);
+// };
+
+// const removeFromQueue = () => {
+//   const elementIndexInArray = queueId.indexOf(idMovie);
+//   queueId.splice(elementIndexInArray, 1);
+//   localStorage.setItem(LOCALSTORAGE_KEY_Q, JSON.stringify(queueId));
+//   setButtonQueueSettings(false);
+// };
 
 export { setButtonWatchedSettings, setButtonQueueSettings };
