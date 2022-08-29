@@ -8,13 +8,18 @@
     color: #ea5f5f;
 }
 
-.team-list {
-   text-align: center;
-}
+// .team-list {
+//     // display: block;
+//     // display: flex;
+//     // justify-content: first baseline;
+// margin:0 auto;
+
+// display: table;
+// }
 
 .our-team {
+    display: inline-block;
     padding: 20px 0 20px;
-    margin: 50px;
     background-color: #252836;
     text-align: center;
     overflow: hidden;
@@ -114,11 +119,11 @@
 }
 @media screen and (min-width:768px){
     .our-team {
-            padding: 40px 0 40px;
+            padding: 20px 0 40px;
     }
     .our-team .picture {
-            height: 150px;
-            width: 150px;
+            height: 120px;
+            width: 120px;
     }
 } 
 
