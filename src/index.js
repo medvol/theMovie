@@ -25,6 +25,7 @@ import { authUser } from './js/submit-form';
 import './js/create-markup-playlist';
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
+import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
 import { MovieApiService } from './js/api-movie-service';
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
@@ -119,7 +120,7 @@ var splide = new Splide('.splide', {
   },
 });
 
-splide.mount();
+splide.mount({ AutoScroll });
 
 refs.sidebar.addEventListener('click', OnClickSidebar);
 
