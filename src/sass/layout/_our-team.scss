@@ -8,14 +8,9 @@
     color: #ea5f5f;
 }
 
-// .team-list {
-//     // display: block;
-//     // display: flex;
-//     // justify-content: first baseline;
-// margin:0 auto;
-
-// display: table;
-// }
+.team-list {
+justify-content: start;
+}
 
 .our-team {
     display: inline-block;
@@ -28,8 +23,8 @@
 
 .our-team .picture {
     display: inline-block;
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
     margin-bottom: 10px;
     z-index: 1;
     position: relative;
