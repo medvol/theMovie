@@ -123,8 +123,9 @@ splide.mount();
 refs.sidebar.addEventListener('click', OnClickSidebar);
 
 
+/////////////////////////////////
 authUser();
-
+/////////////////////////////////
 
 refs.discover.addEventListener('click', function () {
   location.reload();
