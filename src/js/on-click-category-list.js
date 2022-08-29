@@ -12,6 +12,10 @@ const categoryMovie = new MovieApiService();
 
 export default async function onClickCategory(event) {
   const element = event.target.closest('li[data-id]');
+  // document.querySelector('.footer').style.visibility = 'hidden'; // show
+  // hide
+  document.querySelector('.footer').classList.add('visually-hidden');
+
   const id = element.dataset.id;
   let startPage = 1
   
@@ -32,24 +36,24 @@ export default async function onClickCategory(event) {
     totalItems,
     
   })
-    createMarkupMovies(trending.results, videos);
-    
- 
-   
-   
+    createMarkupMovies(trending.results, videos);     
+  document.querySelector('.footer').classList.remove('visually-hidden');
+  
   pagination.on('afterMove', async ({ page }) => {
     slickLoader();
     const trending = await categoryMovie.fetchMoviesForGenres(id, page);
     SlickLoader.disable();
+
     films.innerHTML = '';
     pageSubTitle.classList.add('visually-hidden');
     videos.innerHTML = '';
     pageTitle.textContent = element.firstElementChild.textContent;
-    createMarkupMovies(trending.results, videos);
-       
+    createMarkupMovies(trending.results, videos);      
 
-  });
-    
-   
+  });   
  
+
+   
+    // document.querySelector('.footer').style.visibility = 'visible';
+
 }
