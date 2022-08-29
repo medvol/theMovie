@@ -21,9 +21,9 @@ import onClickCategory from './js/on-click-category-list';
 import onClickTrending from './js/on-click-trending';
 import loadDiscoverCards from './js/load-discover-cards';
 import handlerInput from './js/handler-search';
-
+import loadPlayList from './js/load-playlist';
 import { authUser } from './js/submit-form';
-
+import './js/create-markup-playlist';
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
@@ -73,6 +73,7 @@ refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.logo.addEventListener('click', loadMostWatchedList);
+refs.playlist.addEventListener('click', loadPlayList);
 
 refs.overlay.addEventListener('click', onBackdropClick);
 document.addEventListener('keydown', onPushEsc);
@@ -122,9 +123,7 @@ splide.mount();
 
 refs.sidebar.addEventListener('click', OnClickSidebar);
 
-/////////////////////////////////
 authUser();
-/////////////////////////////////
 
 refs.discover.addEventListener('click', function () {
   location.reload();
