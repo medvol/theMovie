@@ -26,13 +26,7 @@ export async function createMarkupMovies(movies, element) {
       acc +
       `<li class="video anim" id="${id}"style="--delay: .4s">
       <div class="video">
-      <div class="select-wrapper">
-    <span class="video-selection select-title">...</span>
-    <ul id="my-select" class="select_list" data-selector>
-      <li class="select_item"><button class="select-btn" type="button">add</button></li>
-      <li class="select_item"><button class="select-btn" type="button">remove</button></li>
-    </ul>
-</div>
+      <span class="video-selection">...</span>
         <div class="video-wrapper">
             <img class="video-poster lazyload" src="${imgUrl}/w500${poster_path}"
             srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="

@@ -1,7 +1,6 @@
 import {
   watchedId,
   queueId,
-  // choosenMovie,
   LOCALSTORAGE_KEY_W,
   LOCALSTORAGE_KEY_Q,
   idMovie,
@@ -37,13 +36,21 @@ const setButtonQueueSettings = bool => {
 };
 
 const addToWatch = () => {
+  if (queueId.includes(idMovie)) {
+    removeFromQueue();
+  }
   watchedId.push(idMovie);
+
   localStorage.setItem(LOCALSTORAGE_KEY_W, JSON.stringify(watchedId));
   setButtonWatchedSettings(true);
 };
 
 const addToQueue = () => {
+  if (watchedId.includes(idMovie)) {
+    removeFromWatch();
+  }
   queueId.push(idMovie);
+
   localStorage.setItem(LOCALSTORAGE_KEY_Q, JSON.stringify(queueId));
   setButtonQueueSettings(true);
 };
@@ -65,35 +72,27 @@ const removeFromQueue = () => {
 export { setButtonWatchedSettings, setButtonQueueSettings };
 
 // const addToWatch = () => {
-//   watchedId.push(choosenMovie);
+//   watchedId.push(idMovie);
 //   localStorage.setItem(LOCALSTORAGE_KEY_W, JSON.stringify(watchedId));
 //   setButtonWatchedSettings(true);
 // };
 
 // const addToQueue = () => {
-//   queueId.push(choosenMovie);
+//   queueId.push(idMovie);
 //   localStorage.setItem(LOCALSTORAGE_KEY_Q, JSON.stringify(queueId));
 //   setButtonQueueSettings(true);
 // };
 
 // const removeFromWatch = () => {
-//   for (const elem of watchedId) {
-//     if (elem.id === +idMovie) {
-//       const elementIndexInArray = watchedId.indexOf(elem);
-//       watchedId.splice(elementIndexInArray, 1);
-//     }
-//   }
+//   const elementIndexInArray = watchedId.indexOf(idMovie);
+//   watchedId.splice(elementIndexInArray, 1);
 //   localStorage.setItem(LOCALSTORAGE_KEY_W, JSON.stringify(watchedId));
 //   setButtonWatchedSettings(false);
 // };
 
 // const removeFromQueue = () => {
-//   for (const elem of queueId) {
-//     if (elem.id === +idMovie) {
-//       const elementIndexInArray = queueId.indexOf(elem);
-//       queueId.splice(elementIndexInArray, 1);
-//     }
-//   }
+//   const elementIndexInArray = queueId.indexOf(idMovie);
+//   queueId.splice(elementIndexInArray, 1);
 //   localStorage.setItem(LOCALSTORAGE_KEY_Q, JSON.stringify(queueId));
 //   setButtonQueueSettings(false);
 // };
