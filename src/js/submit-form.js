@@ -150,4 +150,7 @@ export function ifUser() {
     const user = localStorage.getItem(`USER`)
   if (user) {return JSON.parse(user)}
 };
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
