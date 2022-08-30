@@ -11,5 +11,5 @@
 }
 
 .anim {
-    animation: bottom 0.8s var(--delay) both;
+    animation: bottom 0.8s ease-in-out var(--delay) both;
 }

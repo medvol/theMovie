@@ -1,78 +1,174 @@
-import { MovieApiService } from './api-movie-service';
-import parseGanres from './parse-ganres';
+// import { MovieApiService } from './api-movie-service';
+// import parseGanres from './parse-ganres';
+// import { createMarkupMovies } from './create-markup-movies';
 
-const savedWatched = localStorage.getItem('watched-movies');
-const parsedWatched = JSON.parse(savedWatched);
+// const savedWatched = localStorage.getItem('watched-movies');
+// const parsedWatched = JSON.parse(savedWatched);
 // console.log('watched-movies', parsedWatched);
 
-// export function watchedId(parsedWatched) {
-//   return parsedWatched.map;
+// // export function watchedId(parsedWatched) {
+// //   return parsedWatched.map;
+// // }
+
+// const savedQueued = localStorage.getItem('queued-movies');
+// const parsedQueued = JSON.parse(savedQueued);
+// // console.log('queued-movies', parsedQueued);
+
+// const categoryMovie = new MovieApiService();
+
+// const playlist = document.querySelector('[data-name="playlist"]')
+// const videos= document.querySelector('.videos');
+// async function fetchMovie(movies) {
+
+//   const promiceArray = movies.map(async idMovie=> {
+//      categoryMovie.movieId = idMovie;
+//     const movie = await categoryMovie.fetchMovieForId();
+//     return movie
+//   })
+//    return promiceArray
 // }
 
-const savedQueued = localStorage.getItem('queued-movies');
-const parsedQueued = JSON.parse(savedQueued);
-// console.log('queued-movies', parsedQueued);
+// playlist.addEventListener('click', onClickWatched)
 
-const categoryMovie = new MovieApiService();
+// async function onClickWatched() {
+//   const array = await fetchMovie(parsedWatched)
 
-export async function createMarkupPlaylist(movies) {
-  const markup = movies.reduce(async (acc, idMovie) => {
-    // console.log(idMovie);
-    categoryMovie.movieId = idMovie;
-    const movie = await categoryMovie.fetchMovieForId();
-    // console.log(movie);
-    const ganres = await categoryMovie.fetchGenresDescription();
-    // console.log(ganres);
-    const {
-      id,
-      title,
-      release_date,
-      poster_path,
-      name,
-      vote_average,
-      vote_count,
-    } = movie;
-    // console.log(movie);
-    const date = release_date ? release_date.slice(0, 4) : '&#128512';
-    const average = vote_average ? vote_average.toFixed(1) : '&#128512';
-    const imgUrl = `https://image.tmdb.org/t/p`;
+//   const allPromise = await Promise.all(array)
+//   console.log(array)
+//   console.log(allPromise)
+//   createMarkupWatched(allPromise,videos)
+// }
 
-    const ganresToString = parseGanres(movie.genres, ganres);
+// export async function createMarkupWatched(movies, element) {
+// const ganres = await categoryMovie.fetchGenresDescription();
 
-    return (
-      acc +
-      `<li class="video anim" id="${id}"style="--delay: .4s">
-      <div class="video">
-        <span class="video-selection">...</span>
-        <div class="video-wrapper">
-            <img class="video-poster lazyload" src="${imgUrl}/w342${poster_path}"
-            srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-            data-srcset="${imgUrl}/w500${poster_path} 500w,            
-            ${imgUrl}/w342${poster_path} 342w,
-            ${imgUrl}/w780${poster_path} 780w,
-            ${imgUrl}/original${poster_path} 900w,"
-            data-sizes="auto"            
+//   const markup = movies.reduce((acc, movie) => {
+//     const {
+//       id,
+//       title,
+//       release_date,
+//       poster_path,
+//       name,
+//       vote_average,
+//       vote_count,
+//     } = movie;
+//     const date = release_date ? release_date.slice(0, 4) : '&#128512';
+//     const average = vote_average ? vote_average.toFixed(1) : '&#128512';
+//     const imgUrl = `https://image.tmdb.org/t/p`;
 
-            alt="${title}" />
+//     const ganresToString = parseGanres(movie.genres, ganres)
 
-            <div class="rating__wrapper video-rating">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round" class="feather feather-check">
-                    <path d="M20 6L9 17l-5-5" />
-                </svg>
-                <p class="rating-value">${average}</p>
-            </div>
-        </div>
-        <div class="video-description">
-          <p class="video-ganre">${ganresToString}</p>
-          <p class="video-name">${title ? title : name}</p>
-          <p class="video-view">${vote_count} views<span class="seperate video-seperate"></span>${date}</p>
-        </div>
-      </div>
-    </li>`
-    );
-  }, '');
-  console.log(markup);
-  return markup;
-}
-//  element.insertAdjacentHTML('beforeend', markup);
+//     return (
+//       acc +
+//       `<li class="video anim" id="${id}"style="--delay: .4s">
+//       <div class="video">
+//         <span class="video-selection">...</span>
+//         <div class="video-wrapper">
+//             <img class="video-poster lazyload" src="${imgUrl}/w342${poster_path}"
+//             srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+//             data-srcset="${imgUrl}/w500${poster_path} 500w,
+//             ${imgUrl}/w342${poster_path} 342w,
+//             ${imgUrl}/w780${poster_path} 780w,
+//             ${imgUrl}/original${poster_path} 900w,"
+//             data-sizes="auto"
+
+//             alt="${title}" />
+
+//             <div class="rating__wrapper video-rating">
+//                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+//                     stroke-linejoin="round" class="feather feather-check">
+//                     <path d="M20 6L9 17l-5-5" />
+//                 </svg>
+//                 <p class="rating-value">${average}</p>
+//             </div>
+//         </div>
+//         <div class="video-description">
+//           <p class="video-ganre">${ganresToString}</p>
+//           <p class="video-name">${title ? title : name}</p>
+//           <p class="video-view">${vote_count} views<span class="seperate video-seperate"></span>${date}</p>
+//         </div>
+//       </div>
+//     </li>`
+//     );
+//   }, '');
+
+//   element.insertAdjacentHTML('beforeend', markup);
+
+// import { MovieApiService } from './api-movie-service';
+// import parseGanres from './parse-ganres';
+
+// const savedWatched = localStorage.getItem('watched-movies');
+// const parsedWatched = JSON.parse(savedWatched);
+// // console.log('watched-movies', parsedWatched);
+
+// // export function watchedId(parsedWatched) {
+// //   return parsedWatched.map;
+// // }
+
+// const savedQueued = localStorage.getItem('queued-movies');
+// const parsedQueued = JSON.parse(savedQueued);
+// // console.log('queued-movies', parsedQueued);
+
+// const categoryMovie = new MovieApiService();
+
+// export async function createMarkupPlaylist(movies) {
+//   const markup = movies.reduce(async (acc, idMovie) => {
+//     // console.log(idMovie);
+//     categoryMovie.movieId = idMovie;
+//     const movie = await categoryMovie.fetchMovieForId();
+//     // console.log(movie);
+//     const ganres = await categoryMovie.fetchGenresDescription();
+//     // console.log(ganres);
+//     const {
+//       id,
+//       title,
+//       release_date,
+//       poster_path,
+//       name,
+//       vote_average,
+//       vote_count,
+//     } = movie;
+//     // console.log(movie);
+//     const date = release_date ? release_date.slice(0, 4) : '&#128512';
+//     const average = vote_average ? vote_average.toFixed(1) : '&#128512';
+//     const imgUrl = `https://image.tmdb.org/t/p`;
+
+//     const ganresToString = parseGanres(movie.genres, ganres);
+
+//     return (
+//       acc +
+//       `<li class="video anim" id="${id}"style="--delay: .4s">
+//       <div class="video">
+//         <span class="video-selection">...</span>
+//         <div class="video-wrapper">
+//             <img class="video-poster lazyload" src="${imgUrl}/w342${poster_path}"
+//             srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+//             data-srcset="${imgUrl}/w500${poster_path} 500w,
+//             ${imgUrl}/w342${poster_path} 342w,
+//             ${imgUrl}/w780${poster_path} 780w,
+//             ${imgUrl}/original${poster_path} 900w,"
+//             data-sizes="auto"
+
+//             alt="${title}" />
+
+//             <div class="rating__wrapper video-rating">
+//                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+//                     stroke-linejoin="round" class="feather feather-check">
+//                     <path d="M20 6L9 17l-5-5" />
+//                 </svg>
+//                 <p class="rating-value">${average}</p>
+//             </div>
+//         </div>
+//         <div class="video-description">
+//           <p class="video-ganre">${ganresToString}</p>
+//           <p class="video-name">${title ? title : name}</p>
+//           <p class="video-view">${vote_count} views<span class="seperate video-seperate"></span>${date}</p>
+//         </div>
+//       </div>
+//     </li>`
+//     );
+//   }, '');
+//   console.log(markup);
+//   return markup;
+// }
+//  element.insertAdjacentHTML('beforeend', markup)

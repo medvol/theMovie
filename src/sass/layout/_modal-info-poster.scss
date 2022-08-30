@@ -1,9 +1,6 @@
 .modal_poster{
-    height: 480px;
-    display: flex;
-    align-items: center;
+  
     margin-bottom: 20px;
-
     border-radius: 20px;
     overflow: hidden;
 
@@ -15,11 +12,8 @@
 
     width: 320px;
     border-radius: 20px;
+    height: 100%;
 
-        
-    top: 50%;
-    position: relative;
-    transform: translateY(-50%);
     animation-duration: 1s;
     animation-name: Appearance;
     animation-timing-function: cubic-bezier(.1,-.6,.2,0);
