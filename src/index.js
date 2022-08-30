@@ -17,6 +17,8 @@ import handlerInput from './js/handler-search';
 // import loadPlayList from './js/load-playlist';
 
 import { authUser } from './js/submit-form';
+import './js/create-markup-playlist';
+
 import './js/load-playlist';
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
@@ -28,8 +30,33 @@ import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 import debounce from 'lodash.debounce';
 import './js/helpers/resize-window';
 import './js/helpers/resize-sidebar';
+
 import './js/common/refs';
 import './js/render-pages'
+
+
+const refs = {
+  categoryList: document.querySelector('[data-list ="render"]'),
+  mainContainer: document.querySelector('.main-container'),
+  videos: document.querySelector('.videos'),
+  sidebar: document.querySelector('.sidebar'),
+  films: document.querySelector('.main-films'),
+  pageTitle: document.querySelector('.main-header'),
+  logo: document.querySelector('.logo-expand'),
+  discover: document.querySelector('[data-name="discover"]'),
+  trending: document.querySelector('[data-name="trending"]'),
+  playlist: document.querySelector('[data-name="playlist"]'),
+  openModal: document.querySelector('[data-action="open-modal"]'),
+
+  backdrop: document.querySelector('[data-modal]'),
+
+  pageSubTitle: document.querySelector('.most-watched'),
+  searchBar: document.querySelector('.search-bar'),
+  overlay: document.querySelector('.overlay'),
+  modalCardMovie: document.querySelector('.modal_movie_card'),
+  pageSubTitle: document.querySelector('.most-watched'),
+  modalCloseBtn: document.querySelector('.close-btn-card'),
+
 
   // titleElem: () => document.querySelector('.select-title'),
 
@@ -40,7 +67,7 @@ refs.playlist.addEventListener('click', loadPlayList);
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.openModal.addEventListener('click', onOpenModal);
-refs.closeModalBtn.addEventListener('click', onCloseModal);
+
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.logo.addEventListener('click', loadMostWatchedList);
 // refs.playlist.addEventListener('click', loadPlayList);
@@ -60,6 +87,7 @@ refs.searchBar.addEventListener(
 );
 
 // refs.mainContainer.addEventListener('click', onModalShowInfoCard);
+
 
 // refs.overlay.addEventListener('click', onBackdropClick);
 // document.addEventListener('keydown', onPushEsc);
@@ -81,7 +109,7 @@ var splide = new Splide('.splide', {
   },
 });
 
-splide.mount();
+
 
 authUser();
 
