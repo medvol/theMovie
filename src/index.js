@@ -2,10 +2,7 @@ import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import './sass/index.scss';
 
-import {
-  onOpenModal,
-  onCloseModal,
-} from './js/modal-our-team';
+import { onOpenModal, onCloseModal } from './js/modal-our-team';
 
 import {
   onBackdropClick,
@@ -27,6 +24,8 @@ import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
+
+// import { onClickForSelector } from './js/create-select-menu';
 
 import debounce from 'lodash.debounce';
 import './js/helpers/resize-window';
@@ -53,12 +52,12 @@ const refs = {
   modalCardMovie: document.querySelector('.modal_movie_card'),
   pageSubTitle: document.querySelector('.most-watched'),
   modalCloseBtn: document.querySelector('.close-btn-card'),
-};
 
+  // titleElem: () => document.querySelector('.select-title'),
+};
 
 if (refs.pageTitle.textContent !== 'New video')
   refs.pageTitle.textContent = 'New video';
-
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.openModal.addEventListener('click', onOpenModal);
@@ -83,17 +82,14 @@ addEventListener('DOMContentLoaded', loadDiscoverCards);
 refs.videos.addEventListener('click', onModalShowInfoCard);
 refs.films.addEventListener('click', onModalShowInfoCard);
 
+// titleElem.addEventListener('click', onClickForSelector);
+
 const DEBOUNCE_DELAY = 750;
 
 refs.searchBar.addEventListener(
   'input',
   debounce(handlerInput, DEBOUNCE_DELAY)
 );
-
-// refs.mainContainer.addEventListener('click', onModalShowInfoCard);
-
-
-
 
 var splide = new Splide('.splide', {
   perPage: 3,
@@ -118,7 +114,6 @@ refs.sidebar.addEventListener('click', OnClickSidebar);
 
 authUser();
 
-
 refs.discover.addEventListener('click', function () {
   location.reload();
 });
@@ -126,4 +121,3 @@ refs.discover.addEventListener('click', function () {
 refs.logo.addEventListener('click', function () {
   location.reload();
 });
-
