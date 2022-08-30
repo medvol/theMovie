@@ -1,20 +1,22 @@
 .footer-text {
-  font-size: 12px;
-
-
-  font-size: 11px;
+  font-size: 12px; 
 
 }
 
 footer {
+  margin-top: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   flex-wrap: wrap;
+}
 
-
-
+@media screen and (min-width: 768px) {
+footer {
+    margin-top: 5px;
+   
+  }
 }
 
 .footer-svg {
@@ -65,11 +67,8 @@ a.footer-link {
   }
 
   footer {
-
     display: block;
-    text-align: center;
-
-    
+    text-align: center;    
     flex-wrap: no-wrap;
 
   }

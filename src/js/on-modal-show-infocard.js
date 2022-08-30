@@ -24,8 +24,7 @@ export async function onModalShowInfoCard(e) {
   }
   modalTemplate.classList.add('hide');
 
-  overlay.classList.remove('is-hidden');
-
+  // overlay.classList.remove('is-hidden');
 
   const element = e.target.closest('[id]');
   categoryMovie.movieId = element.id;
@@ -35,6 +34,8 @@ export async function onModalShowInfoCard(e) {
   if (!movieForId) {
     modalTemplate.classList.remove('hide');
   }
+  overlay.classList.remove('is-hidden');
+
   createMarkupMovieInfo(movieForId, modalCardMovie);
 
   watchedId = getFromLocalStorage(LOCALSTORAGE_KEY_W);

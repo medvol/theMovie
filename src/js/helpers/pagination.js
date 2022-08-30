@@ -1,8 +1,8 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
-export default function initPagination({ page, itemsPerPage, totalItems }) {
-
+export default function initPagination({ page, itemsPerPage, totalItems }) { 
+  
   const paginationContainer = document.querySelector('#pagination')
 
   const options = {

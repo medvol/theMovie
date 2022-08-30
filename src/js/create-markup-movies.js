@@ -3,18 +3,6 @@ import parseGanres from './parse-ganres';
 
 const categoryMovie = new MovieApiService();
 
-
-// function parseGanres(film, ganres) { 
-  
-//   return ganres.filter(ganre => {
-//     if (film.includes(ganre.id)) {
-//       return ganre.name
-//     }
-//   }).map(element => element.name).slice(0, 2).join(', ');   
-  
-
-// }
-
 export async function createMarkupMovies(movies, element) {
   const ganres = await categoryMovie.fetchGenresDescription();
 
@@ -38,12 +26,12 @@ export async function createMarkupMovies(movies, element) {
       acc +
       `<li class="video anim" id="${id}"style="--delay: .4s">
       <div class="video">
-        <span class="video-selection">...</span>
+      <span class="video-selection">...</span>
         <div class="video-wrapper">
             <img class="video-poster lazyload" src="${imgUrl}/w500${poster_path}"
             srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-            data-srcset="${imgUrl}/w500${poster_path} 500w,            
-            ${imgUrl}/w342${poster_path} 342w,
+            data-srcset="${imgUrl}/w500${poster_path} 500w,
+            ${imgUrl}/w780${poster_path} 342w,         
             ${imgUrl}/w780${poster_path} 780w,
             ${imgUrl}/original${poster_path} 900w,"
             data-sizes="auto"            
