@@ -1,8 +1,9 @@
 
 import { MovieApiService } from "./api-movie-service";
 import { createMarkupMovies } from "./create-markup-movies";
-import initPagination from './pagination';
+import initPagination from "./helpers/pagination";
 import { slickLoader } from './loader';
+import scrollToTop from "./helpers/scroll-to-top";
 
 
 const videos = document.querySelector('.videos');
@@ -31,6 +32,7 @@ export default async function loadMostWatchedList() {
     SlickLoader.disable();
     videos.innerHTML = '';    
     createMarkupMovies(trending.results, videos);
+    scrollToTop();
 
   });
   

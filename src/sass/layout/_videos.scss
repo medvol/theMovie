@@ -16,10 +16,12 @@
     border-radius: 20px;
     overflow: hidden;
     transition: transform 5000ms ease-in;
+    cursor: pointer;
 }
 
 .video-wrapper {
-    position: relative;   
+    position: relative;
+    object-fit: cover;   
     
 }
 
