@@ -49,6 +49,8 @@ async function onClickWatched() {
 
   pagination.classList.add('visually-hidden');
   videos.innerHTML = '';
+  pageTitle.classList.remove('main-header__search-info');
+  pageTitle.classList.remove('main-header__search-accent');
   pageTitle.textContent = 'Watched';
 
   const markupBtn = `<div class="wrapper-playlist_btn" style="--delay: .4s">
@@ -136,6 +138,8 @@ async function onClickQueued() {
   films.innerHTML = '';
   pageSubTitle.classList.add('visually-hidden');
   videos.innerHTML = '';
+  pageTitle.classList.remove('main-header__search-info');
+  pageTitle.classList.remove('main-header__search-accent');
   pageTitle.textContent = 'Queued';
   slickLoader();
   createMarkupWatched(allPromise, videos);
