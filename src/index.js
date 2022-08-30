@@ -65,7 +65,7 @@ refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.logo.addEventListener('click', loadMostWatchedList);
-refs.playlist.addEventListener('click', loadPlayList);
+// refs.playlist.addEventListener('click', loadPlayList);
 
 refs.overlay.addEventListener('click', onBackdropClick);
 document.addEventListener('keydown', onPushEsc);
