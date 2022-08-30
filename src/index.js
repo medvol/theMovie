@@ -1,5 +1,5 @@
 import 'lazysizes';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+// import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import './sass/index.scss';
 
 import {
