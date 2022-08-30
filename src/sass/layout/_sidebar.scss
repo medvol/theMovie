@@ -10,6 +10,10 @@
     overflow-x: hidden;
 }
 
+.is-active {
+    pointer-events: none;
+}
+
 .side-menu__item.is-active {
     transition: transform 250ms ease-in;
 }

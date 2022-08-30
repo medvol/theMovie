@@ -1,5 +1,5 @@
 import { MovieApiService } from './api-movie-service';
-import parseGanres from './parse-ganres';
+import parseGanres from './helpers/parse-ganres';
 import { createMarkupMovies } from './create-markup-movies';
 import { slickLoader } from './loader';
 import {

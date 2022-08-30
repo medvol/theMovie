@@ -13,13 +13,9 @@ import {
   onModalCloseBtn,
 } from './js/modal-close-btn';
 
-import { OnClickSidebar } from './js/on-click-active';
-import loadSidebarCategory from './js/load-sigebar-category';
-import loadMostWatchedList from './js/load-most-watched-list';
-import onClickCategory from './js/on-click-category-list';
-import onClickTrending from './js/on-click-trending';
+import loadMostWatchedList from './js/handlers/load-most-watched-list';
 import loadDiscoverCards from './js/load-discover-cards';
-import handlerInput from './js/handler-search';
+import handlerInput from './js/handlers/handler-search';
 import loadPlayList from './js/load-playlist';
 import { authUser } from './js/submit-form';
 import './js/create-markup-playlist';
@@ -31,52 +27,12 @@ import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 import debounce from 'lodash.debounce';
 import './js/helpers/resize-window';
 import './js/helpers/resize-sidebar';
-
-const refs = {
-  categoryList: document.querySelector('[data-list ="render"]'),
-  mainContainer: document.querySelector('.main-container'),
-  videos: document.querySelector('.videos'),
-  sidebar: document.querySelector('.sidebar'),
-  films: document.querySelector('.main-films'),
-  pageTitle: document.querySelector('.main-header'),
-  logo: document.querySelector('.logo-expand'),
-  discover: document.querySelector('[data-name="discover"]'),
-  trending: document.querySelector('[data-name="trending"]'),
-  playlist: document.querySelector('[data-name="playlist"]'),
-  openModal: document.querySelector('[data-action="open-modal"]'),
-  closeModalBtn: document.querySelector('[data-action="data-modal-close"]'),
-  backdrop: document.querySelector('[data-modal]'),
-
-  pageSubTitle: document.querySelector('.most-watched'),
-  searchBar: document.querySelector('.search-bar'),
-  overlay: document.querySelector('.overlay'),
-  modalCardMovie: document.querySelector('.modal_movie_card'),
-  pageSubTitle: document.querySelector('.most-watched'),
-  modalCloseBtn: document.querySelector('.close-btn-card'),
-};
+import './js/common/refs';
+import './js/render-pages'
 
 
-if (refs.pageTitle.textContent !== 'New video')
-  refs.pageTitle.textContent = 'New video';
-
-
-refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
-refs.openModal.addEventListener('click', onOpenModal);
-refs.closeModalBtn.addEventListener('click', onCloseModal);
-refs.backdrop.addEventListener('click', onBackdropClick);
-refs.logo.addEventListener('click', loadMostWatchedList);
 refs.playlist.addEventListener('click', loadPlayList);
 
-refs.overlay.addEventListener('click', onBackdropClick);
-document.addEventListener('keydown', onPushEsc);
-
-addEventListener('DOMContentLoaded', loadSidebarCategory, { once: true });
-
-addEventListener('DOMContentLoaded', loadMostWatchedList);
-
-refs.categoryList.addEventListener('click', onClickCategory);
-
-refs.trending.addEventListener('click', onClickTrending);
 
 addEventListener('DOMContentLoaded', loadDiscoverCards);
 
@@ -92,7 +48,12 @@ refs.searchBar.addEventListener(
 
 // refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
-
+refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
+refs.openModal.addEventListener('click', onOpenModal);
+refs.closeModalBtn.addEventListener('click', onCloseModal);
+refs.backdrop.addEventListener('click', onBackdropClick);
+refs.overlay.addEventListener('click', onBackdropClick);
+document.addEventListener('keydown', onPushEsc);
 
 
 var splide = new Splide('.splide', {
@@ -114,10 +75,7 @@ var splide = new Splide('.splide', {
 
 splide.mount();
 
-refs.sidebar.addEventListener('click', OnClickSidebar);
-
 authUser();
-
 
 refs.discover.addEventListener('click', function () {
   location.reload();

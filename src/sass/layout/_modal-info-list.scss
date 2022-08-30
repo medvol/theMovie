@@ -19,6 +19,11 @@
     margin-bottom: 10px;
 }
 
+.wrapper_info {
+    margin-bottom: 10px;
+    
+}
+
 @media screen and (min-width:768px){
     .modal_info{        
         width: 50%;
@@ -41,12 +46,14 @@
         margin-bottom: 30px;
     }
 
+    .wrapper_info {
+        margin-bottom: 25px;
+
+    }
+
 }
 
-.wrapper_info{
-    margin-bottom: 10px;
-    overflow: auto;
-}
+
 
 
 

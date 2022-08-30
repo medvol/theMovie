@@ -1,7 +1,8 @@
-import { MovieApiService } from './api-movie-service';
-import { createMarkupMovies } from './create-markup-movies';
-import initPagination from './helpers/pagination';
-import { slickLoader } from './loader';
+import { MovieApiService } from '../api-movie-service';
+import { createMarkupMovies } from '../create-markup-movies';
+import initPagination from '../helpers/pagination';
+import { slickLoader } from '../loader';
+
 
 
 const films = document.querySelector('.main-films');
@@ -20,19 +21,19 @@ export default async function onClickTrending(event) {
   const trending = await categoryMovie.fetchTrendWeekMovie(startPage);
   SlickLoader.disable()
   const { page, results, total_results: totalItems } = trending;
-
   const pagination = initPagination({    
       page,
       itemsPerPage: results.length,
       totalItems,
-    
-  })
-
+      
+    })
     films.innerHTML = '';
     pageSubTitle.classList.add('visually-hidden');
     videos.innerHTML = '';
     pageTitle.textContent = element.firstElementChild.textContent;
-    createMarkupMovies(trending.results, videos);
+  createMarkupMovies(trending.results, videos);
+  
+  
 
  
   document.querySelector('.footer').classList.remove('visually-hidden');
