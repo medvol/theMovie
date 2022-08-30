@@ -1,6 +1,6 @@
 import { MovieApiService } from './api-movie-service';
 import { createMarkupMovies } from './create-markup-movies';
-import initPagination from './pagination';
+import initPagination from './helpers/pagination';
 import { slickLoader } from './loader';
 
 

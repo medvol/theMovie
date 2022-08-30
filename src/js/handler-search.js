@@ -1,6 +1,7 @@
 import { MovieApiService } from './api-movie-service';
 import { createMarkupMovies } from './create-markup-movies';
-import initPagination from './pagination';
+import initPagination from './helpers/pagination';
+import scrollToTop from './helpers/scroll-to-top';
 
 const films = document.querySelector('.main-films');
 const pageTitle = document.querySelector('.main-header');
@@ -51,7 +52,8 @@ export default async function handlerInput(e) {
       pageTitle.classList.remove('main-header__search-accent');
       pageTitle.classList.add('main-header__search-info');
       pageTitle.textContent = `Are You search: "${saerchMovie.search}"?`;
-      createMarkupMovies(result.results, videos);
+    createMarkupMovies(result.results, videos);
+    scrollToTop();
   
     pagination.on('afterMove', async ({ page }) => {
     
@@ -63,7 +65,8 @@ export default async function handlerInput(e) {
     pageTitle.classList.remove('main-header__search-accent');
     pageTitle.classList.add('main-header__search-info');
     pageTitle.textContent = `Are You search: "${saerchMovie.search}"?`;
-    createMarkupMovies(result.results, videos);       
+      createMarkupMovies(result.results, videos);
+      scrollToTop();  
 
   });   
   
