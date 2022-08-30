@@ -34,7 +34,7 @@ export function createMarkupMovieInfo(
                         <li class="modal_info__item">Popularity <span class="modal_info_render__item">${popularity}</span></li>
                         <li class="modal_info__item">Original Title <span class="modal_info_render__item">${original_title}</span></li>
                         <li class="modal_info__item">Genre <span class="modal_info_render__item">${genresList}</span></li>
-                        <li class="modal_info__item">Duration <span class="modal_info_render__item">${runtime}m</span></li>
+                        <li class="modal_info__item">Duration <span class="modal_info_render__item">${runtime} min</span></li>
                     </ul>
                 </div>
             </div>

@@ -26,6 +26,7 @@ export async function onModalShowInfoCard(e) {
 
   overlay.classList.remove('is-hidden');
 
+
   const element = e.target.closest('[id]');
   categoryMovie.movieId = element.id;
   idMovie = element.id;

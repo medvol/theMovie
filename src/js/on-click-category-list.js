@@ -11,9 +11,7 @@ const pageSubTitle = document.querySelector('.most-watched');
 const categoryMovie = new MovieApiService();
 
 export default async function onClickCategory(event) {
-  const element = event.target.closest('li[data-id]');
-  // document.querySelector('.footer').style.visibility = 'hidden'; // show
-  // hide
+  const element = event.target.closest('li[data-id]'); 
   document.querySelector('.footer').classList.add('visually-hidden');
 
   const id = element.dataset.id;
@@ -50,10 +48,6 @@ export default async function onClickCategory(event) {
     pageTitle.textContent = element.firstElementChild.textContent;
     createMarkupMovies(trending.results, videos);      
 
-  });   
- 
-
-   
-    // document.querySelector('.footer').style.visibility = 'visible';
+  });    
 
 }

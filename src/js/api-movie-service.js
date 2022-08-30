@@ -60,7 +60,7 @@ export class MovieApiService {
       const responce = await axios.get(
         `${this.URL}trending/all/${this.trendWeek}?api_key=${this.API_KEY}&page=${page}`
       );
-      // this.incrementPage();
+
       return responce.data;
     } catch (error) {
       console.log(error);
@@ -85,7 +85,7 @@ export class MovieApiService {
       const responce = await axios.get(
         `${this.URL}discover/movie?with_genres=${genre}&page=${page}&with_original_language=en&api_key=${this.API_KEY}`
       );
-      // this.incrementPage();
+
       return responce.data;
     } catch (error) {
       console.log(error);
