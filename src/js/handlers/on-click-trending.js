@@ -1,7 +1,8 @@
-import { MovieApiService } from './api-movie-service';
-import { createMarkupMovies } from './create-markup-movies';
-import initPagination from './helpers/pagination';
-import { slickLoader } from './loader';
+import { MovieApiService } from '../api-movie-service';
+import { createMarkupMovies } from '../create-markup-movies';
+import initPagination from '../helpers/pagination';
+import { slickLoader } from '../loader';
+
 
 const films = document.querySelector('.main-films');
 const pageTitle = document.querySelector('.main-header');

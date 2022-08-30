@@ -10,14 +10,12 @@ import {
   onModalCloseBtn,
 } from './js/modal-close-btn';
 
-import { OnClickSidebar } from './js/on-click-active';
-import loadSidebarCategory from './js/load-sigebar-category';
-import loadMostWatchedList from './js/load-most-watched-list';
-import onClickCategory from './js/on-click-category-list';
-import onClickTrending from './js/on-click-trending';
+import loadMostWatchedList from './js/handlers/load-most-watched-list';
 import loadDiscoverCards from './js/load-discover-cards';
+
 import handlerInput from './js/handler-search';
 // import loadPlayList from './js/load-playlist';
+
 import { authUser } from './js/submit-form';
 import './js/create-markup-playlist';
 
@@ -32,6 +30,10 @@ import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 import debounce from 'lodash.debounce';
 import './js/helpers/resize-window';
 import './js/helpers/resize-sidebar';
+
+import './js/common/refs';
+import './js/render-pages'
+
 
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
@@ -55,11 +57,13 @@ const refs = {
   pageSubTitle: document.querySelector('.most-watched'),
   modalCloseBtn: document.querySelector('.close-btn-card'),
 
-  // titleElem: () => document.querySelector('.select-title'),
-};
 
-if (refs.pageTitle.textContent !== 'New video')
-  refs.pageTitle.textContent = 'New video';
+  // titleElem: () => document.querySelector('.select-title'),
+
+
+
+refs.playlist.addEventListener('click', loadPlayList);
+
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.openModal.addEventListener('click', onOpenModal);
@@ -67,17 +71,6 @@ refs.openModal.addEventListener('click', onOpenModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.logo.addEventListener('click', loadMostWatchedList);
 // refs.playlist.addEventListener('click', loadPlayList);
-
-refs.overlay.addEventListener('click', onBackdropClick);
-document.addEventListener('keydown', onPushEsc);
-
-addEventListener('DOMContentLoaded', loadSidebarCategory, { once: true });
-
-addEventListener('DOMContentLoaded', loadMostWatchedList);
-
-refs.categoryList.addEventListener('click', onClickCategory);
-
-refs.trending.addEventListener('click', onClickTrending);
 
 addEventListener('DOMContentLoaded', loadDiscoverCards);
 
@@ -96,8 +89,27 @@ refs.searchBar.addEventListener(
 // refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
 
+// refs.overlay.addEventListener('click', onBackdropClick);
+// document.addEventListener('keydown', onPushEsc);
 
-refs.sidebar.addEventListener('click', OnClickSidebar);
+var splide = new Splide('.splide', {
+  perPage: 3,
+  gap: '1rem',
+  breakpoints: {
+    640: {
+      perPage: 2,
+      gap: '.2rem',
+      height: '6rem',
+    },
+    480: {
+      perPage: 1,
+      gap: '.1rem',
+      height: '12rem',
+    },
+  },
+});
+
+
 
 authUser();
 

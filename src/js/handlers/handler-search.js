@@ -1,7 +1,7 @@
-import { MovieApiService } from './api-movie-service';
-import { createMarkupMovies } from './create-markup-movies';
-import initPagination from './helpers/pagination';
-import scrollToTop from './helpers/scroll-to-top';
+import { MovieApiService } from '../api-movie-service';
+import { createMarkupMovies } from '../create-markup-movies';
+import initPagination from '../helpers/pagination';
+import scrollToTop from '../helpers/scroll-to-top';
 
 const films = document.querySelector('.main-films');
 const pageTitle = document.querySelector('.main-header');

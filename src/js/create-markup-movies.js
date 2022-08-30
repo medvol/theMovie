@@ -1,5 +1,5 @@
 import { MovieApiService } from './api-movie-service';
-import parseGanres from './parse-ganres';
+import parseGanres from './helpers/parse-ganres';
 
 const categoryMovie = new MovieApiService();
 
@@ -47,7 +47,7 @@ export async function createMarkupMovies(movies, element) {
             </div>
         </div>
         <div class="video-description">
-          <p class="video-ganre">${ganresToString}</p>
+          <p class="video-ganre">${ganresToString ? ganresToString : '&#128512'}</p>
           <p class="video-name">${title ? title : name}</p>
           <p class="video-view">${vote_count} views<span class="seperate video-seperate"></span>${date}</p>
         </div>
