@@ -1,6 +1,4 @@
 
-
-
 .backdrop {
     display: flex;
     justify-content: center;
@@ -12,10 +10,12 @@
     height: 100vh;
     background-color: rgba(128, 129, 145, 0.4);
     z-index: 999;
+    overflow-y: scroll;
     opacity: 1;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
             visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .backdrop.is-hiddene {
     visibility: hidden;
     opacity: 0;
@@ -28,9 +28,8 @@
     background-color:var(--theme-bg);
     padding: 20px;
     width: 280px;
-    min-height: 300px;
-    position: relative;
-    // overflow-y: scroll;
+    height: 300px;
+    overflow-y: scroll;
     transform: scale(1.1);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 20px;
@@ -60,8 +59,12 @@
     }
 }
 @media screen and (min-width:768px) {
+    .backdrop{
+        overflow-y:hidden
+    }
     .modal {
-            width: 700px;
+            width: 600px;
+            min-height: 300px;
         }
 }
 @media screen and (min-width:1200px) {

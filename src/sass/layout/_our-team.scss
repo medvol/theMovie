@@ -8,13 +8,12 @@
     color: #ea5f5f;
 }
 
-.team-list {
-justify-content: start;
-}
+
 
 .our-team {
-    display: inline-block;
+    display:block;
     padding: 20px 0 20px;
+    margin-bottom: 30px;
     background-color: #252836;
     text-align: center;
     overflow: hidden;
@@ -114,13 +113,22 @@ justify-content: start;
 }
 @media screen and (min-width:768px){
     .our-team {
-            padding: 20px 0 40px;
+            padding: 40px 0px 40px;
     }
     .our-team .picture {
-            height: 120px;
-            width: 120px;
+            height: 90px;
+            width: 90px;
     }
 } 
+@media screen and (min-width:1200px){
+.our-team {
+        padding: 40px 0px 40px;
+    }
 
+    .our-team .picture {
+        height: 120px;
+        width: 120px;
+    }
+}
 
 

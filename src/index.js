@@ -23,8 +23,7 @@ import handlerInput from './js/handler-search';
 import loadPlayList from './js/load-playlist';
 import { authUser } from './js/submit-form';
 import './js/create-markup-playlist';
-import Splide from '@splidejs/splide';
-import '@splidejs/splide/dist/css/splide.min.css';
+
 
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
@@ -44,7 +43,7 @@ const refs = {
   trending: document.querySelector('[data-name="trending"]'),
   playlist: document.querySelector('[data-name="playlist"]'),
   openModal: document.querySelector('[data-action="open-modal"]'),
-  closeModalBtn: document.querySelector('[data-action="data-modal-close"]'),
+
   backdrop: document.querySelector('[data-modal]'),
 
   pageSubTitle: document.querySelector('.most-watched'),
@@ -62,7 +61,7 @@ if (refs.pageTitle.textContent !== 'New video')
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.openModal.addEventListener('click', onOpenModal);
-refs.closeModalBtn.addEventListener('click', onCloseModal);
+
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.logo.addEventListener('click', loadMostWatchedList);
 refs.playlist.addEventListener('click', loadPlayList);
@@ -93,26 +92,6 @@ refs.searchBar.addEventListener(
 // refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
 
-
-
-var splide = new Splide('.splide', {
-  perPage: 3,
-  gap: '1rem',
-  breakpoints: {
-    640: {
-      perPage: 2,
-      gap: '.2rem',
-      height: '6rem',
-    },
-    480: {
-      perPage: 1,
-      gap: '.1rem',
-      height: '12rem',
-    },
-  },
-});
-
-splide.mount();
 
 refs.sidebar.addEventListener('click', OnClickSidebar);
 
