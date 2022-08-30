@@ -13,7 +13,7 @@ export let queueId = [];
 export let idMovie = 0;
 export let watchedId = [];
 
-export let choosenMovie = {};
+// export let choosenMovie = {};
 
 export const LOCALSTORAGE_KEY_W = 'watched-movies';
 export const LOCALSTORAGE_KEY_Q = 'queued-movies';
@@ -28,7 +28,6 @@ export async function onModalShowInfoCard(e) {
 
   overlay.classList.remove('is-hidden');
 
-
   const element = e.target.closest('[id]');
   categoryMovie.movieId = element.id;
   idMovie = element.id;
@@ -37,7 +36,7 @@ export async function onModalShowInfoCard(e) {
   if (!movieForId) {
     modalTemplate.classList.remove('hide');
   }
-  choosenMovie = movieForId;
+  // choosenMovie = movieForId;
 
   createMarkupMovieInfo(movieForId, modalCardMovie);
 
