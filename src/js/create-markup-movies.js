@@ -3,18 +3,20 @@ import parseGanres from './parse-ganres';
 
 const categoryMovie = new MovieApiService();
 
-function parseGanres(film, ganres) { 
-  
-  return ganres.filter(ganre => {
-    if (film.includes(ganre.id)) {
-      return ganre.name
-    }
-  }).map(element => element.name).slice(0, 2).join(', ');   
-  
-}
+// function parseGanres(film, ganres) {
+//   return ganres
+//     .filter(ganre => {
+//       if (film.includes(ganre.id)) {
+//         return ganre.name;
+//       }
+//     })
+//     .map(element => element.name)
+//     .slice(0, 2)
+//     .join(', ');
+// }
 
 export async function createMarkupMovies(movies, element) {
-const ganres = await categoryMovie.fetchGenresDescription();
+  const ganres = await categoryMovie.fetchGenresDescription();
 
   const markup = movies.reduce((acc, movie) => {
     const {
@@ -30,7 +32,7 @@ const ganres = await categoryMovie.fetchGenresDescription();
     const average = vote_average ? vote_average.toFixed(1) : '&#128512';
     const imgUrl = `https://image.tmdb.org/t/p`;
 
-    const ganresToString = parseGanres(movie.genre_ids, ganres)
+    const ganresToString = parseGanres(movie.genre_ids, ganres);
 
     return (
       acc +
