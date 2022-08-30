@@ -1,8 +1,3 @@
-// import { async } from "@firebase/util";
-// import { registration, logIn, ifUser, outUser } from "./api-firebase-submit";
-// import loadMostWatchedList from './load-most-watched-list';
-// import loadDiscoverCards from './load-discover-cards';
-// import { createMarkupMovies } from '../js/create-markup-movies';
 import { formMarcupCreator } from './singin_form-creator';
 import Notiflix from "notiflix";
 import { initializeApp } from "firebase/app";
@@ -150,7 +145,4 @@ export function ifUser() {
     const user = localStorage.getItem(`USER`)
   if (user) {return JSON.parse(user)}
 };
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
