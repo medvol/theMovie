@@ -148,5 +148,5 @@ function closeModalByEsc(e) {
     onCloseModal();
   }
 }
-export { onOpenModal, closeModalByEsc };
+export { onOpenModal, onCloseModal, closeModalByEsc };
 
