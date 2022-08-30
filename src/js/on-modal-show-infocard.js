@@ -4,10 +4,15 @@ import { getFromLocalStorage } from './get-data-from-localstorage';
 import { findInLocalStorage } from './find-in-localstorage';
 import { setButtonWatchedSettings } from './set-btn-settings';
 import { setButtonQueueSettings } from './set-btn-settings';
+import { ifUser } from './submit-form';
+import Notiflix from 'notiflix';
 
 const overlay = document.querySelector('.overlay');
 const modalCardMovie = document.querySelector('.modal_movie_card');
 const modalTemplate = document.querySelector('.modal_template');
+
+const btnWatched = () => document.querySelector('.btn_add');
+const btnQueue = () => document.querySelector('.btn_queue');
 
 export let queueId = [];
 export let idMovie = 0;
@@ -38,12 +43,24 @@ export async function onModalShowInfoCard(e) {
 
   createMarkupMovieInfo(movieForId, modalCardMovie);
 
-  watchedId = getFromLocalStorage(LOCALSTORAGE_KEY_W);
-  queueId = getFromLocalStorage(LOCALSTORAGE_KEY_Q);
+  if (!ifUser()) {
+    btnWatched().textContent = 'ADD TO WATCHED';
+    btnQueue().textContent = 'ADD TO QUEUE';
+    btnWatched().addEventListener('click', () =>
+      Notiflix.Notify.info(`You need to LogIn`)
+    );
+    btnQueue().addEventListener('click', () =>
+      Notiflix.Notify.info(`You need to LogIn`)
+    );
+    return;
+  } else {
+    watchedId = getFromLocalStorage(LOCALSTORAGE_KEY_W);
+    queueId = getFromLocalStorage(LOCALSTORAGE_KEY_Q);
 
-  const isMovieInLocalStorageWatched = findInLocalStorage(idMovie, watchedId);
-  const isMovieInLocalStorageQueue = findInLocalStorage(idMovie, queueId);
+    const isMovieInLocalStorageWatched = findInLocalStorage(idMovie, watchedId);
+    const isMovieInLocalStorageQueue = findInLocalStorage(idMovie, queueId);
 
-  setButtonWatchedSettings(isMovieInLocalStorageWatched);
-  setButtonQueueSettings(isMovieInLocalStorageQueue);
+    setButtonWatchedSettings(isMovieInLocalStorageWatched);
+    setButtonQueueSettings(isMovieInLocalStorageQueue);
+  }
 }
