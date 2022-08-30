@@ -51,7 +51,7 @@ export function createMarkupMovieInfo(
             <p class="about__description">${overview}</p>
             </div>
 
-            <div class="wrapper_btn anim" style="--delay: .4s">
+            <div class="wrapper_btn anim" style="--delay: .2s">
                 <button class="modal_btn btn_add" type="button">
                 </button>
               
