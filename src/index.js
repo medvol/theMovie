@@ -20,9 +20,9 @@ import onClickCategory from './js/on-click-category-list';
 import onClickTrending from './js/on-click-trending';
 import loadDiscoverCards from './js/load-discover-cards';
 import handlerInput from './js/handler-search';
-import loadPlayList from './js/load-playlist';
+// import loadPlayList from './js/load-playlist';
 import { authUser } from './js/submit-form';
-import './js/create-markup-playlist';
+import './js/load-playlist';
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
