@@ -26,7 +26,9 @@ export async function createMarkupMovies(movies, element) {
       acc +
       `<li class="video anim" id="${id}"style="--delay: .4s">
       <div class="video">
-      <span class="video-selection">...</span>
+      <div id = class="select-wrapper">
+        <span class="video-selection">...</span>
+      </div>
         <div class="video-wrapper">
             <img class="video-poster lazyload" src="${imgUrl}/w500${poster_path}"
             srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
@@ -47,7 +49,9 @@ export async function createMarkupMovies(movies, element) {
             </div>
         </div>
         <div class="video-description">
-          <p class="video-ganre">${ganresToString ? ganresToString : '&#128512'}</p>
+          <p class="video-ganre">${
+            ganresToString ? ganresToString : '&#128512'
+          }</p>
           <p class="video-name">${title ? title : name}</p>
           <p class="video-view">${vote_count} views<span class="seperate video-seperate"></span>${date}</p>
         </div>
