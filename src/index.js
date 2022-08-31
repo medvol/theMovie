@@ -1,7 +1,9 @@
+import { refs } from './js/common/refs';
+
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 // import './js/common/refs';
-import { refs } from './js/common/refs'
+
 
 import './sass/index.scss';
 
