@@ -36,29 +36,29 @@ import './js/helpers/resize-sidebar';
 import './js/render-pages'
 
 
-const refs = {
-  categoryList: document.querySelector('[data-list ="render"]'),
-  mainContainer: document.querySelector('.main-container'),
-  videos: document.querySelector('.videos'),
-  sidebar: document.querySelector('.sidebar'),
-  films: document.querySelector('.main-films'),
-  pageTitle: document.querySelector('.main-header'),
-  logo: document.querySelector('.logo-expand'),
-  discover: document.querySelector('[data-name="discover"]'),
-  trending: document.querySelector('[data-name="trending"]'),
-  playlist: document.querySelector('[data-name="playlist"]'),
-  openModal: document.querySelector('[data-action="open-modal"]'),
+// const refs = {
+//   categoryList: document.querySelector('[data-list ="render"]'),
+//   mainContainer: document.querySelector('.main-container'),
+//   videos: document.querySelector('.videos'),
+//   sidebar: document.querySelector('.sidebar'),
+//   films: document.querySelector('.main-films'),
+//   pageTitle: document.querySelector('.main-header'),
+//   logo: document.querySelector('.logo-expand'),
+//   discover: document.querySelector('[data-name="discover"]'),
+//   trending: document.querySelector('[data-name="trending"]'),
+//   playlist: document.querySelector('[data-name="playlist"]'),
+//   openModal: document.querySelector('[data-action="open-modal"]'),
 
-  backdrop: document.querySelector('[data-modal]'),
+//   backdrop: document.querySelector('[data-modal]'),
 
-  pageSubTitle: document.querySelector('.most-watched'),
-  searchBar: document.querySelector('.search-bar'),
-  overlay: document.querySelector('.overlay'),
-  modalCardMovie: document.querySelector('.modal_movie_card'),
-  pageSubTitle: document.querySelector('.most-watched'),
-  modalCloseBtn: document.querySelector('.close-btn-card'),
+//   pageSubTitle: document.querySelector('.most-watched'),
+//   searchBar: document.querySelector('.search-bar'),
+//   overlay: document.querySelector('.overlay'),
+//   modalCardMovie: document.querySelector('.modal_movie_card'),
+//   pageSubTitle: document.querySelector('.most-watched'),
+//   modalCloseBtn: document.querySelector('.close-btn-card'),
 
-}
+// }
   // titleElem: () => document.querySelector('.select-title'),
 
 
