@@ -36,12 +36,30 @@ const refs = {
 };
 
 
-    if (ifUser() === undefined) {
-  return ifUserOff()
+export function authUser() {
+  if (ifUser() === undefined) {
+    return ifUserOff()
   } else {
-  return ifUserOn()
+    return ifUserOn()
 
+  }
+};
+
+export function ifUser() {
+  const user = localStorage.getItem(`USER`);
+  if (user) {
+    return JSON.parse(user);
+  } else {
+    return;
+  }
+};
+
+export function closeSignInForm() {
+  forms = document.querySelector(`.forms`);
+  if (forms) {
+    forms.remove();
 }
+};
 
 function ifUserOff() {
   refs.singInBtn.textContent = `SignIn`;
@@ -57,7 +75,7 @@ function ifUserOn() {
   refs.singInBtn.style.backgroundColor = `#353340`;
   refs.singInBtn.addEventListener('click', onClickSingOut);
 
-}
+};
 
 function onClickSingIn() {
   marcupClear();
@@ -70,7 +88,7 @@ function onClickSingIn() {
 
   forms.formLogin.addEventListener(`submit`, onSubmitLogin);
   forms.formSignup.addEventListener(`submit`, onSubmitSingup);
-}
+};
 
 async function onSubmitLogin(e) {
   e.preventDefault();
@@ -99,7 +117,7 @@ async function onSubmitLogin(e) {
     authUser();
     location.reload();
   }
-}
+};
 
 async function onSubmitSingup(e) {
   e.preventDefault();
@@ -116,7 +134,7 @@ async function onSubmitSingup(e) {
 
   const log = await createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
-      const user = userCredential.user;
+      const user = userCredential.user.uid;
       localStorage.setItem(`USER`, JSON.stringify(user));
       return user;
     })
@@ -130,19 +148,15 @@ async function onSubmitSingup(e) {
       console.log(error.message);
     });
   if (log) {
-
-
     authUser();
     location.reload();
   }
-}
+};
 
 async function onClickSingOut() {
-  console.log(`lnvlasfnv`);
   const out = await signOut(auth)
     .then(res => {
       localStorage.removeItem(`USER`);
-      console.log(res);
       return res;
     })
     .then(() => {
@@ -153,17 +167,11 @@ async function onClickSingOut() {
 }
 
 function marcupClear() {
-  refs.mainContainer.innerHTML = ``;
-}
-
-
-function ifUser() {
-  const user = localStorage.getItem(`USER`);
-  if (user) {
-    return JSON.parse(user);
-  } else {
-    return;
-  }
-}
+  closeSignInForm();
+  refs.mostWached.textContent = ``;
+  refs.newVideo.textContent = ``;
+  refs.films.innerHTML = ``;
+  refs.videos.innerHTML = ``;
+};
 
 
