@@ -26,7 +26,6 @@ import {
 const auth = getAuth(app);
 
 const refs = {
-
   singInBtn: document.querySelector(`.singin_btn`),
   newVideo: document.querySelector(`.main-header`),
   films: document.querySelector(`.main-films`),
@@ -35,15 +34,6 @@ const refs = {
   mainContainer: document.querySelector('.main-container'),
 };
 
-
-export function authUser() {
-  if (ifUser() === undefined) {
-    return ifUserOff()
-  } else {
-    return ifUserOn()
-
-  }
-};
 
 export function ifUser() {
   const user = localStorage.getItem(`USER`);
@@ -58,23 +48,27 @@ export function closeSignInForm() {
   forms = document.querySelector(`.forms`);
   if (forms) {
     forms.remove();
-}
-};
+  }
 
 function ifUserOff() {
   refs.singInBtn.textContent = `SignIn`;
   refs.singInBtn.style.backgroundColor = `#ea5f5f`;
   refs.singInBtn.addEventListener('click', onClickSingIn);
-
-
-
-};
+}
 
 function ifUserOn() {
- refs.singInBtn.textContent = `SignOut`;
+  refs.singInBtn.textContent = `SignOut`;
   refs.singInBtn.style.backgroundColor = `#353340`;
   refs.singInBtn.addEventListener('click', onClickSingOut);
 
+};
+
+export function authUser() {
+  if (ifUser() === undefined) {
+    return ifUserOff()
+  } else {
+    return ifUserOn()
+  }
 };
 
 function onClickSingIn() {
@@ -97,21 +91,23 @@ async function onSubmitLogin(e) {
   const email = data.get(`email`);
   const password = data.get(`password`);
 
-  
   const log = await signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-   
-            const user = userCredential.user.uid;
-          localStorage.setItem(`USER`, JSON.stringify(user));
-          return user;
- 
-        }).catch(function (error) {
-      if (error.code === `auth/user-not-found`) {return Notiflix.Notify.failure(`you need to singup`)}
-          else if (error.code === `auth/wrong-password`) { return Notiflix.Notify.failure(`wrong password`) }
-          else if (error.code === `auth/network-request-failed`) { return Notiflix.Notify.failure(`network request failed`) }
-   console.log(error.code);
-   alert(error.message);
-        });
+    .then(userCredential => {
+      const user = userCredential.user.uid;
+      localStorage.setItem(`USER`, JSON.stringify(user));
+      return user;
+    })
+    .catch(function (error) {
+      if (error.code === `auth/user-not-found`) {
+        return Notiflix.Notify.failure(`you need to singup`);
+      } else if (error.code === `auth/wrong-password`) {
+        return Notiflix.Notify.failure(`wrong password`);
+      } else if (error.code === `auth/network-request-failed`) {
+        return Notiflix.Notify.failure(`network request failed`);
+      }
+      console.log(error.code);
+      alert(error.message);
+    });
 
   if (log) {
     authUser();
@@ -125,7 +121,6 @@ async function onSubmitSingup(e) {
   const email = data.get(`email`);
   const password = data.get(`password`);
   const passwordRepeat = data.get(`password_repeat`);
-
 
   if (password !== passwordRepeat) {
     return Notiflix.Notify.failure(`password problem`);
@@ -174,4 +169,15 @@ function marcupClear() {
   refs.videos.innerHTML = ``;
 };
 
+  refs.mainContainer.innerHTML = ``;
+}
+
+export function ifUser() {
+  const user = localStorage.getItem(`USER`);
+  if (user) {
+    return JSON.parse(user);
+  } else {
+    return;
+  }
+}
 

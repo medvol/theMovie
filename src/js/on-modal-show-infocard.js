@@ -47,10 +47,20 @@ export async function onModalShowInfoCard(e) {
     btnWatched().textContent = 'ADD TO WATCHED';
     btnQueue().textContent = 'ADD TO QUEUE';
     btnWatched().addEventListener('click', () =>
-      Notiflix.Notify.info(`You need to LogIn`)
+      Notiflix.Notify.info(`You need to LogIn`, {
+        position: 'right-top',
+        distance: '30px',
+        width: '340px',
+        timeout: 1000,
+      })
     );
     btnQueue().addEventListener('click', () =>
-      Notiflix.Notify.info(`You need to LogIn`)
+      Notiflix.Notify.info(`You need to LogIn`, {
+        position: 'right-top',
+        distance: '30px',
+        width: '340px',
+        timeout: 1000,
+      })
     );
     return;
   } else {
