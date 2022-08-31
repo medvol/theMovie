@@ -1,11 +1,12 @@
 import { MovieApiService } from './api-movie-service';
 
-
-
 import parseGanres from './helpers/parse-ganres';
 import { createMarkupMovies } from './create-markup-movies';
 
 import { slickLoader } from './loader';
+
+import { ifUser } from './submit-form';
+import Notiflix from 'notiflix';
 
 const savedWatched = localStorage.getItem('watched-movies');
 const parsedWatched = JSON.parse(savedWatched);
@@ -24,6 +25,9 @@ const playlistbtn = document.querySelector('.user-settings');
 const pagination = document.querySelector('.tui-pagination');
 const watchedBtn = document.querySelector('.watched-btn');
 const queuedBtn = document.querySelector('.queued-btn');
+
+const wrapperPlaylistBtn = document.querySelector('.wrapper-playlist_btn');
+
 async function fetchMovie(movies) {
   const promiceArray = movies.map(async idMovie => {
     categoryMovie.movieId = idMovie;
@@ -37,25 +41,50 @@ playlist.addEventListener('click', onClickWatched);
 watchedBtn.addEventListener('click', onClickWatched);
 
 async function onClickWatched() {
-  const array = await fetchMovie(parsedWatched);
+  //===================================
+  if (!ifUser()) {
+    films.innerHTML = '';
+    wrapperPlaylistBtn.classList.remove('visually-hidden');
+    pageSubTitle.classList.add('visually-hidden');
+    pagination.classList.add('visually-hidden');
+    videos.innerHTML = '';
+    pageTitle.classList.remove('main-header__search-info');
+    pageTitle.classList.remove('main-header__search-accent');
+    pageTitle.textContent = 'Playlist';
+    watchedBtn.classList.remove('is-active');
+    queuedBtn.classList.remove('is-active');
 
-  const allPromise = await Promise.all(array);
-  films.innerHTML = '';
-  pageSubTitle.classList.add('visually-hidden');
-  pagination.classList.add('visually-hidden');
-  videos.innerHTML = '';
-  pageTitle.classList.remove('main-header__search-info');
-  pageTitle.classList.remove('main-header__search-accent');
-  pageTitle.textContent = 'Watched';
+    Notiflix.Notify.info(`You need to LogIn`, {
+      position: 'right-top',
+      distance: '30px',
+      width: '300px',
+      timeout: 2000,
+    });
+    return;
+  } else {
+    wrapperPlaylistBtn.classList.remove('visually-hidden');
+    //===============================
 
-  slickLoader();
+    const array = await fetchMovie(parsedWatched);
 
-  createMarkupWatched(allPromise, videos);
+    const allPromise = await Promise.all(array);
+    films.innerHTML = '';
+    pageSubTitle.classList.add('visually-hidden');
+    pagination.classList.add('visually-hidden');
+    videos.innerHTML = '';
+    pageTitle.classList.remove('main-header__search-info');
+    pageTitle.classList.remove('main-header__search-accent');
+    pageTitle.textContent = 'Watched';
 
-  queuedBtn.addEventListener('click', onClickQueued);
-  watchedBtn.classList.remove('is-active');
-  queuedBtn.classList.add('is-active');
-  SlickLoader.disable();
+    slickLoader();
+
+    createMarkupWatched(allPromise, videos);
+
+    queuedBtn.addEventListener('click', onClickQueued);
+    watchedBtn.classList.remove('is-active');
+    queuedBtn.classList.add('is-active');
+    SlickLoader.disable();
+  }
 }
 
 async function onClickQueued() {
@@ -97,7 +126,6 @@ export async function createMarkupWatched(movies, element) {
       acc +
       `<li class="video anim" id="${id}"style="--delay: .4s">
       <div class="video">
-        <span class="video-selection">...</span>
         <div class="video-wrapper">
             <img class="video-poster lazyload" src="${imgUrl}/w342${poster_path}"
             srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
@@ -129,4 +157,3 @@ export async function createMarkupWatched(movies, element) {
 
   element.insertAdjacentHTML('beforeend', markup);
 }
-
