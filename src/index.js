@@ -1,5 +1,6 @@
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import './js/common/refs';
 import './sass/index.scss';
 
 import { onOpenModal, onCloseModal } from './js/modal-our-team';
@@ -31,7 +32,7 @@ import debounce from 'lodash.debounce';
 import './js/helpers/resize-window';
 import './js/helpers/resize-sidebar';
 
-// import './js/common/refs';
+
 import './js/render-pages'
 
 
