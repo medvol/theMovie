@@ -1,4 +1,4 @@
-import './common/refs';
+import { refs } from './common/refs';
 import onClickTrending from './handlers/on-click-trending';
 import onClickCategory from './handlers/on-click-category-list';
 import loadSidebarCategory from './handlers/load-sigebar-category';
