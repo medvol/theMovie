@@ -13,7 +13,7 @@ import {
 import loadMostWatchedList from './js/handlers/load-most-watched-list';
 import loadDiscoverCards from './js/load-discover-cards';
 
-import handlerInput from './js/handler-search';
+import handlerInput from './js/handlers/handler-search';
 // import loadPlayList from './js/load-playlist';
 
 import { authUser } from './js/submit-form';
@@ -57,12 +57,12 @@ const refs = {
   pageSubTitle: document.querySelector('.most-watched'),
   modalCloseBtn: document.querySelector('.close-btn-card'),
 
-
+}
   // titleElem: () => document.querySelector('.select-title'),
 
 
 
-refs.playlist.addEventListener('click', loadPlayList);
+// refs.playlist.addEventListener('click', loadPlayList);
 
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
@@ -90,7 +90,7 @@ refs.searchBar.addEventListener(
 
 
 // refs.overlay.addEventListener('click', onBackdropClick);
-// document.addEventListener('keydown', onPushEsc);
+document.addEventListener('keydown', onPushEsc);
 
 var splide = new Splide('.splide', {
   perPage: 3,
