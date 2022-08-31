@@ -3,18 +3,6 @@ import parseGanres from './parse-ganres';
 
 const categoryMovie = new MovieApiService();
 
-
-// function parseGanres(film, ganres) { 
-  
-//   return ganres.filter(ganre => {
-//     if (film.includes(ganre.id)) {
-//       return ganre.name
-//     }
-//   }).map(element => element.name).slice(0, 2).join(', ');   
-  
-
-// }
-
 export async function createMarkupMovies(movies, element) {
   const ganres = await categoryMovie.fetchGenresDescription();
 

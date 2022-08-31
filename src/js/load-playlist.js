@@ -1,14 +1,6 @@
 import { MovieApiService } from './api-movie-service';
 import parseGanres from './parse-ganres';
-import { createMarkupMovies } from './create-markup-movies';
 import { slickLoader } from './loader';
-import {
-  setButtonWatchedSettings,
-  setButtonQueueSettings,
-} from './set-btn-settings';
-
-const btnWatched = () => document.querySelector('.btn_add');
-const btnQueue = () => document.querySelector('.btn_queue');
 
 const savedWatched = localStorage.getItem('watched-movies');
 const parsedWatched = JSON.parse(savedWatched);
@@ -26,7 +18,7 @@ const pageSubTitle = document.querySelector('.most-watched');
 const playlistbtn = document.querySelector('.user-settings');
 const pagination = document.querySelector('.tui-pagination');
 const watchedBtn = document.querySelector('.watched-btn');
-console.log(watchedBtn);
+const queuedBtn = document.querySelector('.queued-btn');
 async function fetchMovie(movies) {
   const promiceArray = movies.map(async idMovie => {
     categoryMovie.movieId = idMovie;
@@ -36,9 +28,8 @@ async function fetchMovie(movies) {
   return promiceArray;
 }
 
-///////////// WATCHED /////////////////
-
 playlist.addEventListener('click', onClickWatched);
+watchedBtn.addEventListener('click', onClickWatched);
 
 async function onClickWatched() {
   const array = await fetchMovie(parsedWatched);
@@ -46,31 +37,35 @@ async function onClickWatched() {
   const allPromise = await Promise.all(array);
   films.innerHTML = '';
   pageSubTitle.classList.add('visually-hidden');
-
   pagination.classList.add('visually-hidden');
   videos.innerHTML = '';
   pageTitle.textContent = 'Watched';
 
-  const markupBtn = `<div class="wrapper-playlist_btn" style="--delay: .4s">
-                  <button class="playlist_btn watched-btn is-active" type="button">Watched
-                  </button>
-
-                  <button class="playlist_btn queued-btn" type="button">Queued
-                  </button>
-              </div>`;
-
   slickLoader();
-  playlistbtn.insertAdjacentHTML('beforebegin', markupBtn);
+
   createMarkupWatched(allPromise, videos);
 
+  queuedBtn.addEventListener('click', onClickQueued);
+  watchedBtn.classList.remove('is-active');
+  queuedBtn.classList.add('is-active');
   SlickLoader.disable();
-  //   watchedBtn.classList.add('is-active');
 }
 
-///////////////////////////////////////////////////
+async function onClickQueued() {
+  const array = await fetchMovie(parsedQueued);
 
-//
-////////////////////////////////////////////////////////////
+  const allPromise = await Promise.all(array);
+  films.innerHTML = '';
+  pageSubTitle.classList.add('visually-hidden');
+  videos.innerHTML = '';
+  pageTitle.textContent = 'Queued';
+  slickLoader();
+
+  watchedBtn.classList.add('is-active');
+  queuedBtn.classList.remove('is-active');
+  createMarkupWatched(allPromise, videos);
+  SlickLoader.disable();
+}
 
 export async function createMarkupWatched(movies, element) {
   const ganres = await categoryMovie.fetchGenresDescription();
@@ -127,63 +122,3 @@ export async function createMarkupWatched(movies, element) {
 
   element.insertAdjacentHTML('beforeend', markup);
 }
-//////////////////// QUEUED/////////////////////////
-
-async function onClickQueued() {
-  const array = await fetchMovie(parsedQueued);
-
-  const allPromise = await Promise.all(array);
-  films.innerHTML = '';
-  pageSubTitle.classList.add('visually-hidden');
-  videos.innerHTML = '';
-  pageTitle.textContent = 'Queued';
-  slickLoader();
-  createMarkupWatched(allPromise, videos);
-  SlickLoader.disable();
-}
-// watchedBtn.addEventListener('click', onClickWatched);
-// playlist.addEventListener('click', onClickQueued);
-
-////////////////////////////////////////////////////////////////////
-// import { MovieApiService } from './api-movie-service';
-// import { createMarkupPlaylist } from './create-markup-playlist';
-// import { slickLoader } from './loader';
-
-// const videos = document.querySelector('.videos');
-
-// const films = document.querySelector('.main-films');
-// const pageTitle = document.querySelector('.main-header');
-// // const videos = document.querySelector('.videos');
-// const pageSubTitle = document.querySelector('.most-watched');
-
-// const newsWeekApiService = new MovieApiService();
-
-// export default async function loadPlayList() {
-//   document.querySelector('.footer').classList.add('visually-hidden');
-
-//   const savedWatched = localStorage.getItem('watched-movies');
-//   const parsedWatched = JSON.parse(savedWatched);
-//   console.log('watched-movies', parsedWatched);
-
-//   // export function watchedId(parsedWatched) {
-//   //   return parsedWatched.map;
-//   // }
-
-//   // const savedQueued = localStorage.getItem('queued-movies');
-//   // const parsedQueued = JSON.parse(savedQueued);
-//   // console.log('queued-movies', parsedQueued);
-
-//   films.innerHTML = '';
-//   pageSubTitle.classList.add('visually-hidden');
-//   videos.innerHTML = '';
-//   // pageTitle.textContent = element.firstElementChild.textContent;
-
-//   slickLoader();
-//   console.log(parsedWatched);
-//   // const categoryPlayList = await newsWeekApiService.fetchMovieForId();
-//   const markup = await createMarkupPlaylist(parsedWatched);
-//   // console.log(markup);
-//   videos.insertAdjacentHTML('beforeend', markup);
-//   SlickLoader.disable();
-//   document.querySelector('.footer').classList.remove('visually-hidden');
-// }

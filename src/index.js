@@ -2,10 +2,7 @@ import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import './sass/index.scss';
 
-import {
-  onOpenModal,
-  onCloseModal,
-} from './js/modal-our-team';
+import { onOpenModal, onCloseModal } from './js/modal-our-team';
 
 import {
   onBackdropClick,
@@ -20,9 +17,9 @@ import onClickCategory from './js/on-click-category-list';
 import onClickTrending from './js/on-click-trending';
 import loadDiscoverCards from './js/load-discover-cards';
 import handlerInput from './js/handler-search';
-import loadPlayList from './js/load-playlist';
+
 import { authUser } from './js/submit-form';
-import './js/create-markup-playlist';
+import './js/load-playlist';
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
@@ -55,17 +52,14 @@ const refs = {
   modalCloseBtn: document.querySelector('.close-btn-card'),
 };
 
-
 if (refs.pageTitle.textContent !== 'New video')
   refs.pageTitle.textContent = 'New video';
-
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.logo.addEventListener('click', loadMostWatchedList);
-refs.playlist.addEventListener('click', loadPlayList);
 
 refs.overlay.addEventListener('click', onBackdropClick);
 document.addEventListener('keydown', onPushEsc);
@@ -92,9 +86,6 @@ refs.searchBar.addEventListener(
 
 // refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
-
-
-
 var splide = new Splide('.splide', {
   perPage: 3,
   gap: '1rem',
@@ -118,7 +109,6 @@ refs.sidebar.addEventListener('click', OnClickSidebar);
 
 authUser();
 
-
 refs.discover.addEventListener('click', function () {
   location.reload();
 });
@@ -126,4 +116,3 @@ refs.discover.addEventListener('click', function () {
 refs.logo.addEventListener('click', function () {
   location.reload();
 });
-
