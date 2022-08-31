@@ -17,11 +17,13 @@ import {
 import loadMostWatchedList from './js/handlers/load-most-watched-list';
 import loadDiscoverCards from './js/load-discover-cards';
 
+
 import handlerInput from './js/handlers/handler-search';
 // import loadPlayList from './js/load-playlist';
 
 import { authUser } from './js/submit-form';
 import './js/create-markup-playlist';
+
 
 import './js/load-playlist';
 import Splide from '@splidejs/splide';
@@ -34,6 +36,8 @@ import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 import debounce from 'lodash.debounce';
 import './js/helpers/resize-window';
 import './js/helpers/resize-sidebar';
+
+
 
 import './js/render-pages'
 
@@ -50,6 +54,7 @@ import './js/render-pages'
 //   trending: document.querySelector('[data-name="trending"]'),
 //   playlist: document.querySelector('[data-name="playlist"]'),
 //   openModal: document.querySelector('[data-action="open-modal"]'),
+
 
 //   backdrop: document.querySelector('[data-modal]'),
 
@@ -92,8 +97,11 @@ refs.searchBar.addEventListener(
 // refs.mainContainer.addEventListener('click', onModalShowInfoCard);
 
 
+
+
 // refs.overlay.addEventListener('click', onBackdropClick);
 document.addEventListener('keydown', onPushEsc);
+
 
 var splide = new Splide('.splide', {
   perPage: 3,
