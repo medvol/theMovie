@@ -1,5 +1,4 @@
-
-export default  refs = {
+export const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
   mainContainer: document.querySelector('.main-container'),
   videos: document.querySelector('.videos'),
@@ -21,4 +20,8 @@ export default  refs = {
   modalCloseBtn: document.querySelector('.close-btn-card'),
 paginationContainer: document.querySelector('#pagination'),
   footer: document.querySelector('.footer')
-};
+}
+
+
+
+

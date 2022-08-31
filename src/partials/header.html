@@ -1,10 +1,17 @@
 <header class="header">
-    <div class="search-bar">
-        <input type="text" id="search-box" placeholder="Search">
-    </div>
-    <div class="user-settings">
-       
-        <button type="button" class="singin_btn">SingIn</button>
+  <div class="search-bar">
+    <input type="text" id="search-box" placeholder="Search" />
+  </div>
+  <div class="wrapper-playlist_btn visually-hidden" style="--delay: 0.4s">
+    <button class="playlist_btn watched-btn is-active" type="button">
+      Watched
+    </button>
 
-    </div>
+    <button class="playlist_btn queued-btn is-active" type="button">
+      Queued
+    </button>
+  </div>
+  <div class="user-settings">
+    <button type="button" class="singin_btn">SingIn</button>
+  </div>
 </header>
