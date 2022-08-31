@@ -67,10 +67,11 @@ function authUser() {
 
 
 function closeSignInForm() {
+  const forms = ``;
   forms = document.querySelector(`.forms`);
   if (forms) {
     forms.remove();
-  }
+  } else { return };
 };
 
 function onClickSingIn() {
