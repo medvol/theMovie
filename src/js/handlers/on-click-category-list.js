@@ -1,6 +1,7 @@
 import { MovieApiService } from '../api-movie-service';
 import { createMarkupMovies } from '../create-markup-movies';
 import { slickLoader } from '../loader';
+import { closeSignInForm } from '../submit-form';
 import initPagination from '../helpers/pagination';
 
 const films = document.querySelector('.main-films');
@@ -23,7 +24,7 @@ export default async function onClickCategory(event) {
   pageTitle.classList.remove('main-header__search-accent');
   pageTitle.textContent = element.firstElementChild.textContent;
   pageSubTitle.classList.add('visually-hidden');
-
+  closeSignInForm();
   slickLoader();
 
   const trending = await categoryMovie.fetchMoviesForGenres(id, startPage);

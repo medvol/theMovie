@@ -34,22 +34,6 @@ const refs = {
   mainContainer: document.querySelector('.main-container'),
 };
 
-
-export function ifUser() {
-  const user = localStorage.getItem(`USER`);
-  if (user) {
-    return JSON.parse(user);
-  } else {
-    return;
-  }
-};
-
-export function closeSignInForm() {
-  forms = document.querySelector(`.forms`);
-  if (forms) {
-    forms.remove();
-  }
-
 function ifUserOff() {
   refs.singInBtn.textContent = `SignIn`;
   refs.singInBtn.style.backgroundColor = `#ea5f5f`;
@@ -63,11 +47,29 @@ function ifUserOn() {
 
 };
 
-export function authUser() {
+function ifUser() {
+  const user = localStorage.getItem(`USER`);
+  if (user) {
+    return JSON.parse(user);
+  } else {
+    return;
+  }
+};
+
+function authUser() {
   if (ifUser() === undefined) {
     return ifUserOff()
   } else {
     return ifUserOn()
+  }
+};
+
+
+
+function closeSignInForm() {
+  forms = document.querySelector(`.forms`);
+  if (forms) {
+    forms.remove();
   }
 };
 
@@ -169,15 +171,4 @@ function marcupClear() {
   refs.videos.innerHTML = ``;
 };
 
-  refs.mainContainer.innerHTML = ``;
-}
-
-export function ifUser() {
-  const user = localStorage.getItem(`USER`);
-  if (user) {
-    return JSON.parse(user);
-  } else {
-    return;
-  }
-}
-
+  export { ifUser, authUser, closeSignInForm }
