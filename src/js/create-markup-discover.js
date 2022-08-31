@@ -42,7 +42,6 @@ export function createMarkupDiscoverCards(discoverMovies) {
                 <p class="film-info">${vote_count} views<span class="seperate"></span>${date}</p>
             </div>
         </div>
-        <span class="main-film__selection">...</span>
     </div>`;
     })
     .join('');
