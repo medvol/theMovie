@@ -4,7 +4,7 @@ import { refs } from './js/common/refs';
 
 import './sass/index.scss';
 
-import { onOpenModal, onCloseModal } from './js/modal-our-team';
+import { openModalOn, onCloseModal } from './js/modal-our-team';
 
 import {
   onBackdropClick,
@@ -22,8 +22,7 @@ import { authUser } from './js/submit-form';
 // import './js/create-markup-playlist';
 
 import './js/load-playlist';
-import Splide from '@splidejs/splide';
-import '@splidejs/splide/dist/css/splide.min.css';
+
 
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
@@ -62,10 +61,12 @@ import './js/render-pages';
 // }
 // titleElem: () => document.querySelector('.select-title'),
 
+
 // refs.playlist.addEventListener('click', loadPlayList);
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
-refs.openModal.addEventListener('click', onOpenModal);
+refs.openModal.addEventListener('click', openModalOn);
+refs.closeModalBtn.addEventListener('click', onCloseModal);
 
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.logo.addEventListener('click', loadMostWatchedList);
@@ -89,22 +90,6 @@ refs.overlay.addEventListener('click', onBackdropClick);
 
 document.addEventListener('keydown', onPushEsc);
 
-// var splide = new Splide('.splide', {
-//   perPage: 3,
-//   gap: '1rem',
-//   breakpoints: {
-//     640: {
-//       perPage: 2,
-//       gap: '.2rem',
-//       height: '6rem',
-//     },
-//     480: {
-//       perPage: 1,
-//       gap: '.1rem',
-//       height: '12rem',
-//     },
-//   },
-// });
 
 authUser();
 

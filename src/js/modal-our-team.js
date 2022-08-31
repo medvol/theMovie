@@ -1,42 +1,29 @@
-import Splide from '@splidejs/splide';
-import '@splidejs/splide/dist/css/splide.min.css';
-import sergey from '../images/sergey.jpg'
+import sergey from "../images/sergey.jpg"
+import viktoria from "../images/viktoria.jpg"
+import ruslan from "../images/ruslan.jpg"
+import oleg from "../images/oleg.jpg"
+import mariia from "../images/mariia.jpg"
+import taras from "../images/taras.jpg"
+
 
 const onBackdrop = document.querySelector('[data-modal]')
 const footerBtnText = document.querySelector('.footer-btn-text')
-const closeModalBtn = document.querySelector('[data-action="data-modal-close"]')
+const onBackdropModal = document.querySelector('.modal')
+// const closeModalBtn = document.querySelector('[data-action="data-modal-close"]')
 
 
 
-function onOpenModal() {
+function openModalOn() {
   window.addEventListener('keydown', closeModalByEsc);
   createListOurTeam()
   onBackdrop.classList.remove('is-hiddene');
+  onBackdropModal.classList.remove('is-hiddene')
   footerBtnText.classList.toggle('footer-btn-text-click')
-  var splide = new Splide('.splide', {
-    type: 'loop',
-    padding: '15rem',
-    gap: '2rem',
-    cloneStatus: 'false',
-    breakpoints: {
-      640: {
-        perPage: 2,
-        gap: '.2rem',
-        height: '6rem',
-      },
-      480: {
-        destroy: true,
-      },
-    },
-  });
-
-  splide.mount();
 
 }
 
 function createListOurTeam() {
-  const markup = `<div class="modal"><h1 class="title-team">Our Team</h1>
-    <section class="splide">
+  const markup = `<section class="splide">
       <div class="splide__track">
         <ul class="team-list splide__list">
           <li class="our-team splide__slide">
@@ -58,7 +45,7 @@ function createListOurTeam() {
               <a href="https://github.com/Stavr101" target="_blank"
                 ><img
                   class="img-fluid"
-                  src="https://avatars.githubusercontent.com/u/95885361?v=4"
+                  src="${taras}"
                   alt="avatar"
               /></a>
             </div>
@@ -72,7 +59,7 @@ function createListOurTeam() {
               <a href="https://github.com/TarasZagamula" target="_blank"
                 ><img
                   class="img-fluid"
-                  src="/src/images/viktoria.jpg"
+                  src="${viktoria}"
                   alt="avatar"
               /></a>
             </div>
@@ -86,7 +73,7 @@ function createListOurTeam() {
               <a href="https://github.com/RuslanShyrogorov" target="_blank"
                 ><img
                   class="img-fluid"
-                  src="/src/images/ruslan.jpg"
+                  src="${ruslan}"
                   alt="avatar"
               /></a>
             </div>
@@ -100,7 +87,7 @@ function createListOurTeam() {
               <a href="https://github.com/medvol" target="_blank"
                 ><img
                   class="img-fluid"
-                  src="https://avatars.githubusercontent.com/u/95881208?v=4"
+                  src="${oleg}"
                   alt="avatar"
               /></a>
             </div>
@@ -114,7 +101,7 @@ function createListOurTeam() {
               <a href="https://github.com/Marryalex" target="_blank"
                 ><img
                   class="img-fluid"
-                  src="/src/images/mariia.jpg"
+                  src="${mariia}"
                   alt="avatar"
               /></a>
             </div>
@@ -125,21 +112,14 @@ function createListOurTeam() {
           </li>
         </ul>
       </div>
-    </section>
-    <button type="button" class="close-btn" data-action="data-modal-close">
-      <svg class="close-icon" width="11" height="11">
-        <use href="images/symbol-defs.svg#icon-close"></use>
-      </svg>
-    </button>
-    </div>`
-  onBackdrop.insertAdjacentHTML('beforeend', markup)
+    </section>`
+  onBackdropModal.insertAdjacentHTML('beforeend', markup)
 }
 
-// closeModalBtn.addEventListener('click', onCloseModal);
-
 function onCloseModal() {
-  footerBtnText.classList.toggle('footer-btn-text-click')
+  footerBtnText.classList.toggle('footer-btn-text-click');
   onBackdrop.classList.add('is-hiddene');
+  onBackdropModal.classList.add('is-hiddene');
 }
 
 
@@ -148,5 +128,5 @@ function closeModalByEsc(e) {
     onCloseModal();
   }
 }
-export { onOpenModal, onCloseModal, closeModalByEsc };
+export { openModalOn, onCloseModal, closeModalByEsc };
 
