@@ -1,5 +1,9 @@
+
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import { refs } from './js/common/refs';
+
+
 import './sass/index.scss';
 
 import { onOpenModal, onCloseModal } from './js/modal-our-team';
@@ -10,72 +14,78 @@ import {
   onModalCloseBtn,
 } from './js/modal-close-btn';
 
-import { OnClickSidebar } from './js/on-click-active';
-import loadSidebarCategory from './js/load-sigebar-category';
-import loadMostWatchedList from './js/load-most-watched-list';
-import onClickCategory from './js/on-click-category-list';
-import onClickTrending from './js/on-click-trending';
+import loadMostWatchedList from './js/handlers/load-most-watched-list';
 import loadDiscoverCards from './js/load-discover-cards';
-import handlerInput from './js/handler-search';
+
+
+import handlerInput from './js/handlers/handler-search';
+// import loadPlayList from './js/load-playlist';
 
 import { authUser } from './js/submit-form';
+import './js/create-markup-playlist';
+
+
 import './js/load-playlist';
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
+// import { onClickForSelector } from './js/create-select-menu';
+
 import debounce from 'lodash.debounce';
 import './js/helpers/resize-window';
 import './js/helpers/resize-sidebar';
 
-const refs = {
-  categoryList: document.querySelector('[data-list ="render"]'),
-  mainContainer: document.querySelector('.main-container'),
-  videos: document.querySelector('.videos'),
-  sidebar: document.querySelector('.sidebar'),
-  films: document.querySelector('.main-films'),
-  pageTitle: document.querySelector('.main-header'),
-  logo: document.querySelector('.logo-expand'),
-  discover: document.querySelector('[data-name="discover"]'),
-  trending: document.querySelector('[data-name="trending"]'),
-  playlist: document.querySelector('[data-name="playlist"]'),
-  openModal: document.querySelector('[data-action="open-modal"]'),
-  closeModalBtn: document.querySelector('[data-action="data-modal-close"]'),
-  backdrop: document.querySelector('[data-modal]'),
 
-  pageSubTitle: document.querySelector('.most-watched'),
-  searchBar: document.querySelector('.search-bar'),
-  overlay: document.querySelector('.overlay'),
-  modalCardMovie: document.querySelector('.modal_movie_card'),
-  pageSubTitle: document.querySelector('.most-watched'),
-  modalCloseBtn: document.querySelector('.close-btn-card'),
-};
 
-if (refs.pageTitle.textContent !== 'New video')
-  refs.pageTitle.textContent = 'New video';
+import './js/render-pages'
+
+
+// const refs = {
+//   categoryList: document.querySelector('[data-list ="render"]'),
+//   mainContainer: document.querySelector('.main-container'),
+//   videos: document.querySelector('.videos'),
+//   sidebar: document.querySelector('.sidebar'),
+//   films: document.querySelector('.main-films'),
+//   pageTitle: document.querySelector('.main-header'),
+//   logo: document.querySelector('.logo-expand'),
+//   discover: document.querySelector('[data-name="discover"]'),
+//   trending: document.querySelector('[data-name="trending"]'),
+//   playlist: document.querySelector('[data-name="playlist"]'),
+//   openModal: document.querySelector('[data-action="open-modal"]'),
+
+
+//   backdrop: document.querySelector('[data-modal]'),
+
+//   pageSubTitle: document.querySelector('.most-watched'),
+//   searchBar: document.querySelector('.search-bar'),
+//   overlay: document.querySelector('.overlay'),
+//   modalCardMovie: document.querySelector('.modal_movie_card'),
+//   pageSubTitle: document.querySelector('.most-watched'),
+//   modalCloseBtn: document.querySelector('.close-btn-card'),
+
+// }
+  // titleElem: () => document.querySelector('.select-title'),
+
+
+
+// refs.playlist.addEventListener('click', loadPlayList);
+
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.openModal.addEventListener('click', onOpenModal);
-refs.closeModalBtn.addEventListener('click', onCloseModal);
+
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.logo.addEventListener('click', loadMostWatchedList);
-
-refs.overlay.addEventListener('click', onBackdropClick);
-document.addEventListener('keydown', onPushEsc);
-
-addEventListener('DOMContentLoaded', loadSidebarCategory, { once: true });
-
-addEventListener('DOMContentLoaded', loadMostWatchedList);
-
-refs.categoryList.addEventListener('click', onClickCategory);
-
-refs.trending.addEventListener('click', onClickTrending);
+// refs.playlist.addEventListener('click', loadPlayList);
 
 addEventListener('DOMContentLoaded', loadDiscoverCards);
 
 refs.videos.addEventListener('click', onModalShowInfoCard);
 refs.films.addEventListener('click', onModalShowInfoCard);
+
+// titleElem.addEventListener('click', onClickForSelector);
 
 const DEBOUNCE_DELAY = 750;
 
@@ -85,6 +95,13 @@ refs.searchBar.addEventListener(
 );
 
 // refs.mainContainer.addEventListener('click', onModalShowInfoCard);
+
+
+
+
+// refs.overlay.addEventListener('click', onBackdropClick);
+document.addEventListener('keydown', onPushEsc);
+
 
 var splide = new Splide('.splide', {
   perPage: 3,
@@ -103,9 +120,7 @@ var splide = new Splide('.splide', {
   },
 });
 
-splide.mount();
 
-refs.sidebar.addEventListener('click', OnClickSidebar);
 
 authUser();
 

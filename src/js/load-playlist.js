@@ -1,5 +1,10 @@
 import { MovieApiService } from './api-movie-service';
-import parseGanres from './parse-ganres';
+
+
+
+import parseGanres from './helpers/parse-ganres';
+import { createMarkupMovies } from './create-markup-movies';
+
 import { slickLoader } from './loader';
 
 const savedWatched = localStorage.getItem('watched-movies');
@@ -39,6 +44,8 @@ async function onClickWatched() {
   pageSubTitle.classList.add('visually-hidden');
   pagination.classList.add('visually-hidden');
   videos.innerHTML = '';
+  pageTitle.classList.remove('main-header__search-info');
+  pageTitle.classList.remove('main-header__search-accent');
   pageTitle.textContent = 'Watched';
 
   slickLoader();
@@ -122,3 +129,4 @@ export async function createMarkupWatched(movies, element) {
 
   element.insertAdjacentHTML('beforeend', markup);
 }
+

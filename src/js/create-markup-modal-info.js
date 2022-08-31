@@ -14,14 +14,21 @@ export function createMarkupMovieInfo(
   },
   elem
 ) {
-  const imgUrl = `https://image.tmdb.org/t/p/original${poster_path}`;
+  // const imgUrl = `https://image.tmdb.org/t/p/original${poster_path}`;
+  const imgUrl = `https://image.tmdb.org/t/p`;
 
   const genresList = genres.map(genre => genre.name).join(' / ');
 
   const markup = `
 
         <div class="modal_poster">
-                <img class="modal_poster__img" src="${imgUrl}" alt="${title}"/>
+                <img class="modal_poster__img lazyload" src="${imgUrl}/w500${poster_path}"
+                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            data-srcset="${imgUrl}/w500${poster_path} 500w,         
+            ${imgUrl}/w780${poster_path} 780w,
+            ${imgUrl}/original${poster_path} 900w"
+            data-sizes="auto"          
+                alt="${title}"/>
         </div>
 
         <div class="modal_info anim">
@@ -44,7 +51,7 @@ export function createMarkupMovieInfo(
             <p class="about__description">${overview}</p>
             </div>
 
-            <div class="wrapper_btn anim" style="--delay: .4s">
+            <div class="wrapper_btn anim" style="--delay: .2s">
                 <button class="modal_btn btn_add" type="button">
                 </button>
               

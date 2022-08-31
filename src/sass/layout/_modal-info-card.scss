@@ -22,17 +22,16 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    padding: 40px 12px;
+    padding: 10px 12px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-
+    align-items: stretch;
     box-sizing: border-box;
 
     width: 280px;
-    min-height: 581px;
+    height: 650px;
 
     border-radius: 20px;
     color: white;
@@ -50,19 +49,23 @@
 
 .wrapper_movie_card{
     background-color: rgb(31, 29, 43);
+    overflow: hidden;
 
 }
 
 @media screen and (min-width:768px){
     .modal_movie_card, .wrapper_movie_card {
-        width: 600px;
+       
         flex-direction: row;
+        width: 600px;
+        height: 550px;
+        padding: 40px 12px;
     }
 }
 
 @media screen and (min-width:1200px){
     .modal_movie_card, .wrapper_movie_card {
-        width: 700px;
+        width: 650px;
     }
 }
 

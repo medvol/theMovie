@@ -36,12 +36,20 @@ const setButtonQueueSettings = bool => {
 };
 
 const addToWatch = () => {
+  if (queueId.includes(idMovie)) {
+    removeFromQueue();
+  }
+
   watchedId.push(idMovie);
   localStorage.setItem(LOCALSTORAGE_KEY_W, JSON.stringify(watchedId));
   setButtonWatchedSettings(true);
 };
 
 const addToQueue = () => {
+  if (watchedId.includes(idMovie)) {
+    removeFromWatch();
+  }
+
   queueId.push(idMovie);
   localStorage.setItem(LOCALSTORAGE_KEY_Q, JSON.stringify(queueId));
   setButtonQueueSettings(true);
@@ -50,7 +58,6 @@ const addToQueue = () => {
 const removeFromWatch = () => {
   const elementIndexInArray = watchedId.indexOf(idMovie);
   watchedId.splice(elementIndexInArray, 1);
-
   localStorage.setItem(LOCALSTORAGE_KEY_W, JSON.stringify(watchedId));
   setButtonWatchedSettings(false);
 };
@@ -58,7 +65,6 @@ const removeFromWatch = () => {
 const removeFromQueue = () => {
   const elementIndexInArray = queueId.indexOf(idMovie);
   queueId.splice(elementIndexInArray, 1);
-
   localStorage.setItem(LOCALSTORAGE_KEY_Q, JSON.stringify(queueId));
   setButtonQueueSettings(false);
 };
