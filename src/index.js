@@ -103,22 +103,22 @@ refs.searchBar.addEventListener(
 document.addEventListener('keydown', onPushEsc);
 
 
-var splide = new Splide('.splide', {
-  perPage: 3,
-  gap: '1rem',
-  breakpoints: {
-    640: {
-      perPage: 2,
-      gap: '.2rem',
-      height: '6rem',
-    },
-    480: {
-      perPage: 1,
-      gap: '.1rem',
-      height: '12rem',
-    },
-  },
-});
+// var splide = new Splide('.splide', {
+//   perPage: 3,
+//   gap: '1rem',
+//   breakpoints: {
+//     640: {
+//       perPage: 2,
+//       gap: '.2rem',
+//       height: '6rem',
+//     },
+//     480: {
+//       perPage: 1,
+//       gap: '.1rem',
+//       height: '12rem',
+//     },
+//   },
+// });
 
 
 
