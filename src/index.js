@@ -31,7 +31,7 @@ import debounce from 'lodash.debounce';
 import './js/helpers/resize-window';
 import './js/helpers/resize-sidebar';
 
-import './js/common/refs';
+// import './js/common/refs';
 import './js/render-pages'
 
 
