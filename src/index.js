@@ -25,6 +25,8 @@ import '@splidejs/splide/dist/css/splide.min.css';
 
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
 
+// import { onOpenSelect } from './js/load-select-card';
+
 // import { onClickForSelector } from './js/create-select-menu';
 
 import debounce from 'lodash.debounce';
@@ -32,8 +34,7 @@ import './js/helpers/resize-window';
 import './js/helpers/resize-sidebar';
 
 // import './js/common/refs';
-import './js/render-pages'
-
+import './js/render-pages';
 
 const refs = {
   categoryList: document.querySelector('[data-list ="render"]'),
@@ -56,14 +57,10 @@ const refs = {
   modalCardMovie: document.querySelector('.modal_movie_card'),
   pageSubTitle: document.querySelector('.most-watched'),
   modalCloseBtn: document.querySelector('.close-btn-card'),
-
-}
-  // titleElem: () => document.querySelector('.select-title'),
-
-
+};
+// titleElem: () => document.querySelector('.select-title'),
 
 // refs.playlist.addEventListener('click', loadPlayList);
-
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.openModal.addEventListener('click', onOpenModal);
@@ -86,10 +83,7 @@ refs.searchBar.addEventListener(
   debounce(handlerInput, DEBOUNCE_DELAY)
 );
 
-// refs.mainContainer.addEventListener('click', onModalShowInfoCard);
-
-
-// refs.overlay.addEventListener('click', onBackdropClick);
+refs.overlay.addEventListener('click', onBackdropClick);
 document.addEventListener('keydown', onPushEsc);
 
 var splide = new Splide('.splide', {
@@ -109,8 +103,6 @@ var splide = new Splide('.splide', {
   },
 });
 
-
-
 authUser();
 
 refs.discover.addEventListener('click', function () {
@@ -120,3 +112,6 @@ refs.discover.addEventListener('click', function () {
 refs.logo.addEventListener('click', function () {
   location.reload();
 });
+
+// const selectionMenu = () => document.querySelector('.video-selection');
+// selectionMenu().addEventListener('click', onOpenSelect);
