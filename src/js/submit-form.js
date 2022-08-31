@@ -64,16 +64,6 @@ function authUser() {
   }
 };
 
-
-
-function closeSignInForm() {
-  const forms = ``;
-  forms = document.querySelector(`.forms`);
-  if (forms) {
-    forms.remove();
-  } else { return };
-};
-
 function onClickSingIn() {
   marcupClear();
   formMarcupCreator(refs.mainContainer);
@@ -85,6 +75,14 @@ function onClickSingIn() {
 
   forms.formLogin.addEventListener(`submit`, onSubmitLogin);
   forms.formSignup.addEventListener(`submit`, onSubmitSingup);
+};
+
+function closeSignInForm() {
+  let forms = ``;
+  forms = document.querySelector(`.forms`);
+  if (forms) {
+    forms.remove();
+  } else { return };
 };
 
 async function onSubmitLogin(e) {
