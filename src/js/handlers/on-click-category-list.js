@@ -28,12 +28,12 @@ export default async function onClickCategory(event) {
 
   const trending = await categoryMovie.fetchMoviesForGenres(id, startPage);
   SlickLoader.disable();
-  const { page, results, total_results: totalItems } = trending;
-
+  const { page, results, total_results: totalItems} = trending;
+console.log(trending)
   const pagination = initPagination({
     page,
     itemsPerPage: results.length,
-    totalItems,
+    totalItems: totalItems > 10000 ? 10000 : totalItems,
   });
   createMarkupMovies(trending.results, videos);
   document.querySelector('.footer').classList.remove('visually-hidden');
