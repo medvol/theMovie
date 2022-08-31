@@ -22,7 +22,7 @@ import handlerInput from './js/handlers/handler-search';
 // import loadPlayList from './js/load-playlist';
 
 import { authUser } from './js/submit-form';
-import './js/create-markup-playlist';
+// import './js/create-markup-playlist';
 
 
 import './js/load-playlist';
