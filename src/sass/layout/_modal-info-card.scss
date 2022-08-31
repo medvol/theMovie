@@ -53,6 +53,21 @@
 
 }
 
+.close-btn-card {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    z-index: 13;
+
+    background: transparent;
+    border: none;
+    // border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 @media screen and (min-width:768px){
     .modal_movie_card, .wrapper_movie_card {
        
@@ -61,26 +76,17 @@
         height: 550px;
         padding: 40px 12px;
     }
+
+    .close-btn-card {
+        top: 5px;
+        right: 5px;
+    }
 }
 
 @media screen and (min-width:1200px){
     .modal_movie_card, .wrapper_movie_card {
         width: 650px;
     }
-}
-
-.close-btn-card {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 30px;
-    height: 30px;
-    z-index: 13;
-
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    cursor: pointer;
 }
 
 .close-icon {

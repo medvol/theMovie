@@ -1,11 +1,8 @@
-
-import { MovieApiService } from "../api-movie-service";
-import { createMarkupMovies } from "../create-markup-movies";
-import initPagination from "../helpers/pagination";
+import { MovieApiService } from '../api-movie-service';
+import { createMarkupMovies } from '../create-markup-movies';
+import initPagination from '../helpers/pagination';
 import { slickLoader } from '../loader';
-import scrollToTop from "../helpers/scroll-to-top";
-
-
+import scrollToTop from '../helpers/scroll-to-top';
 
 const videos = document.querySelector('.videos');
 document.querySelector('.footer').classList.add('visually-hidden');

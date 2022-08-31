@@ -29,8 +29,6 @@ export async function onModalShowInfoCard(e) {
   }
   modalTemplate.classList.add('hide');
 
-  // overlay.classList.remove('is-hidden');
-
   const element = e.target.closest('[id]');
   categoryMovie.movieId = element.id;
   idMovie = element.id;
@@ -47,10 +45,20 @@ export async function onModalShowInfoCard(e) {
     btnWatched().textContent = 'ADD TO WATCHED';
     btnQueue().textContent = 'ADD TO QUEUE';
     btnWatched().addEventListener('click', () =>
-      Notiflix.Notify.info(`You need to LogIn`)
+      Notiflix.Notify.info(`You need to LogIn`, {
+        position: 'right-top',
+        distance: '30px',
+        width: '300px',
+        timeout: 1000,
+      })
     );
     btnQueue().addEventListener('click', () =>
-      Notiflix.Notify.info(`You need to LogIn`)
+      Notiflix.Notify.info(`You need to LogIn`, {
+        position: 'right-top',
+        distance: '30px',
+        width: '300px',
+        timeout: 1000,
+      })
     );
     return;
   } else {

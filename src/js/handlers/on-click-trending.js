@@ -2,6 +2,7 @@ import { MovieApiService } from '../api-movie-service';
 import { createMarkupMovies } from '../create-markup-movies';
 import initPagination from '../helpers/pagination';
 import { slickLoader } from '../loader';
+import { closeSignInForm } from '../submit-form';
 
 
 const films = document.querySelector('.main-films');
@@ -17,6 +18,7 @@ export default async function onClickTrending(event) {
   const element = event.target.closest('li[data-name]');
   let startPage = 1;
   slickLoader();
+  closeSignInForm();
   const trending = await categoryMovie.fetchTrendWeekMovie(startPage);
   SlickLoader.disable();
   const { page, results, total_results: totalItems } = trending;

@@ -1,8 +1,6 @@
-
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import { refs } from './js/common/refs';
-
 
 import './sass/index.scss';
 
@@ -21,13 +19,14 @@ import handlerInput from './js/handlers/handler-search';
 // import loadPlayList from './js/load-playlist';
 
 import { authUser } from './js/submit-form';
-import './js/create-markup-playlist';
+// import './js/create-markup-playlist';
 
 import './js/load-playlist';
-// import Splide from '@splidejs/splide';
-// import '@splidejs/splide/dist/css/splide.min.css';
+
 
 import { onModalShowInfoCard } from './js/on-modal-show-infocard';
+
+// import { onOpenSelect } from './js/load-select-card';
 
 // import { onClickForSelector } from './js/create-select-menu';
 
@@ -35,8 +34,7 @@ import debounce from 'lodash.debounce';
 import './js/helpers/resize-window';
 import './js/helpers/resize-sidebar';
 
-import './js/render-pages'
-
+import './js/render-pages';
 
 // const refs = {
 //   categoryList: document.querySelector('[data-list ="render"]'),
@@ -64,9 +62,7 @@ import './js/render-pages'
 // titleElem: () => document.querySelector('.select-title'),
 
 
-
 // refs.playlist.addEventListener('click', loadPlayList);
-
 
 refs.modalCloseBtn.addEventListener('click', onModalCloseBtn);
 refs.openModal.addEventListener('click', openModalOn);
@@ -90,44 +86,9 @@ refs.searchBar.addEventListener(
   debounce(handlerInput, DEBOUNCE_DELAY)
 );
 
-// refs.mainContainer.addEventListener('click', onModalShowInfoCard);
+refs.overlay.addEventListener('click', onBackdropClick);
 
-
-// refs.overlay.addEventListener('click', onBackdropClick);
 document.addEventListener('keydown', onPushEsc);
-
-
-// var splide = new Splide('.splide', {
-//   type: 'loop',
-//   perPage: 3,
-//   gap: '2rem',
-//   // autoplay: true,
-//   breakpoints: {
-
-//     480: {
-//       gap: '.2rem',
-//       destroy: true,
-//     },
-//   },
-// });
-
-// splide.mount();
-
-
-
-// var splide = new Splide('.splide', {
-//   type: 'loop',
-//   padding: '15rem',
-//   gap: '2rem',
-//   breakpoints: {
-
-//     480: {
-//       gap: '.2rem',
-//       destroy: true,
-//     },
-//   },
-// });
-// splide.mount();
 
 
 authUser();
@@ -139,3 +100,6 @@ refs.discover.addEventListener('click', function () {
 refs.logo.addEventListener('click', function () {
   location.reload();
 });
+
+// const selectionMenu = () => document.querySelector('.video-selection');
+// selectionMenu().addEventListener('click', onOpenSelect);
