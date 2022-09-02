@@ -42,7 +42,8 @@
     height: 30px;
 
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: none;
+    // border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     cursor: pointer;
 }
@@ -64,7 +65,7 @@
     .modal {
         overflow-y: hidden;
             width: 600px;
-            height: 420px;
+            height: 450px;
         }
 }
 @media screen and (min-width:1200px) {
