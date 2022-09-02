@@ -63,6 +63,7 @@ async function onClickWatched() {
     return;
   } else {
     wrapperPlaylistBtn.classList.remove('visually-hidden');
+
     //===============================
 
     const array = await fetchMovie(parsedWatched);
