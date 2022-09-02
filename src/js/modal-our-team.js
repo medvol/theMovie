@@ -1,29 +1,28 @@
-import sergey from "../images/sergey.jpg"
-import viktoria from "../images/viktoria.jpg"
-import ruslan from "../images/ruslan.jpg"
-import oleg from "../images/oleg.jpg"
-import mariia from "../images/mariia.jpg"
-import taras from "../images/taras.jpg"
+import sergey from '../images/sergey.jpg';
+import viktoria from '../images/viktoria.jpg';
+import ruslan from '../images/ruslan.jpg';
+import oleg from '../images/oleg.jpg';
+import mariia from '../images/mariia.jpg';
+import taras from '../images/taras.jpg';
 
+const onBackdrop = document.querySelector('[data-modal]');
+const footerBtnText = document.querySelector('.footer-btn-text');
+const onBackdropModal = document.querySelector('.modal');
 
-const onBackdrop = document.querySelector('[data-modal]')
-const footerBtnText = document.querySelector('.footer-btn-text')
-const onBackdropModal = document.querySelector('.modal')
+const teamSection = document.querySelector('.splide');
 // const closeModalBtn = document.querySelector('[data-action="data-modal-close"]')
 
+// function openModalOn() {
+//   window.addEventListener('keydown', closeModalByEsc);
+//   createListOurTeam()
+//   onBackdrop.classList.remove('is-hiddene');
+//   onBackdropModal.classList.remove('is-hiddene')
+//   footerBtnText.classList.toggle('footer-btn-text-click')
 
-
-function openModalOn() {
-  window.addEventListener('keydown', closeModalByEsc);
-  createListOurTeam()
-  onBackdrop.classList.remove('is-hiddene');
-  onBackdropModal.classList.remove('is-hiddene')
-  footerBtnText.classList.toggle('footer-btn-text-click')
-
-}
+// }
 
 function createListOurTeam() {
-  const markup = `<section class="splide">
+  const markup = `
       <div class="splide__track">
         <ul class="team-list splide__list">
           <li class="our-team splide__slide">
@@ -112,16 +111,27 @@ function createListOurTeam() {
           </li>
         </ul>
       </div>
-    </section>`
-  onBackdropModal.insertAdjacentHTML('beforeend', markup)
+    `;
+  // onBackdropModal.insertAdjacentHTML('beforeend', markup);
+  teamSection.insertAdjacentHTML('beforeend', markup);
 }
 
 function onCloseModal() {
+  teamSection.innerHTML = '';
+  console.log('-------');
+
   footerBtnText.classList.toggle('footer-btn-text-click');
   onBackdrop.classList.add('is-hiddene');
-  onBackdropModal.classList.add('is-hiddene');
+  // onBackdropModal.classList.add('is-hiddene');
 }
 
+function openModalOn() {
+  window.addEventListener('keydown', closeModalByEsc);
+  createListOurTeam();
+  onBackdrop.classList.remove('is-hiddene');
+  // onBackdropModal.classList.remove('is-hiddene');
+  footerBtnText.classList.toggle('footer-btn-text-click');
+}
 
 function closeModalByEsc(e) {
   if (e.code === 'Escape') {
@@ -129,4 +139,3 @@ function closeModalByEsc(e) {
   }
 }
 export { openModalOn, onCloseModal, closeModalByEsc };
-
