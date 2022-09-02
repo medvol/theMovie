@@ -18,6 +18,10 @@ export default async function onClickCategory(event) {
   const id = element.dataset.id;
   let startPage = 1;
 
+  document
+    .querySelector('.wrapper-playlist_btn')
+    .classList.add('visually-hidden');
+
   videos.innerHTML = '';
   films.innerHTML = '';
   pageTitle.classList.remove('main-header__search-info');
@@ -29,8 +33,8 @@ export default async function onClickCategory(event) {
 
   const trending = await categoryMovie.fetchMoviesForGenres(id, startPage);
   SlickLoader.disable();
-  const { page, results, total_results: totalItems} = trending;
-console.log(trending)
+  const { page, results, total_results: totalItems } = trending;
+  console.log(trending);
   const pagination = initPagination({
     page,
     itemsPerPage: results.length,

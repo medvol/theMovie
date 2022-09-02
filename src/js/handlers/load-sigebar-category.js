@@ -1,7 +1,7 @@
-import { MovieApiService } from "../api-movie-service";
-import { createCategoryList } from "../sidebar-category";
+import { MovieApiService } from '../api-movie-service';
+import { createCategoryList } from '../sidebar-category';
 
-const categoryList = document.querySelector('[data-list ="render"]')
+const categoryList = document.querySelector('[data-list ="render"]');
 
 const categoryMovie = new MovieApiService();
 
